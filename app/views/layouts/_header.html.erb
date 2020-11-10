@@ -1,0 +1,119 @@
+<header class="navbar navbar-default">
+  <nav class='nav navbar-nav navbar-left'>
+    <%= link_to 'Magicians Society', root_path, class:"h4" %>
+  </nav>
+  <nav class='nav navbar-nav navbar-right'>
+    <div id="sp-menu">
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "TOP_icon.png", :size => '40x40' %>
+              <%= link_to 'トップページ', root_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "マイページ_icon.png", :size => '40x40' %>
+              <%= link_to 'マイページ', user_path(current_user), class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Magics_icon.png", :size => '40x40' %>
+              <%= link_to 'マジック一覧', magics_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Goods_icon.png", :size => '40x40' %>
+              <%= link_to 'グッズ一覧', products_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Magicians_icon.png", :size => '40x40' %>
+              <%= link_to 'マジシャン一覧', users_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Ranking_icon.png", :size => '40x40' %>
+              <%= link_to 'ランキング', root_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "ログアウト_icon.png", :size => '40x40' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "About_icon.png", :size => '40x40' %>
+              <%= link_to 'このサイトについて', about_path, class:"h5" %>
+            </div>
+          </li>
+        <% else %>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "TOP_icon.png", :size => '40x40' %>
+              <%= link_to 'トップページ', root_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Magics_icon.png", :size => '40x40' %>
+              <%= link_to 'マジック一覧', magics_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Goods_icon.png", :size => '40x40' %>
+              <%= link_to 'グッズ一覧', products_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Magicians_icon.png", :size => '40x40' %>
+              <%= link_to 'マジシャン一覧', users_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "Ranking_icon.png", :size => '40x40' %>
+              <%= link_to 'ランキング', root_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "ログイン_icon.png", :size => '40x40' %>
+              <%= link_to 'ログイン', new_user_session_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "新規登録_icon.png", :size => '40x40' %>
+              <%= link_to '新規登録', new_user_registration_path, class:"h5" %>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-center">
+              <%= image_tag "About_icon.png", :size => '40x40' %>
+              <%= link_to 'このサイトについて', about_path, class:"h5" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="blackBg"></div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+  </nav>
+</header>

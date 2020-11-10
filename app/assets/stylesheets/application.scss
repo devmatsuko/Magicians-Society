@@ -10,6 +10,149 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
 
 @import "bootstrap";
+
+// body共通のスタイル
+body {
+  // body内の基本フォント
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 16px;
+  color: white;
+  // bodyの背景画像
+  background-image: url("Card5.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+// エラーメッセージ
+#error_explanation {
+  color: red;
+}
+
+// 半透明ボックス
+.box {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ここからヘッダー関係 */ 
+// ヘッダー
+header {
+  height: 70px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+// ハンバーガーメニューアイコンの位置
+#hm-icon {
+  position: fixed;
+  right: 20px;
+  top: 15px;
+  z-index: 301;
+}
+
+// ハンバーガーメニューのテキスト
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+
+// ハンバーガーメニューアイコンの大きさ、形
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 35px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-child(1) {
+  top: 0;
+}
+.menu-trigger span:nth-child(2) {
+  top: 15px;
+}
+.menu-trigger span:nth-child(3) {
+  top: 30px;
+}
+
+// ハンバーガーメニューアイコンクリック後の表示
+.menu-trigger.active span:nth-child(1) {
+  -webkit-transform: translateY(15px) rotate(-45deg);
+  transform: translateY(15px) rotate(-45deg);
+  background-color: #fff;
+}
+.menu-trigger.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-trigger.active span:nth-child(3) {
+  -webkit-transform: translateY(-15px) rotate(45deg);
+  transform: translateY(-15px) rotate(45deg);
+  background-color: #fff;
+}
+
+// ハンバーガーメニュー表示時の黒透明背景
+#blackBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 80%;
+  min-height: 100%;
+  display: none;
+  z-index: 100;
+}
+
+// ハンバーガーメニューの位置
+#sp-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: black;
+  color: #fff;
+  width: 20%;
+  min-height: 100%;
+  display: none;
+  list-style: none;
+  z-index: 300;
+}
+
+// ハンバーガーメニュー内のリスト
+#sp-menu li {
+  margin-left: 10%;
+  margin-top: 30px;
+  list-style: none;
+}
+
+// ハンバーガーメニュー内のリスト(1番目)
+#sp-menu li:nth-child(1) {
+  margin-top: 100px;
+}
+
+// ハンバーガーメニュー内のリンク
+#sp-menu a {
+  color: #fff;
+  text-decoration: none;
+  margin: auto 10px;
+}
+/* ここまでヘッダー関係 */ 
+
+/* ここからフッター関係 */ 
+// フッター
+footer {
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  height: 70px;
+  padding: 10px;
+}
+/* ここまでフッター関係 */ 
