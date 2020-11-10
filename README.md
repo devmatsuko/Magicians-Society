@@ -1,4 +1,4 @@
-# Magician’s Society
+# Magicians Society
 
 ## サイト概要
 マジシャンが自身のマジックの実演、練習風景、レクチャーの動画を投稿し合うSNSです。
