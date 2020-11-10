@@ -1,0 +1,2 @@
+class ProductComment < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class MagicFavorite < ApplicationRecord
+end

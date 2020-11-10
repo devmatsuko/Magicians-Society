@@ -1,0 +1,2 @@
+class MagicCommentsController < ApplicationController
+end
