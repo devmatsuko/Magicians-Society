@@ -1,0 +1,2 @@
+module MagicFavoritesHelper
+end

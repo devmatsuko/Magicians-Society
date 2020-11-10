@@ -1,0 +1,2 @@
+class MagicFavoritesController < ApplicationController
+end

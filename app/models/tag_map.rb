@@ -1,0 +1,2 @@
+class TagMap < ApplicationRecord
+end
