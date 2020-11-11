@@ -1,26 +1,46 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="align-middle col-10 box">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <!-- ログイン見出し -->
+      <div class="d-flex align-items-center justify-content-center py-4">
+        <%= image_tag "ログイン_icon.png", :size => '40x40' %>
+        <span class="lead ml-2">ログイン</span>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <!-- ログイン情報入力フォーム -->
+      <div class="py-4">
+        <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="row form-group d-flex align-items-center justify-content-center" >
+            <label class="col-3 control-label" >メールアドレス</label>
+            <div class="col-6">
+              <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+            </div>
+          </div>
+
+          <div class="row form-group d-flex align-items-center justify-content-center" >
+            <label class="col-3 control-label" >パスワード</label>
+            <div class="col-6">
+              <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+            </div>
+          </div>
+
+          <div class="row justify-content-center my-5">
+            <div class="col-3">
+              <%= f.submit "ログイン", class: "btn btn-outline-light btn-block" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!--ログイン画面案内-->
+      <div class="mb-4">
+        <h2 class="title">登録がお済みでない方</h2>
+          <div class="pl-4">
+            <%= link_to "こちら" , new_user_registration_path, class:"login-link" %>から新規登録を行ってください。
+          </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
