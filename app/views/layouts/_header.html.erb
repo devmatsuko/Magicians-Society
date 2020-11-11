@@ -45,13 +45,13 @@
           <li>
             <div class="d-flex align-items-center">
               <%= image_tag "ログアウト_icon.png", :size => '40x40' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, class:"h5" %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
               <%= image_tag "About_icon.png", :size => '40x40' %>
-              <%= link_to 'このサイトについて', about_path, class:"h5" %>
+              <%= link_to 'サイトについて', about_path, class:"h5" %>
             </div>
           </li>
         <% else %>
@@ -100,7 +100,7 @@
           <li>
             <div class="d-flex align-items-center">
               <%= image_tag "About_icon.png", :size => '40x40' %>
-              <%= link_to 'このサイトについて', about_path, class:"h5" %>
+              <%= link_to 'サイトについて', about_path, class:"h5" %>
             </div>
           </li>
         <% end %>
