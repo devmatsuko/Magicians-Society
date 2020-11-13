@@ -1,100 +1,103 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="align-middle col-10 box">
+    <div class="align-middle col-10 box my-5">
 
       <!-- ユーザー登録見出し -->
-      <div class="d-flex align-items-center justify-content-center py-4">
-        <%= image_tag "新規登録_icon.png", :size => '40x40' %>
-        <span class="lead ml-2">新規ユーザー登録</span>
+      <div class="row p-5">
+        <div class="col-12 justify-content-center">
+          <h1 class="title">Sign Up</h1>
+          <div class="title-line mt-4"></div>
+        </div>
       </div>
 
       <!-- ユーザー登録フォーム -->
-      <div class="py-4">
-        <%= form_with model: @user, url: user_registration_path(current_user), local: true do |f| %>
+      <div class="row px-5 justify-content-center">
+        <div class="col-10">
+          <%= form_with model: @user, url: user_registration_path(current_user), local: true do |f| %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> ユーザー名</label>
+              <div class="col-4" >
+                <%= f.text_field :display_name, class: "form-control", autofocus: true, autocomplete: "display_name", placeholder: "例:マジシャン太郎" %>
+              </div>
+            </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> ユーザー名</label>
-            <div class="col-4" >
-              <%= f.text_field :display_name, class: "form-control", autofocus: true, autocomplete: "display_name", placeholder: "例:マジシャン太郎" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label">名前</label>
+              <div class="col-4">
+                （姓）<%= f.text_field :last_name, class: "form-control",autofocus: true, autocomplete: "last_name", placeholder: "姓" %>
+              </div>
+              <div class="col-4">
+                （名）<%= f.text_field :first_name, class: "form-control",autofocus: true, autocomplete: "first_name", placeholder: "名" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label">名前</label>
-            <div class="col-4">
-              （姓）<%= f.text_field :last_name, class: "form-control",autofocus: true, autocomplete: "last_name", placeholder: "姓" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label">フリガナ</label>
+              <div class="col-4">
+                （セイ）<%= f.text_field :last_name_kana, class: "form-control",autofocus: true, autocomplete: "last_name_kana", placeholder: "セイ" %>
+              </div>
+              <div class="col-4">
+                （メイ）<%= f.text_field :first_name_kana, class: "form-control",autofocus: true, autocomplete: "first_name_kana", placeholder: "メイ" %>
+              </div>
             </div>
-            <div class="col-4">
-              （名）<%= f.text_field :first_name, class: "form-control",autofocus: true, autocomplete: "first_name", placeholder: "名" %>
-            </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> フリガナ</label>
-            <div class="col-4">
-              （セイ）<%= f.text_field :last_name_kana, class: "form-control",autofocus: true, autocomplete: "last_name_kana", placeholder: "セイ" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> メールアドレス</label>
+              <div class="col-4" >
+                <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+              </div>
             </div>
-            <div class="col-4">
-              （メイ）<%= f.text_field :first_name_kana, class: "form-control",autofocus: true, autocomplete: "first_name_kana", placeholder: "メイ" %>
-            </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> メールアドレス</label>
-            <div class="col-4" >
-              <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> 郵便番号（ハイフンなし）</label>
+              <div class="col-4" >
+                <%= f.text_field :postcode, class: "form-control", autofocus: true, autocomplete: "postcode", placeholder: "郵便番号" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> 郵便番号（ハイフンなし）</label>
-            <div class="col-4" >
-              <%= f.text_field :postcode, class: "form-control", autofocus: true, autocomplete: "postcode", placeholder: "郵便番号" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> 住所</label>
+              <div class="col-8" >
+                <%= f.text_field :address, class: "form-control", autofocus: true, autocomplete: "address", placeholder: "住所" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> 住所</label>
-            <div class="col-8" >
-              <%= f.text_field :address, class: "form-control", autofocus: true, autocomplete: "address", placeholder: "住所" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> 電話番号（ハイフンなし）</label>
+              <div class="col-4" >
+                <%= f.text_field :phone_number, class: "form-control", autofocus: true, autocomplete: "phone_number", placeholder: "電話番号" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> 電話番号（ハイフンなし）</label>
-            <div class="col-4" >
-              <%= f.text_field :phone_number, class: "form-control", autofocus: true, autocomplete: "phone_number", placeholder: "電話番号" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> パスワード（６文字以上）</label>
+              <div class="col-4">
+                <%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: "パスワード" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> パスワード（６文字以上）</label>
-            <div class="col-4">
-              <%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: "パスワード" %>
+            <div class="row form-group d-flex align-items-center">
+              <label class="col-4 control-label"> パスワード（確認用）</label>
+              <div class="col-4">
+                <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "パスワード（確認用）" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center">
-            <label class="col-4 control-label"> パスワード（確認用）</label>
-            <div class="col-4">
-              <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "パスワード（確認用）" %>
+            <div class="row justify-content-center my-5">
+              <%= f.submit "Sign Up", class: "btn btn-lg btn-secondary col-3" %>
             </div>
-          </div>
-
-          <div class="row justify-content-center my-5">
-            <div class="col-3">
-              <%= f.submit "新規登録", class: "btn btn-outline-light btn-block" %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
       <!--ログイン画面案内-->
-      <div class="mb-4">
-        <h2 class="title">既に登録済みの方</h2>
+      <div class="row mb-5 pb-5">
+        <div class="offset-1">
+          <h2 class="title">既に登録済みの方</h2>
           <div class="pl-4">
             <%= link_to "こちら" , new_user_session_path, class:"login-link" %>からログインしてください。
           </div>
+        </div>
       </div>
     </div>
   </div>

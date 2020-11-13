@@ -6,3 +6,9 @@
 .login-link {
   text-decoration: underline;
 }
+
+// プロフィール画像の縦横比を維持しつつ、中央表示する
+.profile-image {
+  object-fit: cover;
+  object-position: center;
+}

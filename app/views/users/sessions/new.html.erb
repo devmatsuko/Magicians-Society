@@ -1,45 +1,49 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="align-middle col-10 box">
+    <div class="align-middle col-10 box my-5">
 
       <!-- ログイン見出し -->
-      <div class="d-flex align-items-center justify-content-center py-4">
-        <%= image_tag "ログイン_icon.png", :size => '40x40' %>
-        <span class="lead ml-2">ログイン</span>
+      <div class="row p-5">
+        <div class="col-12 justify-content-center">
+          <h1 class="title">Login</h1>
+          <div class="title-line mt-4"></div>
+        </div>
       </div>
 
       <!-- ログイン情報入力フォーム -->
-      <div class="py-4">
-        <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <div class="row px-5 justify-content-center">
+        <div class="col-10">
+          <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
-          <div class="row form-group d-flex align-items-center justify-content-center" >
-            <label class="col-3 control-label" >メールアドレス</label>
-            <div class="col-6">
-              <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+            <div class="row form-group d-flex align-items-center justify-content-center" >
+              <label class="col-3 control-label" >メールアドレス</label>
+              <div class="col-6">
+                <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row form-group d-flex align-items-center justify-content-center" >
-            <label class="col-3 control-label" >パスワード</label>
-            <div class="col-6">
-              <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+            <div class="row form-group d-flex align-items-center justify-content-center" >
+              <label class="col-3 control-label" >パスワード</label>
+              <div class="col-6">
+                <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+              </div>
             </div>
-          </div>
 
-          <div class="row justify-content-center my-5">
-            <div class="col-3">
-              <%= f.submit "ログイン", class: "btn btn-outline-light btn-block" %>
+            <div class="row justify-content-center my-5">
+              <%= f.submit "Login", class: "btn btn-lg btn-secondary col-3" %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
-      <!--ログイン画面案内-->
-      <div class="mb-4">
-        <h2 class="title">登録がお済みでない方</h2>
+      <!--サインアップ画面案内-->
+      <div class="row mb-5 pb-5">
+        <div class="offset-1">
+          <h2 class="title">登録がお済みでない方</h2>
           <div class="pl-4">
             <%= link_to "こちら" , new_user_registration_path, class:"login-link" %>から新規登録を行ってください。
           </div>
+        </div>
       </div>
     </div>
   </div>
