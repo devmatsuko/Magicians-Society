@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
     t.string "address"
     t.string "phone_number"
     t.string "display_name"
-    t.text "discription"
+    t.text "description"
     t.string "image_id", default: ""
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"

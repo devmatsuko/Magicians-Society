@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :phone_number
       t.string :display_name
-      t.text :discription
+      t.text :description
       t.string :image_id, default: ""
       t.boolean :is_deleted, null: false, default: false
 

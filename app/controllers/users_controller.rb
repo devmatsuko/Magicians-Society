@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       :phone_number,
       :image,
       :display_name,
-      :discriotion
+      :description
       )
 
   end
