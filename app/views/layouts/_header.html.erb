@@ -8,99 +8,99 @@
         <% if user_signed_in? %>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "TOP_icon.png", :size => '40x40' %>
-              <%= link_to 'トップページ', root_path, class:"h5" %>
+              <%= image_tag "TOP.png", :size => '30x30' %>
+              <%= link_to 'TOP', root_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "マイページ_icon.png", :size => '40x40' %>
-              <%= link_to 'マイページ', user_path(current_user), class:"h5" %>
+              <%= image_tag "About.png", :size => '30x30' %>
+              <%= link_to 'About', about_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Magics_icon.png", :size => '40x40' %>
-              <%= link_to 'マジック一覧', magics_path, class:"h5" %>
+              <%= image_tag "Mypage.png", :size => '30x30' %>
+              <%= link_to 'My Page', user_path(current_user), class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Goods_icon.png", :size => '40x40' %>
-              <%= link_to 'グッズ一覧', products_path, class:"h5" %>
+              <%= image_tag "Magics.png", :size => '30x30' %>
+              <%= link_to 'Magics', magics_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Magicians_icon.png", :size => '40x40' %>
-              <%= link_to 'マジシャン一覧', users_path, class:"h5" %>
+              <%= image_tag "Goods.png", :size => '30x30' %>
+              <%= link_to 'Products', products_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Ranking_icon.png", :size => '40x40' %>
-              <%= link_to 'ランキング', root_path, class:"h5" %>
+              <%= image_tag "Magicians.png", :size => '30x30' %>
+              <%= link_to 'Magicians', users_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "ログアウト_icon.png", :size => '40x40' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"h5" %>
+              <%= image_tag "Ranking.png", :size => '30x30' %>
+              <%= link_to 'Ranking', root_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "About_icon.png", :size => '40x40' %>
-              <%= link_to 'サイトについて', about_path, class:"h5" %>
+              <%= image_tag "logout.png", :size => '30x30' %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"h5" %>
             </div>
           </li>
         <% else %>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "TOP_icon.png", :size => '40x40' %>
-              <%= link_to 'トップページ', root_path, class:"h5" %>
+              <%= image_tag "TOP.png", :size => '30x30' %>
+              <%= link_to 'TOP', root_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Magics_icon.png", :size => '40x40' %>
-              <%= link_to 'マジック一覧', magics_path, class:"h5" %>
+              <%= image_tag "About.png", :size => '30x30' %>
+              <%= link_to 'About', about_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Goods_icon.png", :size => '40x40' %>
-              <%= link_to 'グッズ一覧', products_path, class:"h5" %>
+              <%= image_tag "Magics.png", :size => '30x30' %>
+              <%= link_to 'Magics', magics_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Magicians_icon.png", :size => '40x40' %>
-              <%= link_to 'マジシャン一覧', users_path, class:"h5" %>
+              <%= image_tag "Goods.png", :size => '30x30' %>
+              <%= link_to 'Products', products_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "Ranking_icon.png", :size => '40x40' %>
-              <%= link_to 'ランキング', root_path, class:"h5" %>
+              <%= image_tag "Magicians.png", :size => '30x30' %>
+              <%= link_to 'Magicians', users_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "ログイン_icon.png", :size => '40x40' %>
-              <%= link_to 'ログイン', new_user_session_path, class:"h5" %>
+              <%= image_tag "Ranking.png", :size => '30x30' %>
+              <%= link_to 'Ranking', root_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "新規登録_icon.png", :size => '40x40' %>
-              <%= link_to '新規登録', new_user_registration_path, class:"h5" %>
+              <%= image_tag "login.png", :size => '30x30' %>
+              <%= link_to 'Login', new_user_session_path, class:"h5" %>
             </div>
           </li>
           <li>
             <div class="d-flex align-items-center">
-              <%= image_tag "About_icon.png", :size => '40x40' %>
-              <%= link_to 'サイトについて', about_path, class:"h5" %>
+              <%= image_tag "新規登録.png", :size => '30x30' %>
+              <%= link_to 'Sign Up', new_user_registration_path, class:"h5" %>
             </div>
           </li>
         <% end %>

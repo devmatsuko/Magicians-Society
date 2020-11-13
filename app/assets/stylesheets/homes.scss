@@ -3,12 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* About画面 */
-.title-en {
-  font-family: 'Amatic SC', cursive
+.about-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 
-span,.lead {
-  background: linear-gradient(transparent 75%, #FFFFFF 100%);
+
+.about-area {
+  width: 400px; //画像サイズと同じにする
+  height: 100%;
+}
+
+.about-text-area {
+  height: 80%;
+}
+
+.about-sub-title {
+  font-family: 'Noto Serif JP', serif !important;
 }
 
 .about-image-area {
@@ -22,3 +34,4 @@ span,.lead {
   width: 400px !important;
   height: 280px !important;
 }
+

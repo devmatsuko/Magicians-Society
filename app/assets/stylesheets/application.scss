@@ -19,12 +19,14 @@
 // body共通のスタイル
 body {
   // body内の基本フォント
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   font-size: 16px;
-  color: white;
+  color: black;
   // bodyの背景画像
-  background-image: url("Card5.jpg");
-  background-repeat: no-repeat;
+  // background-image: url("Card5.jpg");
+  // background: rgb(21, 32, 43);
+  background: white;
+  // background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -42,24 +44,24 @@ body,
   color: red;
 }
 
-// 半透明ボックス
-.box {
-  background: rgba(0, 0, 0, 0.8);
-}
 
 a {
-  color: #fff;
+  color: black;
 }
 
 a:hover {
   color: gray;
+  text-decoration: none;
 }
 
 /* ここからヘッダー関係 */
 // ヘッダー
 header {
   height: 70px;
-  background: rgba(0, 0, 0, 0.8);
+  // background: rgba(0, 0, 0, 0.8);
+  background: white;
+  border-bottom-style: solid;
+  border-color: black;
 }
 
 // ハンバーガーメニューアイコンの位置
@@ -89,7 +91,7 @@ header {
   left: 0;
   width: 35px;
   height: 3px;
-  background-color: #fff;
+  background-color: black;
   border-radius: 4px;
 }
 .menu-trigger span:nth-child(1) {
@@ -106,7 +108,7 @@ header {
 .menu-trigger.active span:nth-child(1) {
   -webkit-transform: translateY(15px) rotate(-45deg);
   transform: translateY(15px) rotate(-45deg);
-  background-color: #fff;
+  background-color: black;
 }
 .menu-trigger.active span:nth-child(2) {
   opacity: 0;
@@ -114,15 +116,15 @@ header {
 .menu-trigger.active span:nth-child(3) {
   -webkit-transform: translateY(-15px) rotate(45deg);
   transform: translateY(-15px) rotate(45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 
-// ハンバーガーメニュー表示時の黒透明背景
+// ハンバーガーメニュー表示時の半透明背景
 #blackBg {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   width: 80%;
   min-height: 100%;
   display: none;
@@ -134,8 +136,8 @@ header {
   position: fixed;
   top: 0;
   right: 0;
-  background: black;
-  color: #fff;
+  background: white;
+  color: #000;
   width: 20%;
   min-height: 100%;
   display: none;
@@ -157,20 +159,111 @@ header {
 
 // ハンバーガーメニュー内のリンク
 #sp-menu a {
-  color: #fff;
+  color: black;
   text-decoration: none;
+  position: relative;
   margin: auto 10px;
+}
+
+// ハンバーガーメニュー内のリンクの下線のアニメーション
+#sp-menu a::before,
+#sp-menu a::after {
+  border-bottom: solid 3px black;
+  color: black;
+  bottom: -10px;
+  content: "";
+  display: block;
+  position: absolute;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  width: 0;
+}
+#sp-menu a::before {
+  left: 50%;
+}
+#sp-menu a::after {
+  right: 50%;
+}
+#sp-menu a:hover::before,
+#sp-menu a:hover::after {
+  width: 50%;
 }
 /* ここまでヘッダー関係 */
 
 /* ここからフッター関係 */
-// フッター
 footer {
   width: 100%;
-  height: 70px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 10px;
+  height: 80px;
+  color: black;
+  background: white;
+  padding: 20px;
   margin-top: auto;
+  border-top-style: solid;
+  border-color: black;
 }
 /* ここまでフッター関係 */
+
+/* ここからメインコンテンツ関係 */
+// 半透明ボックス
+.box {
+  // background: rgba(21, 32, 43, 0.8);
+  background: #f2f2f2
+}
+
+// 各画面のタイトル
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+// タイトルの下線
+.title-line {
+  background: #000;
+  width: 90%;
+  height: 2px;
+  margin: auto;
+}
+
+// リンクボタンの下線のアニメーション
+.link-btn {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+.link-btn::before,
+.link-btn::after {
+  border-bottom: solid 3px black;
+  color: black;
+  bottom: -10px;
+  content: "";
+  display: block;
+  position: absolute;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  width: 0;
+}
+.link-btn::before {
+  left: 50%;
+}
+.link-btn::after {
+  right: 50%;
+}
+.link-btn:hover::before,
+.link-btn:hover::after {
+  width: 50%;
+}
+
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+/* ここまでメインコンテンツ関係 */
