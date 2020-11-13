@@ -17,3 +17,34 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+/*global $*/
+
+// 各種イベント処理
+$(document).on('turbolinks:load', function(){
+  
+  // ハンバーガーメニューアイコンをクリックした場合の処理
+  $('.menu-trigger').on('click', function(event) {
+    // ハンバーガーメニューアイコンの変形
+    $(this).toggleClass('active');
+    // メニューのフェードイン、フェードアウト
+    $('#sp-menu').fadeToggle();
+    // 黒背景のフェードイン、フェードアウト
+    $('#blackBg').fadeToggle();
+    // イベントの終了
+    event.preventDefault();
+  });
+  
+  // メニュー表示時に黒背景部分をクリックした場合の処理
+  $('#blackBg').on('click', function() {
+    // ハンバーガーメニューアイコンの変形
+    $('.menu-trigger').toggleClass('active');
+    // メニューのフェードアウト
+    $('#sp-menu').fadeToggle();
+    // 黒背景のフェードアウト
+    $(this).fadeToggle();
+    // イベントの終了
+    event.preventDefault();
+  });
+  
+});

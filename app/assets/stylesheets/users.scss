@@ -1,0 +1,14 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ログイン画面へのリンク「こちら」の装飾
+.login-link {
+  text-decoration: underline;
+}
+
+// プロフィール画像の縦横比を維持しつつ、中央表示する
+.profile-image {
+  object-fit: cover;
+  object-position: center;
+}

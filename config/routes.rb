@@ -1,3 +1,72 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # ルートパスをTOPページに設定
+  root 'homes#top'
+  # サイト紹介ページ
+  get '/about' => 'homes#about', as: 'about'
+
+  # ログイン関連(利用しない機能のルーティングは削除する)
+  devise_for :users, skip: :all
+  devise_scope :user do
+    # サインアップ
+    get 'users/sign_up' =>'users/registrations#new', as: :new_user_registration
+    post 'users'=>'users/registrations#create', as: :user_registration
+    # ログイン、ログアウト
+    get 'users/sign_in'=>'users/sessions#new', as: :new_user_session
+    post 'users/sign_in'=>'users/sessions#create', as: :user_session
+    delete 'users/sign_out' =>'users/sessions#destroy', as: :destroy_user_session
+    # パスワード変更
+    
+  end
+
+  # ユーザー関連
+  resources :users, only: [:index,:show,:edit,:update] do
+    # RESTfulなURL以外は個別に設定する
+    # member内書くことでURLにidが加わる。ex)/users/:id/following
+    member do
+      get :following, :followers
+      patch :withdrawal
+    end
+
+    # collection内書くことでURLにidを含めないようにする。ex)/users/withdrawal
+    collection do
+      # URLとコントローラアクション名が一致しない場合のみ、個別にコントローラのパスを指定する
+      get 'withdrawal' => 'users#withdrawal_show'
+    end
+
+    # フォロー・フォロワー関連
+    resource :relationships, only: [:create, :destroy]
+  end
+
+  # マジック投稿関連
+  resources :magics do
+    # 投稿いいね関連
+    resource :magic_favorites, only: [:create, :destroy]
+    # 投稿コメント関連
+    resources :magic_comments, only: [:create, :destroy]
+  end
+
+  # 商品関連
+  resources :products, except: [:destroy] do
+    # 商品いいね関連
+    resource :product_favorites, only: [:create, :destroy]
+    # 商品コメント関連
+    resources :product_comments, only: [:create, :destroy]
+  end
+
+  # 注文関連
+  resources :orders, only: [:new, :create, :index, :show] do
+    # RESTfulなURL以外は個別にcollectionで設定する
+    collection do
+      post :confirm
+      get :thanks
+    end
+  end
+
+  # 販売関連
+  resources :sales, only: [:edit, :update, :index, :show]
+
+  # 検索関連
+  get '/search' => 'searchs#search', as: 'search'
+
 end

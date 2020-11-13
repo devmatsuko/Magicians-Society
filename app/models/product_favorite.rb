@@ -1,0 +1,2 @@
+class ProductFavorite < ApplicationRecord
+end

@@ -1,4 +1,4 @@
-# Magician’s Society
+# Magicians Society
 
 ## サイト概要
 マジシャンが自身のマジックの実演、練習風景、レクチャーの動画を投稿し合うSNSです。
@@ -25,11 +25,11 @@
 https://docs.google.com/spreadsheets/d/1nBL0WoPF86bC2hTF6R6P6U-sO0DDDyIvsVZMHEXiRG4/edit?usp=sharing
 
 ## 開発環境
-- OS：MacOS
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- 仮想環境：Cloud9
+- IDE：Cloud9
 
 ## 使用素材
 - 画像

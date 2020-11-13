@@ -1,0 +1,37 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* About画面 */
+.about-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.about-area {
+  width: 400px; //画像サイズと同じにする
+  height: 100%;
+}
+
+.about-text-area {
+  height: 80%;
+}
+
+.about-sub-title {
+  font-family: 'Noto Serif JP', serif !important;
+}
+
+.about-image-area {
+  width: 410px;
+  height: 290px;
+}
+
+.about-image {
+  object-fit: cover;
+  object-position: center;
+  width: 400px !important;
+  height: 280px !important;
+}
+

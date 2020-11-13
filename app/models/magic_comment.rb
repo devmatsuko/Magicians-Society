@@ -1,0 +1,2 @@
+class MagicComment < ApplicationRecord
+end

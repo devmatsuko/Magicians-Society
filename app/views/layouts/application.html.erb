@@ -7,9 +7,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render 'layouts/header' %>
+
+      <div class="container">
+        <!--サクセスメッセージ-->
+        <% if flash[:notice] %>
+            <p class="alert alert-secondary"><%= flash[:notice] %></p>
+        <% end %>
+        <div class="my-4">
+          <%= yield %>
+        </div>
+      </div>
+
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
