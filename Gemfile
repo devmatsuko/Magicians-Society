@@ -77,3 +77,9 @@ gem 'kaminari'
 gem 'font-awesome-sass', '~> 5.0.13'
 gem 'devise-i18n'
 gem 'rails-i18n'
+
+# デプロイ環境のDB
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
