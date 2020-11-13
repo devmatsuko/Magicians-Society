@@ -4,7 +4,7 @@ class CreateMagicComments < ActiveRecord::Migration[5.2]
       
       t.integer :user_id, null: false
       t.integer :magic_id, null: false
-      t.text :comment, null: false, default: ""
+      t.text :comment
 
       t.timestamps
     end
