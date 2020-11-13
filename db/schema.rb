@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
   create_table "magic_comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "magic_id", null: false
-    t.text "comment", default: "", null: false
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
   create_table "magics", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "image_id", default: ""
-    t.text "body", default: "", null: false
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
