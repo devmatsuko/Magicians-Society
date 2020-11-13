@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address, null: false, default: ""
       t.string :phone_number, null: false, default: ""
       t.string :display_name, null: false, default: ""
-      t.text :discriotion, default: "よろしくお願いします！"
+      t.text :discriotion, default: ""
       t.string :image_id, default: ""
       t.boolean :is_deleted, null: false, default: false
 
