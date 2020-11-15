@@ -21,22 +21,22 @@
         <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"img-thumbnail profile-image") %>
       </div>
       <div class="row justify-content-center">
-        <% if user_signed_in? && @user.id != current_user.id %>
-      		<!--フォローしている場合-->
-    	    <% if current_user.following?(@user) %>
-  	        <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger my-3" %>
-      	    <!--フォローしていない場合-->
-    	    <% else %>
-  	        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success my-3" %>
-    	    <% end %>
-    	  <% end %>
+      <% if user_signed_in? && @user.id != current_user.id %>
+    		<!--フォローしている場合-->
+        <% if current_user.following?(@user) %>
+          <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger my-3" %>
+    	    <!--フォローしていない場合-->
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success my-3" %>
+        <% end %>
+      <% end %>
       </div>
       <!-- プロフィール編集ボタン -->
       <div class="row justify-content-center">
         <% if user_signed_in? && @user.id == current_user.id %>
-      		<%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-secondary my-3" %>
-      	<% end %>
-    	</div>
+          <%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-secondary my-3" %>
+        <% end %>
+      </div>
     </div>
 
     <!-- ライトコンテンツ -->
