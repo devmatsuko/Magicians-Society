@@ -22,7 +22,7 @@
 
 // 各種イベント処理
 $(document).on('turbolinks:load', function(){
-  
+
   // ハンバーガーメニューアイコンをクリックした場合の処理
   $('.menu-trigger').on('click', function(event) {
     // ハンバーガーメニューアイコンの変形
@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function(){
     // イベントの終了
     event.preventDefault();
   });
-  
+
   // メニュー表示時に黒背景部分をクリックした場合の処理
   $('#blackBg').on('click', function() {
     // ハンバーガーメニューアイコンの変形
@@ -46,5 +46,17 @@ $(document).on('turbolinks:load', function(){
     // イベントの終了
     event.preventDefault();
   });
-  
+
+  // タブメニューの初期状態
+  $('#tab-contents .tab[id != "tab1"]').hide();
+  // タブメニュークリック時の動作
+  $('#tab-menu a').on('click', function(event) {
+    console.log("tab")
+    $("#tab-contents .tab").hide();
+    $("#tab-menu .active").removeClass("active");
+    $(this).addClass("active");
+    $($(this).attr("href")).show();
+    event.preventDefault();
+  });
+
 });
