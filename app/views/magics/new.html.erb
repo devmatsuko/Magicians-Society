@@ -1,0 +1,25 @@
+<div class="box my-5">
+
+  <!-- マジック投稿画面タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <h1 class="title">Magic Upload</h1>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
+
+  <!-- マジック投稿フォーム -->
+  <%= form_with model: @magic, url: user_registration_path(current_user), local: true do |f| %>
+    <div class="field">
+      <%= f.label "動画" %><br>
+      <%= f.file_field :video, :accept => 'video/*' %>
+    </div>
+
+    <div class="row justify-content-center my-5">
+      <%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3" %>
+    </div>
+  <% end %>
+
+</div>
+
+
