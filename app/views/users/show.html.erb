@@ -62,12 +62,12 @@
         </li>
         <li class="col-3">
           <%= link_to "#tab3",class:"" do %>
-            <span class="font-weight-bold">Follow </span><span class="badge badge-secondary"><%= @user.following.count %></span>
+            <span class="font-weight-bold">Follow </span><span class="badge badge-pill badge-secondary"><%= @user.following.count %></span>
           <% end %>
         </li>
         <li class="col-3">
           <%= link_to "#tab4",class:"" do %>
-            <span class="font-weight-bold">Follower </span><span class="badge badge-secondary"><%= @user.followers.count %></span>
+            <span class="font-weight-bold">Follower </span><span class="badge badge-pill badge-secondary"><%= @user.followers.count %></span>
           <% end %>
         </li>
       </ul>
