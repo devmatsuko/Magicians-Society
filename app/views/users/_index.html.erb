@@ -24,7 +24,15 @@
 			  </td>
   			<!-- フォロー、フォロー解除 -->
         <td class="col-2 d-flex align-items-center">
-          <span>フォローする</span>
+          <% if user_signed_in? && user.id != current_user.id %>
+        		<!--フォローしている場合-->
+      	    <% if current_user.following?(user) %>
+    	        <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn-sm btn-danger" %>
+        	    <!--フォローしていない場合-->
+      	    <% else %>
+    	        <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn-sm btn-success" %>
+      	    <% end %>
+      	  <% end %>
         </td>
       </tr>
     <% end %>
