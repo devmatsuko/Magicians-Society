@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :magics, dependent: :destroy
+  has_many :products, dependent: :destroy
   # フォローする側のリレーションシップ
   has_many :active_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   # N：Nのリレーションシップにはthroughを使う。user.following = user.followed.idとなるようにsourceを設定

@@ -1,0 +1,79 @@
+<div class="box my-5">
+
+  <!-- マジック商品タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <h2 class="title"><%= @product.name %></h2>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
+
+  <!-- 商品情報 -->
+  <div class="row py-2">
+    <!-- レフトコンテンツ -->
+    <div class="col-6 mb-5">
+      <!-- 商品画像 -->
+      <div class="row justify-content-center">
+        <%= attachment_image_tag(@product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
+      </div>
+    </div>
+
+    <!-- ライトコンテンツ -->
+    <div class="col-6 mb-5">
+    	<!-- 出品者 -->
+    	<div class="row form-group">
+	      <strong class="col-4 control-label">出品者</strong>
+				<span class="col-6 control-label">
+					<%= link_to user_path(@product.user) do %>
+            <%= @product.user.display_name %>
+          <% end %>
+        </span></br>
+	    </div></br>
+	    <!-- 商品説明 -->
+	    <div class="row form-group">
+	      <strong class="col-4 control-label">商品説明</strong>
+				<span class="col-6 control-label"><%= @product.explanation %></span></br>
+	    </div></br>
+	    <!-- ジャンル -->
+	    <div class="row form-group">
+	      <strong class="col-4 control-label">ジャンル</strong>
+				<span class="col-6 control-label"><%= @product.genre.name %></span></br>
+	    </div></br>
+	    <!-- 価格 -->
+	    <div class="row form-group">
+	      <strong class="col-4 control-label">価格</strong>
+				<span class="col-6 control-label"><%= @product.after_tax_price.to_s(:delimited) %>円</span></br>
+	    </div></br>
+	    <!-- 販売ステータス -->
+	    <div class="row form-group">
+	      <strong class="col-4 control-label">販売ステータス</strong>
+				<span class="col-4 control-label">
+					<% if @product.is_sale == true %>
+	          販売中
+					<% elsif @product.is_sale == false %>
+	          売切れ
+					<% end %>
+				</span></br>
+  		</div></br>
+
+  		<!-- 商品情報編集ボタン -->
+      <div class="row">
+        <% if user_signed_in? && @product.user.id == current_user.id %>
+          <%= link_to '商品情報を編集する', edit_product_path(@product), class: "btn btn-secondary my-3 offset-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 購入ボタン -->
+	<div class="row justify-content-center">
+		<% if @product.is_sale == true %>
+    	<%= link_to "購入画面に進む" , new_order_path, class:"btn btn-lg btn-danger col-4 mb-5" %>
+    <% else %>
+    	<%= link_to "売り切れました" , "#", class:"btn btn-lg btn-secondary col-4 mb-5 disabled" %>
+    <% end %>
+  </div>
+
+</div>
+
+
