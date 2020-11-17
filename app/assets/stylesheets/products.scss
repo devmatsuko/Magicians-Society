@@ -1,3 +1,25 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.index-products-area {
+  width: 100%;
+  display: flex; /* Flexboxの利用 */
+  flex-wrap: wrap; /* Flexboxの利用時に横幅を超えた要素を折り返す */
+}
+
+.index-products-area .product-area {
+  width: 30%;
+  margin-right: 5%;
+  margin-bottom: 10px;
+}
+
+.index-products-area .product-area:nth-child(3n) {
+  margin-right: 0px; /* 3つ目の商品のみ右側余白を0pxに */
+}
+
+// 商品画像の縦横比を維持しつつ、中央表示する
+.product-image {
+  object-fit: cover;
+  object-position: center;
+}

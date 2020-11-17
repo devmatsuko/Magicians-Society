@@ -57,7 +57,7 @@
         </li>
         <li class="col-3">
           <%= link_to "#tab2",class:"" do %>
-            <span class="font-weight-bold">Products</span>
+            <span class="font-weight-bold">Products </span><span class="badge badge-pill badge-secondary"><%= @user.products.count %></span>
           <% end %>
         </li>
         <li class="col-3">
@@ -83,7 +83,13 @@
       </div>
 
       <div id="tab2", class="tab">
-        <p class="text-center">出品グッズ一覧が表示されます。</p>
+        <% if @user.products.count == 0 %>
+          <h3 class="text-center"><%= @user.display_name %>さんの出品商品はありません。</h3>
+        <% else %>
+          <div class="col-8 offset-2">
+            <%= render 'products/index', products: @user.products.page(params[:page]).per(12) %>
+          </div>
+        <% end %>
       </div>
 
       <div id="tab3", class="tab">

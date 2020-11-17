@@ -1,0 +1,48 @@
+<div class="box my-5 pb-5">
+
+  <!-- マジック商品一覧画面タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <h1 class="title">Products</h1>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
+
+  <!-- 商品出品画面へのリンク -->
+  <div class="row">
+    <div class="col-2 offset-9">
+      <%= link_to '商品を出品する', new_product_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <!-- メインコンテンツ -->
+  <div class="row py-5">
+    <!-- ジャンル検索 -->
+    <div class="col-3 offset-1">
+      <!--ジャンル検索機能の部分テンプレート-->
+      <%= render '/genres/genre_search', genres: @genres, products: @all_products %>
+    </div>
+
+    <!-- マジック商品一覧 -->
+    <div class="col-7 pl-5">
+      <!-- ジャンル見出し -->
+      <div class="row pr-5">
+        <div class="col-8 justify-content-center">
+          <% if @genre %>
+            <!--ジャンル検索の場合は[ジャンル名]一覧と表示する-->
+            <h4 class="title"><%= @genre.name %>一覧 (全<%= @genre.products.count %>件)</h4>
+          <% else %>
+            <!--全検索の場合は商品一覧と表示する-->
+            <h4 class="title">商品一覧(全<%= @products.count %>件)</h4>
+          <% end %>
+          <div class="title-line mt-2"></div>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <%= render 'products/index', products: @products %>
+      </div>
+    </div>
+  </div>
+
+</div>
