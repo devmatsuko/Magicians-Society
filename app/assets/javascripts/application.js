@@ -59,4 +59,13 @@ $(document).on('turbolinks:load', function(){
     event.preventDefault();
   });
 
+  // 注文入力画面の住所フォームの表示切り替え
+  $('.address-type').change( function() {
+    if($('[id=new-address]').prop('checked')){
+      $('#new-address-box').show();
+    } else {
+      $('#new-address-box').hide();
+    }
+  });
+
 });

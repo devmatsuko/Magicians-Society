@@ -1,0 +1,61 @@
+<!-- 出品者 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">出品者</strong>
+	<span class="col-6 control-label">
+		<%= link_to user_path(product.user) do %>
+      <%= product.user.display_name %>
+    <% end %>
+  </span>
+</div>
+<!-- 商品説明 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">商品説明</strong>
+	<span class="col-6 control-label"><%= product.explanation %></span>
+</div>
+<!-- ジャンル -->
+<div class="row form-group">
+  <strong class="col-4 control-label">ジャンル</strong>
+	<span class="col-6 control-label"><%= product.genre.name %></span>
+</div>
+<!-- 商品の状態 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">商品の状態</strong>
+	<span class="col-6 control-label"><%= product.product_status %></span>
+</div>
+<!-- 価格 -->
+<div class="row form-group">
+  <!-- 配送料の負担のパラメータに応じて請求額を設定 -->
+	<% if product.postage_status == "送料込み(出品者負担)" %>
+		<strong class="col-4 control-label">価格</strong>
+		<span class="col-6 control-label"><%= product.price.to_s(:delimited) %>円</span>
+	<% else %>
+		<strong class="col-4 control-label">価格(+送料)</strong>
+		<span class="col-6 control-label"><%= product.price.to_s(:delimited) %> + (<%= Settings.postage.to_s(:delimited) %>)円</span>
+	<% end %>
+</div>
+<!-- 販売ステータス -->
+<div class="row form-group">
+  <strong class="col-4 control-label">販売ステータス</strong>
+	<span class="col-4 control-label">
+		<% if product.is_sale == true %>
+      販売中
+		<% elsif product.is_sale == false %>
+      売切れ
+		<% end %>
+	</span>
+</div>
+<!-- 配送方法 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">配送方法</strong>
+	<span class="col-6 control-label"><%= product.shipping_method %></span>
+</div>
+<!-- 発送までの日数 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">発送までの日数</strong>
+	<span class="col-6 control-label"><%= product.shipping_date %></span>
+</div>
+<!-- 配送料の負担 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">配送料の負担</strong>
+	<span class="col-6 control-label"><%= product.postage_status %></span>
+</div>

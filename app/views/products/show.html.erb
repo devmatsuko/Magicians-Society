@@ -20,41 +20,8 @@
 
     <!-- ライトコンテンツ -->
     <div class="col-6 mb-5">
-    	<!-- 出品者 -->
-    	<div class="row form-group">
-	      <strong class="col-4 control-label">出品者</strong>
-				<span class="col-6 control-label">
-					<%= link_to user_path(@product.user) do %>
-            <%= @product.user.display_name %>
-          <% end %>
-        </span></br>
-	    </div></br>
-	    <!-- 商品説明 -->
-	    <div class="row form-group">
-	      <strong class="col-4 control-label">商品説明</strong>
-				<span class="col-6 control-label"><%= @product.explanation %></span></br>
-	    </div></br>
-	    <!-- ジャンル -->
-	    <div class="row form-group">
-	      <strong class="col-4 control-label">ジャンル</strong>
-				<span class="col-6 control-label"><%= @product.genre.name %></span></br>
-	    </div></br>
-	    <!-- 価格 -->
-	    <div class="row form-group">
-	      <strong class="col-4 control-label">価格</strong>
-				<span class="col-6 control-label"><%= @product.after_tax_price.to_s(:delimited) %>円</span></br>
-	    </div></br>
-	    <!-- 販売ステータス -->
-	    <div class="row form-group">
-	      <strong class="col-4 control-label">販売ステータス</strong>
-				<span class="col-4 control-label">
-					<% if @product.is_sale == true %>
-	          販売中
-					<% elsif @product.is_sale == false %>
-	          売切れ
-					<% end %>
-				</span></br>
-  		</div></br>
+    	<!-- 商品情報 -->
+    	<%= render 'products/show', product: @product %>
 
   		<!-- 商品情報編集ボタン -->
       <div class="row">
@@ -67,11 +34,16 @@
 
   <!-- 購入ボタン -->
 	<div class="row justify-content-center">
-		<% if @product.is_sale == true %>
-    	<%= link_to "購入画面に進む" , new_order_path, class:"btn btn-lg btn-danger col-4 mb-5" %>
-    <% else %>
-    	<%= link_to "売り切れました" , "#", class:"btn btn-lg btn-secondary col-4 mb-5 disabled" %>
-    <% end %>
+		<!-- 他ユーザーによる出品商品の場合 -->
+		<% if @product.user.id != current_user.id %>
+			<!-- 販売ステータスが販売中の場合 -->
+			<% if @product.is_sale == true %>
+		  	<%= link_to "購入画面に進む" , new_order_path(product_id: @product.id), class:"btn btn-lg btn-danger col-4 mb-5" %>
+	  	<!-- 販売ステータスが売り切れの場合 -->
+		  <% else %>
+		  	<%= link_to "売り切れました" , "#", class:"btn btn-lg btn-secondary col-4 mb-5 disabled" %>
+		  <% end %>
+		<% end %>
   </div>
 
 </div>
