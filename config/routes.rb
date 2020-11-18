@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     post 'users/sign_in'=>'users/sessions#create', as: :user_session
     delete 'users/sign_out' =>'users/sessions#destroy', as: :destroy_user_session
     # パスワード変更
-    
+
   end
 
   # ユーザー関連
@@ -53,12 +53,11 @@ Rails.application.routes.draw do
     # 商品コメント関連
     resources :product_comments, only: [:create, :destroy]
   end
-
+  
   # 注文関連
   resources :orders, only: [:new, :create, :index, :show] do
     # RESTfulなURL以外は個別にcollectionで設定する
     collection do
-      post :confirm
       get :thanks
     end
   end

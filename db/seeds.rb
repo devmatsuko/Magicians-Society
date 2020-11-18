@@ -6,31 +6,106 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#ユーザーの作成
+User.create!(
+
+  email: "a@a.com",
+  password: "matsuko",
+
+  last_name: "小松",
+  first_name: "真也",
+  last_name_kana: "コマツ",
+  first_name_kana: "シンヤ",
+  postcode: "0000000",
+  address: "大阪府枚方市1-11-11",
+  phone_number: "00000000000",
+  display_name: "マジシャンマツコ",
+  description: "よろしくお願いします！",
+  is_deleted: false
+)
+
+User.create!(
+
+  email: "b@b.com",
+  password: "matsuko",
+
+  last_name: "小松",
+  first_name: "真也",
+  last_name_kana: "コマツ",
+  first_name_kana: "シンヤ",
+  postcode: "0000000",
+  address: "大阪府東大阪市1-11-11",
+  phone_number: "00000000000",
+  display_name: "マジシャンツマコ",
+  description: "よろしくお願いします！",
+  is_deleted: false
+)
+
+User.create!(
+
+  email: "c@c.com",
+  password: "matsuko",
+
+  last_name: "小松",
+  first_name: "真也",
+  last_name_kana: "コマツ",
+  first_name_kana: "シンヤ",
+  postcode: "0000000",
+  address: "大阪府寝屋川市1-11-11",
+  phone_number: "00000000000",
+  display_name: "マジシャンコマツ",
+  description: "よろしくお願いします！",
+  is_deleted: false
+)
+
+
+User.create!(
+
+  email: "d@d.com",
+  password: "matsuko",
+
+  last_name: "小松",
+  first_name: "真也",
+  last_name_kana: "コマツ",
+  first_name_kana: "シンヤ",
+  postcode: "0000000",
+  address: "大阪府八尾市1-11-11",
+  phone_number: "00000000000",
+  display_name: "クリエイターマツコ",
+  description: "よろしくお願いします！",
+  is_deleted: false
+)
+
+
 #ジャンルデータの作成
 Genre.create!(
-  name: "ウォンド"
+  name: "カードマジック"
 )
 
 Genre.create!(
-  name: "四つ玉"
+  name: "コインマジック"
 )
 
 Genre.create!(
-  name: "ステージカード"
+  name: "その他クロースアップ"
 )
 
 Genre.create!(
-  name: "ステージ小道具"
+  name: "サロン"
 )
 
 Genre.create!(
-  name: "クロースカード"
+  name: "ステージ"
 )
 
 Genre.create!(
-  name: "コイン"
+  name: "書籍"
 )
 
 Genre.create!(
-  name: "その他"
+  name: "DVD"
+)
+
+Genre.create!(
+  name: "その他・消耗品等"
 )
