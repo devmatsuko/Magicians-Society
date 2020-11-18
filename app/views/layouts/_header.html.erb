@@ -1,6 +1,8 @@
 <header class="navbar navbar-default">
   <nav class='nav navbar-nav navbar-left'>
-    <%= link_to 'Magicians Society', root_path, class:"h4" %>
+    <%= link_to root_path do %>
+      <%= image_tag "logo.png", :size => '200x50' %>
+    <% end %>
   </nav>
   <nav class='nav navbar-nav navbar-right'>
     <div id="sp-menu">
