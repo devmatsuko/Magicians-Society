@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     # 商品コメント関連
     resources :product_comments, only: [:create, :destroy]
   end
-  
+
   # 注文関連
   resources :orders, only: [:new, :create, :index, :show] do
     # RESTfulなURL以外は個別にcollectionで設定する
@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   end
 
   # 販売関連
-  resources :sales, only: [:edit, :update, :index, :show]
+  resources :sales, only: [:update, :index, :show]
 
   # 検索関連
   get '/search' => 'searchs#search', as: 'search'

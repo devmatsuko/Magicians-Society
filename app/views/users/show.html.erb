@@ -48,6 +48,9 @@
         <% if user_signed_in? && @user.id == current_user.id %>
           <%= link_to '注文履歴', orders_path, class: "btn btn-secondary my-3 col-5" %>
         <% end %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to '販売履歴', sales_path, class: "btn btn-secondary my-3 col-5 offset-1" %>
+        <% end %>
       </div>
     </div>
   </div>

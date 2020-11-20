@@ -45,6 +45,8 @@ class OrdersController < ApplicationController
   def thanks
   end
 
+  private
+  # ストロングパラメータ
   def order_params
     params.require(:order).permit(
       :user_id,
