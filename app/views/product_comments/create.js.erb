@@ -1,0 +1,4 @@
+<!--id="#product-comment-product.id"の部分をrenderで部分的更新を行う。-->
+$("#product-comment-<%= @product.id %>").html("<%= j(render partial: 'comment_show', locals: {product: @product} )%>")
+<!--コメント入力フォームの中身を空にする。-->
+$('#product_comment_comment').val("");

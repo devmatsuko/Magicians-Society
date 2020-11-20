@@ -13,6 +13,8 @@
     売切れ<br>
   <% end %>
 
-  <!--  -->
-  <%= render 'product_favorites/favorite_show', product: product %>
+  <!-- いいね -->
+  <%= render 'product_favorites/favorite_count', product: product %>&nbsp&nbsp
+  <!-- コメント -->
+  <%= render 'product_comments/comment_count', product: product %>
 </div>

@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product_comment = ProductComment.new
   end
 
   def edit
