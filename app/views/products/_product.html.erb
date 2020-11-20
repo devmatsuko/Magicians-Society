@@ -1,12 +1,18 @@
 <div class="product-area ">
   <%= link_to product_path(product.id) do %>
-    <%= attachment_image_tag(product, :image, :fill, 150, 100, fallback: "noimage.png", size:'150x100', class:"img-thumbnail product-image") %>
-    <p class="pt-2"><%= product.name %></p>
+    <!-- 商品画像 -->
+    <%= attachment_image_tag(product, :image, :fill, 150, 100, fallback: "noimage.png", size:'150x100', class:"img-thumbnail product-image mb-2") %><br>
+    <!-- 商品名 -->
+    <%= product.name %><br>
   <% end %>
 
+  <!-- 商品価格 -->
   <% if product.is_sale == true %>
-    <p>¥<%= product.price.to_s(:delimited) %></p>
+    ¥<%= product.price.to_s(:delimited) %><br>
   <% elsif product.is_sale == false %>
-    <p>売切れ</p>
+    売切れ<br>
   <% end %>
+
+  <!--  -->
+  <%= render 'product_favorites/favorite_show', product: product %>
 </div>

@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :followed_id
   # N：Nのリレーションシップにはthroughを使う。user.followers = user.follower.idとなるようにsourceを設定
   has_many :followers, through: :passive_relationships, source: :follower
+  # 商品のいいね
+  has_many :product_favorites
+  # 商品
+  has_many :product_comments
 
   # 画像を設定できるようにする
   attachment :image, destroy: false
