@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   # 商品のいいね
   has_many :product_favorites
-  # 商品
+  # 商品のコメント
   has_many :product_comments
 
   # 画像を設定できるようにする

@@ -5,7 +5,7 @@ class CreateProductComments < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :product_id, null: false
       t.text :comment, null: false
-      t.float :rate, null: false
+      t.float :rate
 
       t.timestamps
     end

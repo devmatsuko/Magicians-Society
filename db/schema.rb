@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
     t.integer "user_id", null: false
     t.integer "product_id", null: false
     t.text "comment", null: false
-    t.float "rate", null: false
+    t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

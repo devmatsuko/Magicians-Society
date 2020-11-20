@@ -1,4 +1,4 @@
-<div class="box my-5">
+<div class="box mt-5">
 
   <!-- マジック商品タイトル -->
   <div class="row p-5">
@@ -52,4 +52,11 @@
 
 </div>
 
+<!-- コメント機能 -->
+<div class="box mb-5 py-3">
+  <div id="product-comment-<%= @product.id %>", class="mb-3">
+    <%= render partial: 'product_comments/comment_show', locals: { product: @product} %>
+  </div>
+    <%= render partial: 'product_comments/comment_form', locals: { product: @product, product_comment: @product_comment} %>
+</div>
 
