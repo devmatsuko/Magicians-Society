@@ -1,0 +1,96 @@
+<%= form_with model: @order, url: sale_path, method: :patch, local: true do |f| %>
+	<div class="box my-5">
+
+	  <!-- 注文画面タイトル -->
+	  <div class="row p-5">
+	    <div class="col-12 justify-content-center">
+	      <h1 class="title">Sale Detail</h1>
+	      <div class="title-line mt-4"></div>
+	    </div>
+	  </div>
+
+	  <!-- 注文情報 -->
+	  <div class="row">
+	  	<div class="col-10 offset-1">
+
+		  	<!-- 商品情報 -->
+			  <div class="row py-2">
+			    <!-- レフトコンテンツ -->
+			    <div class="col-6 mb-5">
+			      <!-- 商品画像 -->
+			      <div class="row justify-content-center">
+			        <%= attachment_image_tag(@order.product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
+			      </div>
+			    </div>
+
+			    <!-- ライトコンテンツ -->
+			    <div class="col-6 mb-5">
+						<!-- 商品情報 -->
+						<%= render 'products/show', product: @order.product %>
+			    </div>
+			  </div>
+
+		  	<!-- 注文情報情報フォーム -->
+		    <div class="row px-5 pb-5">
+		      <div class="col-4 offset-1 justify-content-center">
+		        <h4 class="title">注文詳細情報</h4>
+		        <div class="title-line mt-2"></div>
+		      </div>
+		    </div>
+
+		    <!--注文ステータス-->
+			  <div class="row form-group">
+			    <strong class="col-3 offset-3 control-label">注文日時</strong>
+			    <div class="col-3">
+  			  	<span><%= l @order.created_at %></span>
+			    </div>
+			  </div>
+
+		    <!--購入者-->
+			  <div class="row form-group">
+			    <strong class="col-3 offset-3 control-label">購入者</strong>
+			    <div class="col-3">
+			    	<%= link_to user_path(@order.user) do %>
+	  			  	<span><%= @order.user.display_name %></span>
+	  			  <% end %>
+			    </div>
+			  </div>
+
+			  <!--支払方法-->
+			  <div class="row form-group">
+			    <strong class="col-3 offset-3 control-label">支払方法</strong>
+			    <div class="col-3">
+			    	<p><%= @order.pay_method %></p>
+			    </div>
+			  </div>
+
+			  <!--お届け先-->
+	      <div class="row form-group">
+	        <strong class="col-3 offset-3 control-label">お届け先</strong>
+	        <!-- プロフィール情報の住所を表示-->
+	        <div class="col-6">
+	          <%= @order.postcode %><br>
+	          <%= @order.address %><br>
+	          <%= @order.name %><br>
+	        </div>
+	      </div>
+
+	      <!--注文ステータスの変更-->
+			  <div class="row form-group d-flex align-items-center">
+			    <strong class="col-3 offset-3 control-label">配送状況</strong>
+			    <div class="col-2">
+			    	<%= f.select :order_status, Order.order_statuses.keys, {include_blank: '--選択してください--'}, {class: "form-control"} %>
+			    </div>
+			    <%= f.submit '更新', class:"btn btn-secondary col-1" %>
+			  </div>
+			</div>
+		</div>
+
+		<!-- 販売履歴画面へのリンク -->
+		<div class="row justify-content-center py-5">
+	    <%= link_to "販売履歴へ", sales_path, class: "btn btn-secondary col-3" %>
+	  </div>
+	</div>
+ <% end %>
+
+

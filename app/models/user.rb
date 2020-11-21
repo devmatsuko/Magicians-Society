@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :magics, dependent: :destroy
+  has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   # フォローする側のリレーションシップ
   has_many :active_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   # N：Nのリレーションシップにはthroughを使う。user.following = user.followed.idとなるようにsourceを設定
@@ -14,6 +16,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :followed_id
   # N：Nのリレーションシップにはthroughを使う。user.followers = user.follower.idとなるようにsourceを設定
   has_many :followers, through: :passive_relationships, source: :follower
+  # 商品のいいね
+  has_many :product_favorites
+  # 商品のコメント
+  has_many :product_comments
 
   # 画像を設定できるようにする
   attachment :image, destroy: false
@@ -36,6 +42,16 @@ class User < ApplicationRecord
   # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # ユーザーの姓名を結合する
+  def full_name
+    self.last_name + self.first_name
+  end
+
+  # ユーザーのカナ姓カナ名を結合する
+  def full_name_kana
+    self.last_name_kana + self.first_name_kana
   end
 
 

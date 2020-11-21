@@ -1,3 +1,8 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 注文時の住所入力フォーム(デフォルトは非表示）
+#new-address-box {
+	display: none;
+}

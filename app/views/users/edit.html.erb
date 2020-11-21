@@ -3,7 +3,7 @@
   <!-- ユーザー詳細画面タイトル -->
   <div class="row p-5">
     <div class="col-12 justify-content-center">
-      <h1 class="title">プロフィール編集</h1>
+      <h1 class="title">Edit Profile</h1>
       <div class="title-line mt-4"></div>
     </div>
   </div>
@@ -17,9 +17,9 @@
       <div class="col-6">
         <!-- プロフィール画像 -->
         <div class="row justify-content-center">
-          <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"img-thumbnail profile-image") %>
+          <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"profile-image") %>
         </div>
-        <!-- プロフィール編集ボタン -->
+        <!-- プロフィール画像編集ボタン -->
         <div class="row justify-content-center my-4">
           <%= f.attachment_field :image, class:"offset-2" %>
       	</div>
@@ -43,7 +43,6 @@
         	  <%= f.text_area :description, rows: 5, class: "form-control" %>
           </div>
         </div>
-
       </div>
     </div>
 

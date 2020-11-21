@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
   create_table "magics", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "image_id", default: ""
+    t.string "title"
+    t.string "video"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,9 +48,11 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
     t.integer "product_id", null: false
     t.integer "pay_method", null: false
     t.integer "order_status", default: 0, null: false
-    t.integer "number", null: false
     t.integer "total_price", null: false
     t.integer "postage", null: false
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
     t.integer "user_id", null: false
     t.integer "product_id", null: false
     t.text "comment", null: false
-    t.float "rate", null: false
+    t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,9 +78,13 @@ ActiveRecord::Schema.define(version: 2020_11_10_053817) do
     t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "explanation", null: false
-    t.integer "after_tax_price", null: false
+    t.integer "product_status", null: false
+    t.integer "price", null: false
     t.boolean "is_sale", default: true, null: false
     t.string "image_id", null: false
+    t.integer "shipping_method", null: false
+    t.integer "shipping_date", null: false
+    t.integer "postage_status", null: false
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
