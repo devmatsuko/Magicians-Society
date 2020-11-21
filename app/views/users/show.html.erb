@@ -18,7 +18,7 @@
     <div class="col-6 mb-5">
       <!-- プロフィール画像 -->
       <div class="row justify-content-center">
-        <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:" profile-image") %>
+        <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"profile-image") %>
       </div>
       <div class="row justify-content-center">
       <% if user_signed_in? && @user.id != current_user.id %>
