@@ -16,7 +16,7 @@
         </td>
         <!-- マジック投稿説明 -->
         <td class="col-2 d-flex align-items-center">
-          <%= magic.body %>
+          <span class="text-overflow"><%= safe_join(magic.body.split("\n"),tag(:br)) %></span>
         </td>
         <!-- ユーザー名 -->
         <td class="col-2 d-flex align-items-center">

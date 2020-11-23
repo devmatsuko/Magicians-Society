@@ -1,5 +1,5 @@
 <!-- カレントユーザがいいねをしているか判定する -->
-<% if product.favorited_by?(current_user) %>
+<% if user_signed_in? && product.favorited_by?(current_user) %>
   <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
   <span><%= product.product_favorites.count %></span>
 <% else %>

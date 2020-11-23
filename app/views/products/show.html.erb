@@ -39,7 +39,7 @@
   <!-- 購入ボタン -->
 	<div class="row justify-content-center">
 		<!-- 他ユーザーによる出品商品の場合 -->
-		<% if @product.user.id != current_user.id %>
+		<% if user_signed_in? && @product.user.id != current_user.id %>
 			<!-- 販売ステータスが販売中の場合 -->
 			<% if @product.is_sale == true %>
 		  	<%= link_to "購入画面に進む" , new_order_path(product_id: @product.id), class:"btn btn-lg btn-danger col-4 mb-5" %>
