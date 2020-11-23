@@ -4,9 +4,12 @@
       <tr class="row justify-content-center px-4">
         <!-- 動画サムネイル -->
         <td class="col-2 d-flex align-items-center justify-content-center">
-          <%= link_to magic_path(magic) do %>
-            <%= image_tag(magic.video_url(:screenshot).to_s,:size => '128x72', id: "video", class: "magic-image", :alt => "screenshot") %>
-          <% end %>
+          <div class="justify-content-center">
+            <span class="small"><%= l magic.created_at %></span><br>
+            <%= link_to magic_path(magic) do %>
+              <%= image_tag(magic.video_url(:screenshot).to_s,:size => '128x72', id: "video", class: "magic-image", :alt => "screenshot") %>
+            <% end %>
+          </div>
         </td>
         <!-- マジック投稿タイトル -->
         <td class="col-2 d-flex align-items-center">
@@ -23,6 +26,13 @@
           <%= link_to user_path(magic.user) do %>
             <%= magic.user.display_name %>
           <% end %>
+        </td>
+        <!-- いいねコメント数 -->
+        <td class="col-2 d-flex align-items-center">
+          <!-- いいね -->
+          <%= render 'magic_favorites/favorite_count', magic: magic %>&nbsp&nbsp
+          <!-- コメント -->
+          <%= render 'magic_comments/comment_count', magic: magic %>
         </td>
       </tr>
     <% end %>

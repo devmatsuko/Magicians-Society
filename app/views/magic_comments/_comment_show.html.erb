@@ -1,0 +1,26 @@
+<!--コメント一覧-->
+<div class="row">
+	<div class="col-8 offset-2">
+		<table id="js-table-comment", class="table col-12">
+			<% magic.magic_comments.each do |magic_comment|%>
+				<tr id="comment-<%= magic_comment.id %>", class="row justify-content-center">
+					<td class="col-2">
+						<%= link_to attachment_image_tag(magic_comment.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image align-top"), user_path(magic_comment.user) %>
+					</td>
+					<td class="col-10">
+						<%= magic_comment.user.display_name %> <br>
+					  <div class="says">
+					    <p><%= safe_join(magic_comment.comment.split("\n"),tag(:br)) %></p>
+					    <span><%= l magic_comment.created_at %></span>
+					    <% if user_signed_in? && magic_comment.user_id == current_user.id %>
+								<%= link_to magic_magic_comment_path(magic,magic_comment.id), method: :delete, class: "btn-sm btn-secondary float-right", remote: true do %>
+									<i class="far fa-trash-alt" aria-hidden="true"></i>
+								<% end %>
+							<% end %>
+					  </div>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

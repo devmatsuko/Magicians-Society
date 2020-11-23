@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  # ログイン中のユーザのみアクセス許可
+  before_action :authenticate_user!, only: [:edit, :update, :withdrawal]
 
   def index
     # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)

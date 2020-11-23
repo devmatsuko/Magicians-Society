@@ -61,7 +61,7 @@
       <ul id="tab-menu">
         <li class="col-3">
           <%= link_to "#tab1", class:"active" do %>
-            <span class="font-weight-bold">Magics</span>
+            <span class="font-weight-bold">Magics </span><span class="badge badge-pill badge-secondary"><%= @user.magics.count %></span>
           <% end %>
         </li>
         <li class="col-3">
@@ -88,7 +88,11 @@
   <div class="row justify-content-center pb-5">
     <div id="tab-contents", class="col-12">
       <div id="tab1", class="tab">
-        <p class="text-center">マジック投稿一覧が表示されます。</p>
+        <% if @user.magics.count == 0 %>
+          <h3 class="text-center"><%= @user.display_name %>さんの投稿はありません。</h3>
+        <% else %>
+          <%= render 'magics/index', magics: @user.magics.page(params[:page]).per(8) %>
+        <% end %>
       </div>
 
       <div id="tab2", class="tab">
