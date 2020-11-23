@@ -78,7 +78,13 @@ gem 'font-awesome-sass', '~> 5.0.13'
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'config'
+gem 'streamio-ffmpeg'
+
+# AWS関連
+gem 'aws-sdk-rails'
+gem 'aws-sdk-s3', '~> 1'
 
 # デプロイ環境のDB
 gem 'dotenv-rails'

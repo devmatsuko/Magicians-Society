@@ -1,0 +1,12 @@
+<!-- 出品者 -->
+<div class="row form-group">
+	<span class="col-6 control-label">
+		<%= link_to user_path(magic.user) do %>
+      <%= @magic.user.display_name %>
+    <% end %>
+  </span>
+</div>
+<!-- 投稿説明 -->
+<div class="row form-group">
+	<span class="col-12 control-label"><%= magic.body %></span>
+</div>
