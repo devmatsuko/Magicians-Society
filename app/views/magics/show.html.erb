@@ -1,0 +1,36 @@
+<div class="box my-5">
+
+  <!-- 投稿詳細タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <h2 class="title"><%= @magic.title %></h2>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
+
+  <!-- 投稿情報 -->
+  <div class="row py-2">
+    <!-- レフトコンテンツ -->
+    <div class="col-6 mb-5">
+      <!-- 動画 -->
+      <div class="row justify-content-center">
+        <%= link_to @magic.video_url.to_s do %>
+          <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image", :alt => "screenshot") %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- ライトコンテンツ -->
+    <div class="col-4 justify-content-center">
+      <!-- 投稿情報 -->
+    	<%= render 'magics/show', magic: @magic %>
+      <!-- 投稿情報編集ボタン -->
+      <div class="row">
+        <% if user_signed_in? && @magic.user.id == current_user.id %>
+          <%= link_to '投稿情報を編集する', edit_magic_path(@magic), class: "btn btn-secondary my-3 ml-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

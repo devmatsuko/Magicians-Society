@@ -58,15 +58,15 @@ class ProductsController < ApplicationController
   # ストロングパラメータ
   def product_params
     params.require(:product).permit(
-      :user_id, 
-      :genre_id, 
-      :name, 
-      :explanation, 
-      :product_status, 
-      :price, 
-      :is_sale, 
-      :image, 
-      :shipping_method, 
+      :user_id,
+      :genre_id,
+      :name,
+      :explanation,
+      :product_status,
+      :price,
+      :is_sale,
+      :image,
+      :shipping_method,
       :shipping_date,
       :postage_status,
       :rate

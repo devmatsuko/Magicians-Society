@@ -9,14 +9,25 @@
   </div>
 
   <!-- マジック投稿フォーム -->
-  <%= form_with model: @magic, url: user_registration_path(current_user), local: true do |f| %>
-    <div class="field">
-      <%= f.label "動画" %><br>
-      <%= f.file_field :video, :accept => 'video/*' %>
-    </div>
+  <%= form_with model: @magic, url: magics_path, local: true do |f| %>
+  <div class="row py-2">
+
+    <!-- レフトコンテンツ -->
+    <div class="col-6">
+      <!-- 動画アップロードボタン -->
+      <div class="row offset-2">
+        <%= f.label "動画のアップロード" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.file_field :video, :accept => 'video/*' %>
+      </div>
+  	</div>
+
+    <%= render 'magics/form', product: @magic, f: f %>
+	</div>
 
     <div class="row justify-content-center my-5">
-      <%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3" %>
+      <%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3 mb-5" %>
     </div>
   <% end %>
 
