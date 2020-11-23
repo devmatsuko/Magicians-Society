@@ -1,0 +1,4 @@
+<!--id="#magic-comment-magic.id"の部分をrenderで部分的更新を行う。-->
+$("#magic-comment-<%= @magic.id %>").html("<%= j(render partial: 'comment_show', locals: {magic: @magic} )%>")
+<!--コメント入力フォームの中身を空にする。-->
+$('#magic_comment_comment').val("");

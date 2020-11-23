@@ -1,12 +1,21 @@
-<!-- 出品者 -->
+<!-- 投稿者 -->
 <div class="row form-group">
-	<span class="col-6 control-label">
-		<%= link_to user_path(magic.user) do %>
-      <%= @magic.user.display_name %>
-    <% end %>
+  <strong class="col-4 control-label">投稿者</strong>
+  <span class="col-6 control-label">
+  	<%= link_to user_path(magic.user) do %>
+    <%= @magic.user.display_name %>
+  <% end %>
+  </span>
+</div>
+<!-- 投稿日時 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">投稿日時</strong>
+  <span class="col-8 control-label">
+    <%= l @magic.created_at %>
   </span>
 </div>
 <!-- 投稿説明 -->
 <div class="row form-group">
-	<span class="col-12 control-label"><%= magic.body %></span>
+  <strong class="col-12 control-label">【動画説明】</strong>
+	<span class="col-10 control-label"><%= magic.body %></span>
 </div>

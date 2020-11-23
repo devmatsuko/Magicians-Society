@@ -1,4 +1,7 @@
 class ProductCommentsController < ApplicationController
+  
+  # ログイン中のユーザのみアクセス許可
+  before_action :authenticate_user!
 
 	def create
     @product = Product.find(params[:product_id])

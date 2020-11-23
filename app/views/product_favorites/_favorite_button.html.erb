@@ -1,5 +1,5 @@
 <!-- カレントユーザがいいねをしているか判定する -->
-<% if product.favorited_by?(current_user) %>
+<% if user_signed_in? && product.favorited_by?(current_user) %>
   <%= link_to product_product_favorites_path(product), method: :delete, remote: true do %>
 	  <div class="btn btn-secondary">
 	    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>

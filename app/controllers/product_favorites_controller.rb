@@ -1,4 +1,7 @@
 class ProductFavoritesController < ApplicationController
+  
+  # ログイン中のユーザのみアクセス許可
+  before_action :authenticate_user!
 
 	# いいねの追加
 	def create
