@@ -17,7 +17,7 @@
         <%= attachment_image_tag(@product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
       </div>
       <!-- いいねボタン -->
-      <div id="favorites_buttons_<%= @product.id %>", class="row justify-content-center">
+      <div id="favorites_buttons_<%= @product.id %>", class="row justify-content-center pt-1">
         <%= render partial: 'product_favorites/favorite_button', locals: { product: @product} %>
       </div>
     </div>
