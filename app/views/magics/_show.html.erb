@@ -17,5 +17,5 @@
 <!-- 投稿説明 -->
 <div class="row form-group">
   <strong class="col-12 control-label">【動画説明】</strong>
-	<span class="col-10 control-label"><%= magic.body %></span>
+	<span class="col-12 control-label"><%= safe_join(magic.body.split("\n"),tag(:br)) %></span>
 </div>
