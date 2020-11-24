@@ -1,9 +1,23 @@
-<header class="navbar navbar-default">
-  <nav class='nav navbar-nav navbar-left'>
+<header class="navbar navbar-default justify-content-left">
+  <nav class='navbar-nav navbar-left'>
     <%= link_to root_path do %>
       <%= image_tag "logo.png", :size => '200x50' %>
     <% end %>
   </nav>
+  <nav class='navbar-nav navbar-left search'>
+  	<%= form_with url: search_path, method: :get, class: "form-inline input-group", local: true do |f| %>
+      <%= f.text_field :content, :placeholder => "マジック動画タイトル、商品名で検索", class: "form-control" %>
+    	<span class="input-group-btn">
+    	  <%= f.button :type => "submit", class: "btn btn-secondary" do %>
+          <i class='fas fa-search'></i>
+        <% end %>
+    	</span>
+  	<% end %>
+  </nav>
+  <nav class='navbar-nav navbar-left'>
+  </nav>
+
+
   <nav class='nav navbar-nav navbar-right'>
     <div id="sp-menu">
       <ul>
