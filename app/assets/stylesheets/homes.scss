@@ -2,7 +2,125 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* About画面 */
+/* ここからTOP画面 */
+.main-visual {
+  background-image: image-url("/assets/show.jpg");
+  width: 100%;
+  height: 350px;
+  display: flex; /* 子要素の上下左右中央寄せするために追記 */
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.main-visual-text-box {
+  padding: 20px; /* 要素内に20pxの余白 */
+}
+
+.main-title {
+  font-family: 'Amatic SC', cursive !important;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* タイトルを下からフェードイン */
+.title-fade-in-bottom {
+   opacity: 0;
+   animation-name: fadein-bottom;
+   animation-duration: 1.5s;
+   animation-timing-function: ease-out;
+   animation-fill-mode: forwards;
+}
+@keyframes fadein-bottom {
+   0% {
+      opacity: 0;
+      transform: translateY(20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* タイトルを下からフェードイン */
+.link-fade-in-bottom {
+   opacity: 0;
+   animation-delay: 1.0s;
+   animation-name: fadein-bottom;
+   animation-duration: 1.5s;
+   animation-timing-function: ease-out;
+   animation-fill-mode: forwards;
+}
+@keyframes fadein-bottom {
+   0% {
+      opacity: 0;
+      transform: translateY(20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+
+// TOP画面のリンクボタンの下線のアニメーション
+.top-link-btn {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+.top-link-btn::before,
+.top-link-btn::after {
+  border-bottom: solid 3px white !important;
+  color: white !important;
+  bottom: -10px;
+  content: "";
+  display: block;
+  position: absolute;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  width: 0;
+}
+.top-link-btn::before {
+  left: 50%;
+}
+.top-link-btn::after {
+  right: 50%;
+}
+.top-link-btn:hover::before,
+.top-link-btn:hover::after {
+  width: 50%;
+}
+
+// 本日のピックアップ
+.top-index-area {
+  width: 100%;
+  display: flex; /* Flexboxの利用 */
+  flex-wrap: wrap; /* Flexboxの利用時に横幅を超えた要素を折り返す */
+}
+
+.top-index-area .product-area {
+  width: 20%;
+  margin-right: 5%;
+  margin-bottom: 10px;
+}
+
+.top-index-area .product-area:nth-child(4n) {
+  margin-right: 0px; /* 3つ目の商品のみ右側余白を0pxに */
+}
+
+.top-index-area .magic-area {
+  width: 20%;
+  margin-right: 5%;
+  margin-bottom: 10px;
+}
+
+.top-index-area .magic-area:nth-child(4n) {
+  margin-right: 0px; /* 3つ目の商品のみ右側余白を0pxに */
+}
+
+
+/* ここまでTOP画面 */
+/* ここからAbout画面 */
 .about-title {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -35,3 +153,4 @@
   height: 280px !important;
 }
 
+/* ここまでAbout画面 */
