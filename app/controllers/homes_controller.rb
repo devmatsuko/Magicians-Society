@@ -2,9 +2,9 @@ class HomesController < ApplicationController
 
   def top
     # 退会していないユーザーのマジック投稿をランダムに4投稿取得
-    @magics = Magic.eager_load(:user).where(users: {is_deleted: false}).sample(4).page(params[:page]).per(8)
+    @magics = Magic.eager_load(:user).where(users: {is_deleted: false}).sample(4)
     # 退会していない全ユーザーの商品をランダムに4投稿取得
-    @products = Product.eager_load(:user).where(users: {is_deleted: false}).sample(4).page(params[:page]).per(8)
+    @products = Product.eager_load(:user).where(users: {is_deleted: false}).sample(4)
 
   end
 
