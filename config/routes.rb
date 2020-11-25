@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/about' => 'homes#about', as: 'about'
   # 検索機能
   get '/search' => 'homes#search', as: 'search'
+  # タグ検索機能
+  get '/tag_search/:id' => 'tags#search', as: 'tag_search'
   # ランキング画面
   get '/ranking' => 'homes#ranking', as: 'ranking'
 

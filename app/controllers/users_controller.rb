@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  
+
+  # ユーザー情報が必要なメソッドは、先に指定IDのユーザーを取得していく。
+  before_action :set_user, only: [:show, :edit, :update, :withdrawal]
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!, only: [:edit, :update, :withdrawal]
 
@@ -9,18 +11,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    # アクセスしたユーザー情報を取得
-    @user = User.find(params[:id])
+    if @user.is_deleted == true
+      flash[:notice] = "アクセスしたユーザーは退会済みです。"
+      # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)
+      @users = User.where(is_deleted: false).page(params[:page]).per(8)
+      render "index"
+    end
   end
 
   def edit
-    # アクセスしたユーザー情報を取得
-    @user = User.find(params[:id])
   end
 
   def update
-    # アクセスしたユーザー情報を取得
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報を更新しました。"
        redirect_to user_path(@user.id)
@@ -58,7 +60,11 @@ class UsersController < ApplicationController
       :display_name,
       :description
       )
+  end
 
+  # 指定IDのユーザー情報の取得
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
