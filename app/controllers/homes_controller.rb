@@ -2,9 +2,9 @@ class HomesController < ApplicationController
 
   def top
     # 退会していないユーザーのマジック投稿をランダムに4投稿取得
-    @magics = Magic.eager_load(:user).where(users: {is_deleted: false}).order("RANDOM()").limit(4).page(params[:page]).per(8)
+    @magics = Magic.eager_load(:user).where(users: {is_deleted: false}).sample(4).page(params[:page]).per(8)
     # 退会していない全ユーザーの商品をランダムに4投稿取得
-    @products = Product.eager_load(:user).where(users: {is_deleted: false}).order("RANDOM()").limit(4).page(params[:page]).per(8)
+    @products = Product.eager_load(:user).where(users: {is_deleted: false}).sample(4).page(params[:page]).per(8)
 
   end
 
@@ -12,11 +12,11 @@ class HomesController < ApplicationController
   end
 
   def ranking
-    # 退会していないユーザーのマジック投稿をいいねがに4投稿取得
+    # 退会していないユーザーのマジック投稿をいいね順に10投稿取得
     valid_magics = Magic.eager_load(:user).where(users: {is_deleted: false})
     @magics = valid_magics.find(MagicFavorite.group(:magic_id).limit(10).order('count(magic_id) desc').pluck(:magic_id))
 
-    # 退会していない全ユーザーの商品をランダムに4投稿取得
+    # 退会していないユーザーの商品をいいね順に10商品取得
     valid_products = Product.eager_load(:user).where(users: {is_deleted: false})
     @products = valid_products.find(ProductFavorite.group(:product_id).limit(10).order('count(product_id) desc').pluck(:product_id))
 
