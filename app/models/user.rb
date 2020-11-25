@@ -20,6 +20,10 @@ class User < ApplicationRecord
   has_many :product_favorites
   # 商品のコメント
   has_many :product_comments
+  # 投稿のいいね
+  has_many :magic_favorites
+  # 投稿のコメント
+  has_many :magic_comments
 
   # 画像を設定できるようにする
   attachment :image, destroy: false

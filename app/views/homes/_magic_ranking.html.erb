@@ -1,7 +1,11 @@
 <table class="table">
   <tbody class="tbody">
-    <% magics.each do |magic| %>
+    <% magics.each_with_index do |magic,i| %>
       <tr class="row justify-content-center px-4">
+        <!--順位-->
+        <td class="col-1 d-flex align-items-center justify-content-center">
+          <em class="h1 about-sub-title"><%= i+1 %></em>
+        </td>
         <!-- 動画サムネイル -->
         <td class="col-2 d-flex align-items-center justify-content-center">
           <div class="justify-content-center">
@@ -38,8 +42,3 @@
     <% end %>
   </tbody>
 </table>
-
-<!-- ページャ -->
-<div class="row justify-content-center mt-4" >
-  <%= paginate magics %>
-</div>

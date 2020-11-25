@@ -1,0 +1,42 @@
+<div class="box my-5 pb-5">
+
+  <!-- 検索結果画面タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <h1 class="title">Ranking</h1>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
+
+  <!-- タブメニュー -->
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <ul id="tab-menu">
+        <li class="col-6">
+          <%= link_to "#tab1", class:"active" do %>
+            <span class="font-weight-bold">Magic いいね数TOP10 </span>
+          <% end %>
+        </li>
+        <li class="col-6">
+          <%= link_to "#tab2",class:"" do %>
+            <span class="font-weight-bold">Product いいね数TOP10</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- タブメニューコンテンツ -->
+  <div class="row justify-content-center pb-5">
+    <div id="tab-contents", class="col-12">
+      <div id="tab1", class="tab">
+        <%= render 'homes/magic_ranking', magics: @magics %>
+      </div>
+
+      <div id="tab2", class="tab">
+        <%= render 'homes/product_ranking', products: @products %>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -30,6 +30,7 @@ https://docs.google.com/spreadsheets/d/1nBL0WoPF86bC2hTF6R6P6U-sO0DDDyIvsVZMHEXi
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+- ストレージ：Amazon S3
 
 ## 使用素材
 - 画像

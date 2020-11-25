@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  # ログイン中のユーザのみアクセス許可
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
 	# 商品情報が必要なメソッドは、先に指定IDの商品を取得していく。
   before_action :set_product, only: [:show, :edit, :update]
   # ジャンルの取得が必要なメソッドでは、先にジャンルを取得しておく

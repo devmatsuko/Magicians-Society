@@ -1,5 +1,8 @@
 class SalesController < ApplicationController
 
+  # ログイン中のユーザのみアクセス許可
+  before_action :authenticate_user!, only: [:index, :show, :update]
+
 	# ログインユーザーの販売履歴を新着順にの取得(ページャ機能で8投稿ずつ表示する)
   def index
     @orders = Order.eager_load(:product).where(products: { user_id: current_user.id }).order('orders.created_at DESC').page(params[:page]).per(8)

@@ -1,5 +1,8 @@
 class RelationshipsController < ApplicationController
   
+  # ログイン中のユーザのみアクセス許可
+  before_action :authenticate_user!
+  
   def create
     # フォローする対象のユーザの取得
     user = User.find(params[:user_id])
