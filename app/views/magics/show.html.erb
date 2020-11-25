@@ -1,4 +1,4 @@
-<div class="box my-5">
+<div class="box mt-5">
 
   <!-- 投稿詳細タイトル -->
   <div class="row p-5">
@@ -18,6 +18,10 @@
           <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image", :alt => "screenshot") %>
         <% end %>
       </div>
+      <!-- いいねボタン -->
+    	<div id="favorites_buttons_<%= @magic.id %>", class="row justify-content-center pt-1">
+    	  <%= render partial: 'magic_favorites/favorite_button', locals: { magic: @magic} %>
+    	</div>
     </div>
 
     <!-- ライトコンテンツ -->
@@ -33,4 +37,12 @@
     </div>
   </div>
 
+</div>
+
+<!-- コメント機能 -->
+<div class="box mb-5 py-3">
+  <div id="magic-comment-<%= @magic.id %>", class="mb-3">
+    <%= render partial: 'magic_comments/comment_show', locals: { magic: @magic} %>
+  </div>
+    <%= render partial: 'magic_comments/comment_form', locals: { magic: @magic, magic_comment: @magic_comment} %>
 </div>

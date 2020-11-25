@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   root 'homes#top'
   # サイト紹介ページ
   get '/about' => 'homes#about', as: 'about'
+  # 検索機能
+  get '/search' => 'homes#search', as: 'search'
+  # ランキング画面
+  get '/ranking' => 'homes#ranking', as: 'ranking'
+
 
   # ログイン関連(利用しない機能のルーティングは削除する)
   devise_for :users, skip: :all
@@ -64,8 +69,5 @@ Rails.application.routes.draw do
 
   # 販売関連
   resources :sales, only: [:update, :index, :show]
-
-  # 検索関連
-  get '/search' => 'searchs#search', as: 'search'
 
 end

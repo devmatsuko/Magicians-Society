@@ -1,0 +1,2 @@
+<!-- #favorites_buttons_magic.id %>この部分のHTMLだけ、renderで部分的に更新するという処理です-->
+$('#favorites_buttons_<%= @magic.id %>').html("<%= j(render partial: 'magic_favorites/favorite_button', locals: { magic: @magic}) %>");

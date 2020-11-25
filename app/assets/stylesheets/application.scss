@@ -64,6 +64,10 @@ header {
   border-color: black;
 }
 
+.search {
+  width: 50% !important;
+}
+
 // ハンバーガーメニューアイコンの位置
 #hm-icon {
   position: fixed;
@@ -275,6 +279,14 @@ footer {
   border-right: 18px solid #ffffff;
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
+}
+
+// 説明テキストの省略
+.text-overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 

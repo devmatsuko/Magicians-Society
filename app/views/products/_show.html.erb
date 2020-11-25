@@ -7,10 +7,17 @@
     <% end %>
   </span>
 </div>
+<!-- 出品日時 -->
+<div class="row form-group">
+  <strong class="col-4 control-label">出品日時</strong>
+  <span class="col-8 control-label">
+    <%= l product.created_at %>
+  </span>
+</div>
 <!-- 商品説明 -->
 <div class="row form-group">
   <strong class="col-4 control-label">商品説明</strong>
-	<span class="col-6 control-label"><%= product.explanation %></span>
+	<span class="col-6 control-label"><%= safe_join(product.explanation.split("\n"),tag(:br)) %></span>
 </div>
 <!-- ジャンル -->
 <div class="row form-group">
