@@ -7,6 +7,13 @@
         <div class="col-12 justify-content-center">
           <h1 class="title">Login</h1>
           <div class="title-line mt-4"></div>
+          <!-- エラーメッセージ表示-->
+          <% flash.each do |name, msg| %>
+            <div id="error_explanation", class="mx-5 my-3">
+              <p class="alert alert-danger"><%= msg %></p>
+            </div>
+          <% end %>
+
         </div>
       </div>
 

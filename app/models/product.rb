@@ -11,12 +11,11 @@ class Product < ApplicationRecord
   attachment :image, destroy: false
 
   # バリデーションチェック
-  # 空白時にエラー
-  validates :name, :explanation, :genre_id, :price, :image, presence: true
-  # 数値以外が入力された場合はエラー
+  validates :name, :explanation, :genre_id, :product_status, :price, :is_sale, :shipping_method, :shipping_date, :postage_status, :image, presence: true
   validates :price, numericality: { only_integer: true }
-  # is_saleの値がtrue,false以外の場合はエラー
   validates :is_sale, inclusion: [true, false]
+  validates :name, length: { maximum: 20 }
+	validates :explanation, length: { maximum: 200 }
 
   # ENUMの設定
   # 商品の状態
