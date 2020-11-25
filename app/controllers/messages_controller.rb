@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  
+
   before_action :authenticate_user!, :only => [:create]
 
   def create
@@ -12,5 +12,5 @@ class MessagesController < ApplicationController
       # redirect_to request.referer
     end
   end
-  
+
 end

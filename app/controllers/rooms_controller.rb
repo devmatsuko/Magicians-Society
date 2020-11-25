@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
-  
+
   before_action :authenticate_user!
-    
+
   # ルームを新規に作成する
   def create
     @room = Room.create
@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
     @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(:room_id => @room.id))
     redirect_to "/rooms/#{@room.id}"
   end
-  
+
   # 作成済みのルームを参照する
   def show
   @room = Room.find(params[:id])
