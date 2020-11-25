@@ -1,0 +1,2 @@
+$('#chat-area').html("<%= j(render partial: 'messages/message', locals: { messages: @messages}) %>");
+$('#message_content').val("");
