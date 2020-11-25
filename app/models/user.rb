@@ -28,6 +28,13 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+  # バリデーション
+	validates :display_name, :description, :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postcode, :address, :phone_number, presence: true
+	validates :postcode, length: { is: 7 }, format: { with: /\A[0-9]+\z/ }
+	validates :phone_number, format: {with: /\A[0-9]+\z/}
+	validates :display_name, length: { maximum: 20 }
+	validates :description, length: { maximum: 200 }
+
   # 画像を設定できるようにする
   attachment :image, destroy: false
 

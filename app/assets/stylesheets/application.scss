@@ -43,6 +43,12 @@ body,
 #error_explanation {
   color: red;
 }
+// エラー時に対象フォームを赤枠で囲む
+.field_with_errors {
+  input,textarea,select {
+    @extend .is-invalid;
+  }
+}
 
 
 a {

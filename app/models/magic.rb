@@ -9,6 +9,8 @@ class Magic < ApplicationRecord
 
   # バリデーション
   validates :title, :video, :body, :presence => true
+  validates :title, length: { maximum: 20 }
+	validates :body, length: { maximum: 200 }
 
   # モデルとアップローダの紐付け
   mount_uploader :video, VideoUploader

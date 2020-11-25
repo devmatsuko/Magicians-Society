@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        display_name: ユーザー名
+        description: 自己紹介
+        first_name: 姓
+        last_name: 名
+        first_name_kana: セイ
+        last_name_kana: メイ
+        address: 住所
+        phone_number: 電話番号
+        postcode: 郵便番号
+        email: メールアドレス
+        password: パスワード
+      order:
+        name: 宛名
+        postcode: 郵便番号
+        address: 住所
+      product:
+        name: 商品名
+        explanation: 商品説明
+        is_sale: 販売ステータス
+        price: 価格
+        genre: ジャンル
+        genre_id: ジャンル
+        image_id: 商品画像
+        image: 商品画像
+        product_status: 販売ステータス
+        shipping_method: 配送方法
+        shipping_date: 発送までの日数
+        postage_status: 配送料の負担
+      magic:
+        title: タイトル
+        body: 説明
+        video: 動画

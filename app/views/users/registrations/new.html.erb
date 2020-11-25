@@ -7,6 +7,8 @@
         <div class="col-12 justify-content-center">
           <h1 class="title">Sign Up</h1>
           <div class="title-line mt-4"></div>
+          <!--エラーメッセージ表示 -->
+          <%= render 'layouts/errors', obj: @user %>
         </div>
       </div>
 
@@ -82,6 +84,8 @@
                 <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "パスワード（確認用）" %>
               </div>
             </div>
+
+            <%= f.hidden_field :description, :value => "よろしくお願いします！" %>
 
             <div class="row justify-content-center my-5">
               <%= f.submit "Sign Up", class: "btn btn-lg btn-secondary col-3" %>

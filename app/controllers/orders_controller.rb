@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
       redirect_to thanks_orders_path
     else
       # 注文した商品を取得
-      @product = order.product
+      @product = @order.product
       render :new
     end
   end
