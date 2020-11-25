@@ -24,6 +24,9 @@ class User < ApplicationRecord
   has_many :magic_favorites
   # 投稿のコメント
   has_many :magic_comments
+  # チャットルームのアソシエーション
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   # 画像を設定できるようにする
   attachment :image, destroy: false

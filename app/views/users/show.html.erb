@@ -37,6 +37,21 @@
           <%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-secondary my-3" %>
         <% end %>
       </div>
+      <!-- DMボタン -->
+      <div class="row justify-content-center">
+        <% if @user.id != current_user.id %>
+          <% if @isRoom %>
+            <%= link_to "チャットを始める", room_path(@roomId), user_id: @user.id, class: "btn btn-secondary my-3" %>
+          <% else %>
+            <%= form_with model: @room, local: true do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, :value=> @user.id %>
+              <% end %>
+              <%= f.submit "チャットを始める",class: "btn btn-secondary my-3" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <!-- ライトコンテンツ -->
