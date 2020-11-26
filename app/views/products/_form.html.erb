@@ -4,11 +4,11 @@
   <div class="col-6">
     <!-- 商品画像 -->
     <div class="row justify-content-center">
-      <%= attachment_image_tag(product, :image, fallback: "noimage.png", size:'150x150', class:"product-image") %>
+      <%= attachment_image_tag(product, :image, fallback: "noimage.png", size:'300x200', class:"img_prev img-thumbnail product-image") %>
     </div>
     <!-- 商品画像編集ボタン -->
     <div class="row justify-content-center my-4">
-      <%= f.attachment_field :image, class:"offset-2" %>
+      <%= f.attachment_field :image, class:"offset-2 img_field" %>
 		</div>
 	</div>
 
