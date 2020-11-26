@@ -24,10 +24,10 @@
       <% if user_signed_in? && @user.id != current_user.id %>
     		<!--フォローしている場合-->
         <% if current_user.following?(@user) %>
-          <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger my-3" %>
+          <%= link_to "　フォロー解除　", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger my-3" %>
     	    <!--フォローしていない場合-->
         <% else %>
-          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success my-3" %>
+          <%= link_to "　フォローする　", user_relationships_path(@user.id), method: :post, class: "btn btn-success my-3" %>
         <% end %>
       <% end %>
       </div>
@@ -41,15 +41,17 @@
       <div class="row justify-content-center">
         <% if @user.id != current_user.id %>
           <% if @isRoom %>
-            <%= link_to "チャットを始める", room_path(@roomId), user_id: @user.id, class: "btn btn-secondary my-3" %>
+            <%= link_to "チャットを始める", room_path(@roomId), user_id: @user.id, class: "btn btn-secondary mb-3" %>
           <% else %>
             <%= form_with model: @room, local: true do |f| %>
               <%= fields_for @entry do |e| %>
                 <%= e.hidden_field :user_id, :value=> @user.id %>
               <% end %>
-              <%= f.submit "チャットを始める",class: "btn btn-secondary my-3" %>
+              <%= f.submit "チャットを始める", class: "btn btn-secondary mb-3" %>
             <% end %>
           <% end %>
+        <% else %>
+          <%= link_to "チャットルームへ", rooms_path, class: "btn btn-secondary mb-3" %>
         <% end %>
       </div>
     </div>
