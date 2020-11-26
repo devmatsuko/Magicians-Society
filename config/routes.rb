@@ -73,9 +73,9 @@ Rails.application.routes.draw do
 
   # 販売関連
   resources :sales, only: [:update, :index, :show]
-  
+
   # チャットルーム関連
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show]
+  resources :rooms, :only => [:create, :show, :index]
 
 end

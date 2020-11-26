@@ -2,6 +2,21 @@ class RoomsController < ApplicationController
 
   before_action :authenticate_user!
 
+  # DMユーザー一覧画面の表示
+  def index
+    @user = current_user
+    # 自分のIDが所属するentryを取得
+    @currentEntries = current_user.entries
+    myroomIds = []
+
+    # 取得したentry内のconnect.idをmyConnectIdsに格納する。
+    @currentEntries.each do |entry|
+      myroomIds << entry.room.id
+    end
+    # myConnectIdsの中から、自分のID以外のID(すなわち相手のID)のEntryを取得する。
+    @anotherEntries = Entry.where(room_id: myroomIds).where('user_id != ?',@user.id).includes(:room)
+  end
+
   # ルームを新規に作成する
   def create
     @room = Room.create
