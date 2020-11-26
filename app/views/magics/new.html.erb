@@ -5,6 +5,8 @@
     <div class="col-12 justify-content-center">
       <h1 class="title">Magic Upload</h1>
       <div class="title-line mt-4"></div>
+      <!--エラーメッセージ-->
+      <%= render 'layouts/errors', obj: @magic %>
     </div>
   </div>
 
@@ -23,7 +25,7 @@
       </div>
   	</div>
 
-    <%= render 'magics/form', product: @magic, f: f %>
+    <%= render 'magics/form', product: @magic, tag_list: @tag_list, f: f %>
 	</div>
 
     <div class="row justify-content-center my-5">

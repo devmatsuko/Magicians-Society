@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update]
   # ジャンルの取得が必要なメソッドでは、先にジャンルを取得しておく
   before_action :set_genres, only: [:new, :edit, :index, :create, :update]
+  # ゲストユーザーのアクションの制限
+  before_action :check_guest, only: [:create, :update]
 
 	def index
 	  # ジャンル検索の有無に関係なく退会していない全ユーザーのマジック商品を取得(ページャ機能で12投稿ずつ表示する)
@@ -84,6 +86,14 @@ class ProductsController < ApplicationController
   # ジャンルの取得
   def set_genres
     @genres = Genre.all
+  end
+
+  # ゲストユーザーのアクションを制限する
+  def check_guest
+    if current_user.email == 'guest@example.com'
+      flash[:notice] = "ゲストユーザーはデータの登録・更新・削除はできません。"
+      redirect_to request.referer
+    end
   end
 
 end

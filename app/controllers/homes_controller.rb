@@ -29,7 +29,9 @@ class HomesController < ApplicationController
     # 投稿検索結果
     @magics = partical_magic(@content).page(params[:page]).per(8)
     # 商品検索結果
-    @products = partical_product(@content).page(params[:page]).per(10)
+    @products = partical_product(@content).page(params[:page]).per(12)
+    # ユーザー検索
+    @users = partical_user(@content).page(params[:page]).per(8)
   end
 
   private
@@ -42,6 +44,11 @@ class HomesController < ApplicationController
   # 商品検索
   def partical_product(content)
     Product.eager_load(:user).where(users: {is_deleted: false}).where("name LIKE ?", "%#{content}%")
+  end
+
+  # ユーザー検索
+  def partical_user(content)
+    User.where(is_deleted: false).where("display_name LIKE ?", "%#{content}%")
   end
 
 end

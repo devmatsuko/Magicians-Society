@@ -11,9 +11,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(sign_up_params)
+    @user[:description] = "よろしくお願いします！"
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render "new"
+    else
+      @user.save
+      sign_in(:user, @user)
+      redirect_to root_path
+    end
+  end
 
   # GET /resource/edit
   # def edit

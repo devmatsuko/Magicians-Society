@@ -43,6 +43,12 @@ body,
 #error_explanation {
   color: red;
 }
+// エラー時に対象フォームを赤枠で囲む
+.field_with_errors {
+  input,textarea,select {
+    @extend .is-invalid;
+  }
+}
 
 
 a {
@@ -258,16 +264,16 @@ footer {
   width: 50%;
 }
 
-// コメントの吹き出し
+// コメントor自分のメッセージの吹き出し
 .says {
-    float: left;
-    position: relative;
-    width: calc(100% - 56px);
-    padding: 16px;
-    background: #ffffff;
-    border-radius: 15px;
-    line-height: 1.5;
-    word-break: break-all;
+  float: left;
+  position: relative;
+  width: calc(100% - 56px);
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
 }
 .says:after {
   content: "";
@@ -279,6 +285,29 @@ footer {
   border-right: 18px solid #ffffff;
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
+}
+
+// 相手のメッセージの吹き出し
+.other-user-says {
+  float: right;
+  position: relative;
+  width: calc(100% - 56px);
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.other-user-says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #ffffff;
+  -webkit-transform: rotate(145deg);
+  transform: rotate(145deg);
 }
 
 // 説明テキストの省略
