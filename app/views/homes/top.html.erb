@@ -4,17 +4,34 @@
   <div class="row p-5">
     <div class="col-12 justify-content-center main-visual">
       <div class="justify-content-center pt-5">
-        <div class="col-12 main-visual-text-box justify-content-center mt-5 title-fade-in-bottom">
-			    <span class="h1 main-title text-white mt-5">Welcome to Magicians Society !</span>
+        <div class="col-12 main-visual-text-box mt-2 justify-content-center title-fade-in-bottom">
+			    <span class="h1 main-title text-white">Welcome to Magicians Society !</span>
 		    </div>
-				<!--ログイン、サインアップボタン-->
+
+				<!-- ログインしていない場合 -->
         <% if !user_signed_in? %>
-          <div class="row justify-content-center my-5 link-fade-in-bottom">
+          <!--ログイン、サインアップボタン-->
+          <div class="row justify-content-center mt-5 link-fade-in-bottom">
             <div class="mx-5">
               <%= link_to "Login", new_user_session_path, class: "h3 top-link-btn text-white" %>
             </div>
             <div class="mx-5">
               <%= link_to "Sign Up", new_user_registration_path, class: "h3 top-link-btn text-white" %>
+            </div>
+          </div>
+          <!-- ゲストログインボタン -->
+          <div class="row justify-content-center mt-4 link-fade-in-bottom">
+            <%= link_to 'Guest Login ', users_guest_sign_in_path, method: :post, class: "h3 top-link-btn text-white" %>
+          </div>
+        <!-- ログイン中の場合 -->
+        <% else %>
+          <!--マジック投稿一覧、商品一覧へのリンク-->
+          <div class="row justify-content-center mt-5 link-fade-in-bottom">
+            <div class="mx-5">
+              <%= link_to "Magics", magics_path, class: "h3 top-link-btn text-white" %>
+            </div>
+            <div class="mx-5">
+              <%= link_to "Products", products_path, class: "h3 top-link-btn text-white" %>
             </div>
           </div>
         <% end %>

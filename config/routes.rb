@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     get 'users/sign_in'=>'users/sessions#new', as: :new_user_session
     post 'users/sign_in'=>'users/sessions#create', as: :user_session
     delete 'users/sign_out' =>'users/sessions#destroy', as: :destroy_user_session
-    # パスワード変更
+    # ゲストログイン
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
 
   end
 
