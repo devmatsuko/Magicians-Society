@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :withdrawal]
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!, only: [:edit, :update, :withdrawal]
+  # ゲストユーザーのアクションの制限
+  before_action :check_guest, only: [:update, :withdrawal]
 
   def index
     # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)
@@ -17,13 +19,13 @@ class UsersController < ApplicationController
       @users = User.where(is_deleted: false).page(params[:page]).per(8)
       render "index"
     end
-    
+
     # チャットルームのエントリー用のパラメータ
     # 自分のuser_idを含んでいるエントリーを取得
     @currentUserEntry=Entry.where(user_id: current_user.id)
     # 現在参照しているユーザのuser_idを含んでいるエントリーを取得
     @userEntry=Entry.where(user_id: @user.id)
-    
+
     if @user.id != current_user.id
       # 自分と相手のエントリーを比較し、同じルームIDのルームを取得
       @currentUserEntry.each do |cu|
@@ -34,11 +36,11 @@ class UsersController < ApplicationController
           end
         end
       end
-      
+
       # ルームがすでに存在していた場合は何もしない
       if @isRoom
-      
-      # ルームが存在していない場合は新たにルームとエントリーを作成する 
+
+      # ルームが存在していない場合は新たにルームとエントリーを作成する
       else
         @room = Room.new
         @entry = Entry.new
@@ -92,6 +94,14 @@ class UsersController < ApplicationController
   # 指定IDのユーザー情報の取得
   def set_user
     @user = User.find(params[:id])
+  end
+
+  # ゲストユーザーのアクションを制限する
+  def check_guest
+    if current_user.email == 'guest@example.com'
+      flash[:notice] = "ゲストユーザーはデータの登録・更新・削除はできません。"
+      redirect_to request.referer
+    end
   end
 
 end

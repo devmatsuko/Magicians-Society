@@ -68,6 +68,27 @@ class User < ApplicationRecord
     self.last_name_kana + self.first_name_kana
   end
 
+  # ゲストユーザーを作成する機能
+  def self.guest
+    find_or_create_by!(
+      email: 'guest@example.com',
+      display_name: 'ゲストマジシャン(閲覧用)',
+      description: 'よろしくお願いします！',
+      last_name: "ゲスト",
+      first_name: "マジシャン",
+      last_name_kana: "ゲスト",
+      first_name_kana: "マジシャン",
+      postcode: "1234567",
+      address: "東京都ゲスト区ゲスト1-11-11",
+      phone_number: "00000000000",
+      is_deleted: false
+    ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+
+
 
 
 end

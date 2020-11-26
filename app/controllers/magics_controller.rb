@@ -4,6 +4,8 @@ class MagicsController < ApplicationController
   before_action :set_magic, only: [:show, :edit, :update, :destroy]
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  # ゲストユーザーのアクションの制限
+  before_action :check_guest, only: [:create, :update, :destroy]
 
 
   def index
@@ -80,6 +82,14 @@ class MagicsController < ApplicationController
   def set_magic
     # IDに基づく投稿を取得
     @magic = Magic.find(params[:id])
+  end
+  
+  # ゲストユーザーのアクションを制限する
+  def check_guest
+    if current_user.email == 'guest@example.com'
+      flash[:notice] = "ゲストユーザーはデータの登録・更新・削除はできません。"
+      redirect_to request.referer
+    end
   end
 
 end
