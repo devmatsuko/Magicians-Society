@@ -12,14 +12,19 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <ul id="tab-menu">
-        <li class="col-6">
+        <li class="col-4">
           <%= link_to "#tab1", class:"active" do %>
             <span class="font-weight-bold">Magics </span><span class="badge badge-pill badge-secondary"><%= @magics.count %></span>
           <% end %>
         </li>
-        <li class="col-6">
+        <li class="col-4">
           <%= link_to "#tab2",class:"" do %>
             <span class="font-weight-bold">Products </span><span class="badge badge-pill badge-secondary"><%= @products.count %></span>
+          <% end %>
+        </li>
+        <li class="col-4">
+          <%= link_to "#tab3",class:"" do %>
+            <span class="font-weight-bold">Magicians </span><span class="badge badge-pill badge-secondary"><%= @users.count %></span>
           <% end %>
         </li>
       </ul>
@@ -31,7 +36,7 @@
     <div id="tab-contents", class="col-12">
       <div id="tab1", class="tab">
         <% if @magics.count == 0 %>
-          <h3 class="text-center  pt-3">検索結果はありません。</h3>
+          <h3 class="text-center pt-3">検索結果はありません。</h3>
         <% else %>
           <%= render 'magics/index', magics: @magics %>
         <% end %>
@@ -44,6 +49,14 @@
           <div class="col-8 offset-2">
             <%= render 'homes/product_index', products: @products %>
           </div>
+        <% end %>
+      </div>
+
+      <div id="tab3", class="tab">
+        <% if @users.count == 0 %>
+          <h3 class="text-center pt-3">検索結果はありません。</h3>
+        <% else %>
+          <%= render 'users/index', users: @users %>
         <% end %>
       </div>
     </div>

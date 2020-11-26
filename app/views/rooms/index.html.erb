@@ -1,6 +1,6 @@
 <div class="box my-5 pb-5">
 
-  <!-- ユーザー一覧画面タイトル -->
+  <!-- DM一覧画面タイトル -->
   <div class="row p-5">
     <div class="col-12 justify-content-center">
       <h1 class="title">Messages</h1>
@@ -8,7 +8,10 @@
     </div>
   </div>
 
-  <!-- ユーザー一覧 -->
-  <%= render 'rooms/index', anotherEntries: @anotherEntries %>
-
+  <!-- DM一覧 -->
+  <% if @anotherEntries.count == 0 %>
+    <h3 class="text-center">メッセージはありません。</h3>
+  <% else %>
+    <%= render 'rooms/index', anotherEntries: @anotherEntries %>
+  <% end %>
 </div>
