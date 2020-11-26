@@ -1,7 +1,7 @@
 <div class="product-area">
   <%= link_to product_path(product.id) do %>
     <!-- 商品画像 -->
-    <%= attachment_image_tag(product, :image, :fill, 150, 100, fallback: "noimage.png", size:'150x100', class:"img-thumbnail product-image mb-2") %><br>
+    <%= attachment_image_tag(product, :image, :fill, 150, 100, fallback: "noimage.png", size:'150x100', class:"product-image mb-2") %><br>
     <!-- 商品名 -->
     <%= product.name %><br>
   <% end %>
