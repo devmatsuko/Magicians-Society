@@ -18,7 +18,7 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
   
-  # ゲストログイン
+  # ゲストログイン機能
   def new_guest
     user = User.guest
     sign_in user
