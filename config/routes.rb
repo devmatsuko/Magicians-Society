@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # ルートパスをTOPページに設定
   root 'homes#top'
   # サイト紹介ページ

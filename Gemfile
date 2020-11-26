@@ -81,6 +81,7 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'config'
 gem 'streamio-ffmpeg'
+gem 'rails_admin'
 
 # AWS関連
 gem 'aws-sdk-rails'
