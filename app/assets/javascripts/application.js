@@ -51,7 +51,6 @@ $(document).on('turbolinks:load', function(){
   $('#tab-contents .tab[id != "tab1"]').hide();
   // タブメニュークリック時の動作
   $('#tab-menu a').on('click', function(event) {
-    console.log("tab")
     $("#tab-contents .tab").hide();
     $("#tab-menu .active").removeClass("active");
     $(this).addClass("active");
@@ -67,5 +66,12 @@ $(document).on('turbolinks:load', function(){
       $('#new-address-box').hide();
     }
   });
+
+  // スクロールを一番下にする
+  var obj = document.getElementById("scroll");
+  // スクロール要素があった場合のみ実行
+  if(obj){
+    obj.scrollTop = obj.scrollHeight;
+  }
 
 });

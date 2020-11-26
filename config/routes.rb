@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # ルートパスをTOPページに設定
   root 'homes#top'
   # サイト紹介ページ
   get '/about' => 'homes#about', as: 'about'
   # 検索機能
   get '/search' => 'homes#search', as: 'search'
+  # タグ検索機能
+  get '/tag_search/:id' => 'tags#search', as: 'tag_search'
   # ランキング画面
   get '/ranking' => 'homes#ranking', as: 'ranking'
 
@@ -20,7 +23,8 @@ Rails.application.routes.draw do
     get 'users/sign_in'=>'users/sessions#new', as: :new_user_session
     post 'users/sign_in'=>'users/sessions#create', as: :user_session
     delete 'users/sign_out' =>'users/sessions#destroy', as: :destroy_user_session
-    # パスワード変更
+    # ゲストログイン
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
 
   end
 
@@ -69,5 +73,9 @@ Rails.application.routes.draw do
 
   # 販売関連
   resources :sales, only: [:update, :index, :show]
+
+  # チャットルーム関連
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
 
 end

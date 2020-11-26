@@ -1,0 +1,12 @@
+<!--メッセージ入力フォーム-->
+<%= form_with model: message, remote: true do |f| %>
+	<div class="row justify-content-center">
+		<div class="col-8">
+			<%= f.text_area :content, rows:'5', id: "message_content", class: "form-control", placeholder: "メッセージを入力" %>
+			<%= f.hidden_field :room_id, :value => @room.id %>
+		</div>
+		<div class="col-8 mt-2">
+			<%= f.submit "送信する", class: "btn btn-secondary float-right" %>
+		</div>
+	</div>
+<% end %>

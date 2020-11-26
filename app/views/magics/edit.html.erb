@@ -5,6 +5,8 @@
     <div class="col-12 justify-content-center">
       <h1 class="title">Edit Magic</h1>
       <div class="title-line mt-4"></div>
+      <!--エラーメッセージ-->
+      <%= render 'layouts/errors', obj: @magic %>
     </div>
   </div>
 
@@ -22,7 +24,7 @@
     </div>
 
     <!-- ライトコンテンツ -->
-    <%= render 'magics/form', magic: @magic, f: f %>
+    <%= render 'magics/form', magic: @magic, tag_list: @tag_list, f: f %>
   </div>
 
     <div class="row justify-content-center mt-5">

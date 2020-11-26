@@ -27,7 +27,7 @@
     <!-- ライトコンテンツ -->
     <div class="col-4 justify-content-center">
       <!-- 投稿情報 -->
-    	<%= render 'magics/show', magic: @magic %>
+    	<%= render 'magics/show', magic: @magic, tag_list: @tag_list %>
       <!-- 投稿情報編集ボタン -->
       <div class="row">
         <% if user_signed_in? && @magic.user.id == current_user.id %>

@@ -1,0 +1,15 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#scroll {
+  height: 500px !important;
+  overflow-y: scroll;
+  scroll-top: 100%;
+  // スクロールバーの非表示
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+  scrollbar-width: none;       /* Firefox 対応 */
+}
+#scroll::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
+}
