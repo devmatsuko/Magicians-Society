@@ -24,6 +24,10 @@
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1nBL0WoPF86bC2hTF6R6P6U-sO0DDDyIvsVZMHEXiRG4/edit?usp=sharing
 
+## DEMO
+![DEMO](https://user-images.githubusercontent.com/66913121/100497597-d0593380-319f-11eb-922e-26ca9cabcf14.png)
+
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
