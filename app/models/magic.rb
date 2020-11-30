@@ -2,8 +2,8 @@ class Magic < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
-  has_many :magic_favorites
-  has_many :magic_comments
+  has_many :magic_favorites, dependent: :destroy
+  has_many :magic_comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
