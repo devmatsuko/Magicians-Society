@@ -14,15 +14,15 @@
             <%= e.user.display_name %>
           <% end %>
         </td>
-  			<!-- 最新のチャットメッセージ -->
-  			<td class="col-3 d-flex align-items-center">
+        <!-- 最新のチャットメッセージ -->
+        <td class="col-3 d-flex align-items-center">
           <% if (e.room.messages.last) %>
             <span class="text-overflow"><%= (e.room.messages.last).content %></span>
           <% else %>
             <span>メッセージはありません。</span>
           <% end %>
-			  </td>
-  			<!-- チャットを始める -->
+        </td>
+        <!-- チャットを始める -->
         <td class="col-2 d-flex align-items-center">
           <%= link_to "チャットを始める", room_path(e.room), user_id: e.user.id, class: "btn btn-secondary my-3" %>
         </td>

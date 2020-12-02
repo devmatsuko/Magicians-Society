@@ -19,15 +19,15 @@
         <% end %>
       </div>
       <!-- いいねボタン -->
-    	<div id="favorites_buttons_<%= @magic.id %>", class="row justify-content-center pt-1">
-    	  <%= render partial: 'magic_favorites/favorite_button', locals: { magic: @magic} %>
-    	</div>
+      <div id="favorites_buttons_<%= @magic.id %>", class="row justify-content-center pt-1">
+        <%= render partial: 'magic_favorites/favorite_button', locals: { magic: @magic} %>
+      </div>
     </div>
 
     <!-- ライトコンテンツ -->
     <div class="col-4 justify-content-center">
       <!-- 投稿情報 -->
-    	<%= render 'magics/show', magic: @magic, tag_list: @tag_list %>
+      <%= render 'magics/show', magic: @magic, tag_list: @tag_list %>
       <!-- 投稿情報編集ボタン -->
       <div class="row">
         <% if user_signed_in? && @magic.user.id == current_user.id %>

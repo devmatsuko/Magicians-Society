@@ -16,13 +16,13 @@
           <% end %>
         </td>
         <!-- 請求額 -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span><%= order.total_price.to_s(:delimited) %>円</span>
-			  </td>
-  			<!-- 注文ステータス -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span><%= order.order_status %></span>
-			  </td>
+        <td class="col-2 d-flex align-items-center">
+          <span><%= order.total_price.to_s(:delimited) %>円</span>
+        </td>
+        <!-- 注文ステータス -->
+        <td class="col-2 d-flex align-items-center">
+          <span><%= order.order_status %></span>
+        </td>
       </tr>
     <% end %>
   </tbody>

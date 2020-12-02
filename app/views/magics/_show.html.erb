@@ -2,7 +2,7 @@
 <div class="row form-group">
   <strong class="col-4 control-label">投稿者</strong>
   <span class="col-6 control-label">
-  	<%= link_to user_path(magic.user) do %>
+    <%= link_to user_path(magic.user) do %>
     <%= magic.user.display_name %>
   <% end %>
   </span>
@@ -17,16 +17,16 @@
 <!-- 投稿説明 -->
 <div class="row form-group">
   <strong class="col-12 control-label">【動画説明】</strong>
-	<span class="col-12 control-label"><%= safe_join(magic.body.split("\n"),tag(:br)) %></span>
+  <span class="col-12 control-label"><%= safe_join(magic.body.split("\n"),tag(:br)) %></span>
 </div>
 <!-- タグ -->
 <div class="row form-group">
   <strong class="col-12 control-label">タグ</strong>
-	<span class="col-12 control-label">
+  <span class="col-12 control-label">
   <% tag_list.each do |tag| %>
     <%= link_to tag_search_path(tag) do %>
       <span class="badge badge-secondary"><%= tag.tag %></span>&nbsp
-	  <% end %>
-	<% end %>
-	</span>
+    <% end %>
+  <% end %>
+  </span>
 </div>

@@ -23,10 +23,10 @@
       <div class="row justify-content-center">
         <%= f.file_field :video, :accept => 'video/*' %>
       </div>
-  	</div>
+    </div>
 
     <%= render 'magics/form', product: @magic, tag_list: @tag_list, f: f %>
-	</div>
+  </div>
 
     <div class="row justify-content-center my-5">
       <%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3 mb-5" %>

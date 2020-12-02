@@ -1,12 +1,12 @@
 
   <!-- ライトコンテンツ -->
-	<div class="col-6 justify-content-center">
+  <div class="col-6 justify-content-center">
 
     <!-- マジックタイトルフォーム -->
     <div class="row form-group d-flex align-items-center">
       <%= f.label "タイトル", class: "col-4 control-label" %>
       <div class="col-6">
-				<%= f.text_field :title, placeholder: "20文字まで",class: "form-control" %>
+        <%= f.text_field :title, placeholder: "20文字まで",class: "form-control" %>
       </div>
     </div>
 
@@ -14,7 +14,7 @@
     <div class="row form-group">
       <%= f.label "説明", class: "col-4 control-label" %>
       <div class="col-6">
-				<%= f.text_area :body, rows: 5, placeholder: "200文字まで", class: "form-control" %>
+        <%= f.text_area :body, rows: 5, placeholder: "200文字まで", class: "form-control" %>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
     <div class="row form-group">
       <%= f.label "タグ (スペースで区切ることで複数登録可)", class: "col-4 control-label" %><br>
       <div class="col-6">
-				<%= f.text_field :tag, placeholder: "例：マジック カード 四つ玉", value: tag_list ,class: "form-control" %>
+        <%= f.text_field :tag, placeholder: "例：マジック カード 四つ玉", value: tag_list ,class: "form-control" %>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <!--メッセージ一覧-->
 <div class="row">
-	<div id="scroll", class="col-8 offset-2">
-		<table id="js-table-comment", class="table col-12">
+  <div id="scroll", class="col-8 offset-2">
+    <table id="js-table-comment", class="table col-12">
       <% if messages.present? %>
         <% messages.each do |m| %>
           <% if m.user.id == current_user.id %>
@@ -37,6 +37,6 @@
       <% else %>
         <h4 class="text-center py-4">メッセージはまだありません</h4>
       <% end %>
-		</table>
-	</div>
+    </table>
+  </div>
 </div>

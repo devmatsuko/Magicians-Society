@@ -16,19 +16,19 @@
           <% end %>
         </td>
         <!-- 購入者 -->
-  			<td class="col-2 d-flex align-items-center">
-  				<%= link_to user_path(order.user) do %>
-  			  	<span><%= order.user.display_name %></span>
-  			  <% end %>
-			  </td>
+        <td class="col-2 d-flex align-items-center">
+          <%= link_to user_path(order.user) do %>
+            <span><%= order.user.display_name %></span>
+          <% end %>
+        </td>
         <!-- 請求額 -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span><%= order.total_price.to_s(:delimited) %>円</span>
-			  </td>
-  			<!-- 注文ステータス -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span><%= order.order_status %></span>
-			  </td>
+        <td class="col-2 d-flex align-items-center">
+          <span><%= order.total_price.to_s(:delimited) %>円</span>
+        </td>
+        <!-- 注文ステータス -->
+        <td class="col-2 d-flex align-items-center">
+          <span><%= order.order_status %></span>
+        </td>
       </tr>
     <% end %>
   </tbody>
