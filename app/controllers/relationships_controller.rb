@@ -1,8 +1,7 @@
 class RelationshipsController < ApplicationController
-  
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!
-  
+
   def create
     # フォローする対象のユーザの取得
     user = User.find(params[:user_id])
@@ -11,7 +10,7 @@ class RelationshipsController < ApplicationController
     # 元の画面に戻る
     redirect_to request.referer
   end
-    
+
   def destroy
     # フォロー解除する対象のユーザの取得
     user = User.find(params[:user_id])
@@ -20,5 +19,4 @@ class RelationshipsController < ApplicationController
     # 元の画面に戻る
     redirect_to request.referer
   end
-  
 end

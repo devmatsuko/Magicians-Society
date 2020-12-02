@@ -1,5 +1,4 @@
 class Magic < ApplicationRecord
-
   # アソシエーション
   belongs_to :user
   has_many :magic_favorites, dependent: :destroy
@@ -8,9 +7,9 @@ class Magic < ApplicationRecord
   has_many :tags, through: :tag_maps
 
   # バリデーション
-  validates :title, :video, :body, :presence => true
+  validates :title, :video, :body, presence: true
   validates :title, length: { maximum: 20 }
-	validates :body, length: { maximum: 200 }
+  validates :body, length: { maximum: 200 }
 
   # モデルとアップローダの紐付け
   mount_uploader :video, VideoUploader
@@ -23,7 +22,7 @@ class Magic < ApplicationRecord
   # 投稿に紐づくタグの保存
   def save_tag(sent_tags)
     # 指定した投稿に紐づくタグが既に存在する場合にタグを取得
-    current_tags = self.tags.pluck(:tag) unless self.tags.nil?
+    current_tags = tags.pluck(:tag) unless tags.nil?
     # 既に存在するタグのみを取得
     old_tags = current_tags - sent_tags
     # 新規のタグのみを取得
@@ -31,14 +30,13 @@ class Magic < ApplicationRecord
 
     # 既に存在するタグは保存対象から削除
     old_tags.each do |old|
-      self.tags.delete Tag.find_by(tag: old)
+      tags.delete Tag.find_by(tag: old)
     end
 
     # 新規のタグのみを保存する
     new_tags.each do |new|
       new_magic_tag = Tag.find_or_create_by(tag: new)
-      self.tags << new_magic_tag
+      tags << new_magic_tag
     end
   end
-
 end

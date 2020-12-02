@@ -1,5 +1,4 @@
 class MagicsController < ApplicationController
-
   # 投稿情報が必要なメソッドは、先に指定IDの投稿を取得していく。
   before_action :set_magic, only: [:show, :edit, :update, :destroy]
   # ログイン中のユーザのみアクセス許可
@@ -7,10 +6,9 @@ class MagicsController < ApplicationController
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:create, :update, :destroy]
 
-
   def index
     # 退会していない全ユーザーのマジック投稿を取得(ページャ機能で8投稿ずつ表示する)
-    @magics = Magic.eager_load(:user).where(users: {is_deleted: false}).page(params[:page]).per(8)
+    @magics = Magic.eager_load(:user).where(users: { is_deleted: false }).page(params[:page]).per(8)
   end
 
   def new
@@ -29,7 +27,7 @@ class MagicsController < ApplicationController
 
   def edit
     # タグをスペース区切りで合体させる
-    @tag_list = @magic.tags.pluck(:tag).join(" ")
+    @tag_list = @magic.tags.pluck(:tag).join(' ')
   end
 
   def create
@@ -41,7 +39,7 @@ class MagicsController < ApplicationController
     if @magic.save
       # タグの保存
       @magic.save_tag(tag_list)
-      flash[:notice] = "動画を投稿しました。"
+      flash[:notice] = '動画を投稿しました。'
       redirect_to magic_path(@magic)
     else
       # エラーが発生した場合
@@ -55,7 +53,7 @@ class MagicsController < ApplicationController
     if @magic.update(magic_params)
       # タグの保存
       @magic.save_tag(tag_list)
-      flash[:notice] = "投稿内容を変更しました。"
+      flash[:notice] = '投稿内容を変更しました。'
       redirect_to magic_path(@magic)
     else
       render :edit
@@ -64,7 +62,7 @@ class MagicsController < ApplicationController
 
   def destroy
     if @magic.destroy
-      flash[:notice] = "動画を削除しました。"
+      flash[:notice] = '動画を削除しました。'
       redirect_to magics_path
     else
       # エラーが発生した場合
@@ -73,6 +71,7 @@ class MagicsController < ApplicationController
   end
 
   private
+
   # ストロングパラメータ
   def magic_params
     params.require(:magic).permit(:user_id, :title, :body, :video)
@@ -83,13 +82,12 @@ class MagicsController < ApplicationController
     # IDに基づく投稿を取得
     @magic = Magic.find(params[:id])
   end
-  
+
   # ゲストユーザーのアクションを制限する
   def check_guest
     if current_user.email == 'guest@example.com'
-      flash[:notice] = "ゲストユーザーはデータの登録・更新・削除はできません。"
+      flash[:notice] = 'ゲストユーザーはデータの登録・更新・削除はできません。'
       redirect_to request.referer
     end
   end
-
 end
