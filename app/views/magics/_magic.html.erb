@@ -1,18 +1,18 @@
 <div class="magic-area">
-  <%= link_to magic_path(magic.id) do %>
-    <!-- 動画サムネイル -->
-    <%= image_tag(magic.video_url(:screenshot).to_s,:size => '150x90', id: "video", class: "magic-image  mb-2", :alt => "screenshot") %><br>
-    <!-- 投稿タイトル -->
-    <%= magic.title %><br>
-  <% end %>
+	<%= link_to magic_path(magic.id) do %>
+		<!-- 動画サムネイル -->
+		<%= image_tag(magic.video_url(:screenshot).to_s,:size => '150x90', id: "video", class: "magic-image  mb-2", :alt => "screenshot") %><br>
+		<!-- 投稿タイトル -->
+		<%= magic.title %><br>
+	<% end %>
 
-  <!-- ユーザー名 -->
-  <%= link_to user_path(magic.user) do %>
-    <%= magic.user.display_name %>
-  <% end %><br>
+	<!-- ユーザー名 -->
+	<%= link_to user_path(magic.user) do %>
+		<%= magic.user.display_name %>
+	<% end %><br>
 
-  <!-- いいね -->
-  <%= render 'magic_favorites/favorite_count', magic: magic %>&nbsp&nbsp
-  <!-- コメント -->
-  <%= render 'magic_comments/comment_count', magic: magic %>
+	<!-- いいね -->
+	<%= render 'magic_favorites/favorite_count', magic: magic %>&nbsp&nbsp
+	<!-- コメント -->
+	<%= render 'magic_comments/comment_count', magic: magic %>
 </div>

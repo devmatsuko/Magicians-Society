@@ -1,7 +1,7 @@
 <div class="index-products-area">
-  <!--8つ商品を表示させる-->
-  <% products.each do |product| %>
-    <%= render 'products/product', product: product %>
-  <% end %>
-  <div class="text-center"><%= paginate(products) %></div>
+	<!--8つ商品を表示させる-->
+	<% products.each do |product| %>
+		<%= render 'products/product', product: product %>
+	<% end %>
+	<div class="text-center"><%= paginate(products) %></div>
 </div>

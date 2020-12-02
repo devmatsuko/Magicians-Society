@@ -1,40 +1,40 @@
 <table class="table">
-  <tbody class="tbody">
-    <% orders.each do |order| %>
-      <tr class="row justify-content-center px-4">
-        <!-- 注文商品画像、注文商品名 -->
-        <td class="col-2 d-flex align-items-center">
-          <%= link_to sale_path(order.id) do %>
-            <%= attachment_image_tag(order.product, :image, :fill, 150, 100, fallback: "noimage.png", size:'150x100', class:"product-image mx-auto d-block") %>
-            <%= order.product.name %>
-          <% end %>
-        </td>
-        <!-- 注文日時 -->
-        <td class="col-3 d-flex align-items-center">
-          <%= link_to sale_path(order.id) do %>
-            <span><%= l order.created_at %></span>
-          <% end %>
-        </td>
-        <!-- 購入者 -->
-  			<td class="col-2 d-flex align-items-center">
-  				<%= link_to user_path(order.user) do %>
-  			  	<span><%= order.user.display_name %></span>
-  			  <% end %>
-			  </td>
-        <!-- 請求額 -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span><%= order.total_price.to_s(:delimited) %>円</span>
-			  </td>
-  			<!-- 注文ステータス -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span><%= order.order_status %></span>
-			  </td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody class="tbody">
+		<% orders.each do |order| %>
+			<tr class="row justify-content-center px-4">
+				<!-- 注文商品画像、注文商品名 -->
+				<td class="col-2 d-flex align-items-center">
+					<%= link_to sale_path(order.id) do %>
+						<%= attachment_image_tag(order.product, :image, :fill, 150, 100, fallback: "noimage.png", size:'150x100', class:"product-image mx-auto d-block") %>
+						<%= order.product.name %>
+					<% end %>
+				</td>
+				<!-- 注文日時 -->
+				<td class="col-3 d-flex align-items-center">
+					<%= link_to sale_path(order.id) do %>
+						<span><%= l order.created_at %></span>
+					<% end %>
+				</td>
+				<!-- 購入者 -->
+				<td class="col-2 d-flex align-items-center">
+					<%= link_to user_path(order.user) do %>
+						<span><%= order.user.display_name %></span>
+					<% end %>
+				</td>
+				<!-- 請求額 -->
+				<td class="col-2 d-flex align-items-center">
+					<span><%= order.total_price.to_s(:delimited) %>円</span>
+				</td>
+				<!-- 注文ステータス -->
+				<td class="col-2 d-flex align-items-center">
+					<span><%= order.order_status %></span>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <!-- ページャ -->
 <div class="row justify-content-center mt-4 pb-4" >
-  <%= paginate orders %>
+	<%= paginate orders %>
 </div>

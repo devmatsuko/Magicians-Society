@@ -1,42 +1,42 @@
 <div class="box my-5">
 
-  <!-- マジック投稿編集画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Edit Magic</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ-->
-      <%= render 'layouts/errors', obj: @magic %>
-    </div>
-  </div>
+	<!-- マジック投稿編集画面タイトル -->
+	<div class="row p-5">
+		<div class="col-12 justify-content-center">
+			<h1 class="title">Edit Magic</h1>
+			<div class="title-line mt-4"></div>
+			<!--エラーメッセージ-->
+			<%= render 'layouts/errors', obj: @magic %>
+		</div>
+	</div>
 
-  <!-- マジック投稿編集フォーム -->
-  <%= form_with model: @magic, url: magic_path , method: :patch, local: true do |f| %>
-  <div class="row py-2">
-    <!-- レフトコンテンツ -->
-    <div class="col-6 mb-5">
-      <!-- 動画 -->
-      <div class="row justify-content-center">
-        <%= link_to @magic.video_url.to_s do %>
-          <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image", :alt => "screenshot") %>
-        <% end %>
-      </div>
-    </div>
+	<!-- マジック投稿編集フォーム -->
+	<%= form_with model: @magic, url: magic_path , method: :patch, local: true do |f| %>
+	<div class="row py-2">
+		<!-- レフトコンテンツ -->
+		<div class="col-6 mb-5">
+			<!-- 動画 -->
+			<div class="row justify-content-center">
+				<%= link_to @magic.video_url.to_s do %>
+					<%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image", :alt => "screenshot") %>
+				<% end %>
+			</div>
+		</div>
 
-    <!-- ライトコンテンツ -->
-    <%= render 'magics/form', magic: @magic, tag_list: @tag_list, f: f %>
-  </div>
+		<!-- ライトコンテンツ -->
+		<%= render 'magics/form', magic: @magic, tag_list: @tag_list, f: f %>
+	</div>
 
-    <div class="row justify-content-center mt-5">
-      <%= link_to "キャンセル", magic_path(@magic), class: "btn btn-secondary col-3 mb-5" %>
-      <%= f.submit "更新", class: "btn btn-secondary offset-1 col-3 mb-5" %>
-    </div>
+		<div class="row justify-content-center mt-5">
+			<%= link_to "キャンセル", magic_path(@magic), class: "btn btn-secondary col-3 mb-5" %>
+			<%= f.submit "更新", class: "btn btn-secondary offset-1 col-3 mb-5" %>
+		</div>
 
-    <div class="row justify-content-center pb-5">
-      <%= link_to "削除する", magic_path(@magic), method: :delete, class: "btn btn-danger col-3" %>
-    </div>
+		<div class="row justify-content-center pb-5">
+			<%= link_to "削除する", magic_path(@magic), method: :delete, class: "btn btn-danger col-3" %>
+		</div>
 
-  <% end %>
+	<% end %>
 
 </div>
 

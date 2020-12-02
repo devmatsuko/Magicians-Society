@@ -1,57 +1,57 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="align-middle col-10 box my-5">
+	<div class="row justify-content-center">
+		<div class="align-middle col-10 box my-5">
 
-      <!-- ログイン見出し -->
-      <div class="row p-5">
-        <div class="col-12 justify-content-center">
-          <h1 class="title">Login</h1>
-          <div class="title-line mt-4"></div>
-          <!-- エラーメッセージ表示-->
-          <% flash.each do |name, msg| %>
-            <div id="error_explanation", class="mx-5 my-3">
-              <p class="alert alert-danger"><%= msg %></p>
-            </div>
-          <% end %>
+			<!-- ログイン見出し -->
+			<div class="row p-5">
+				<div class="col-12 justify-content-center">
+					<h1 class="title">Login</h1>
+					<div class="title-line mt-4"></div>
+					<!-- エラーメッセージ表示-->
+					<% flash.each do |name, msg| %>
+						<div id="error_explanation", class="mx-5 my-3">
+							<p class="alert alert-danger"><%= msg %></p>
+						</div>
+					<% end %>
 
-        </div>
-      </div>
+				</div>
+			</div>
 
-      <!-- ログイン情報入力フォーム -->
-      <div class="row px-5 justify-content-center">
-        <div class="col-10">
-          <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+			<!-- ログイン情報入力フォーム -->
+			<div class="row px-5 justify-content-center">
+				<div class="col-10">
+					<%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
-            <div class="row form-group d-flex align-items-center justify-content-center" >
-              <label class="col-3 control-label" >メールアドレス</label>
-              <div class="col-6">
-                <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
-              </div>
-            </div>
+						<div class="row form-group d-flex align-items-center justify-content-center" >
+							<label class="col-3 control-label" >メールアドレス</label>
+							<div class="col-6">
+								<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+							</div>
+						</div>
 
-            <div class="row form-group d-flex align-items-center justify-content-center" >
-              <label class="col-3 control-label" >パスワード</label>
-              <div class="col-6">
-                <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
-              </div>
-            </div>
+						<div class="row form-group d-flex align-items-center justify-content-center" >
+							<label class="col-3 control-label" >パスワード</label>
+							<div class="col-6">
+								<%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+							</div>
+						</div>
 
-            <div class="row justify-content-center my-5">
-              <%= f.submit "Login", class: "btn btn-lg btn-secondary col-3" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+						<div class="row justify-content-center my-5">
+							<%= f.submit "Login", class: "btn btn-lg btn-secondary col-3" %>
+						</div>
+					<% end %>
+				</div>
+			</div>
 
-      <!--サインアップ画面案内-->
-      <div class="row mb-5 pb-5">
-        <div class="offset-1">
-          <h2 class="title">登録がお済みでない方</h2>
-          <div class="pl-4">
-            <%= link_to "こちら" , new_user_registration_path, class:"login-link" %>から新規登録を行ってください。
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+			<!--サインアップ画面案内-->
+			<div class="row mb-5 pb-5">
+				<div class="offset-1">
+					<h2 class="title">登録がお済みでない方</h2>
+					<div class="pl-4">
+						<%= link_to "こちら" , new_user_registration_path, class:"login-link" %>から新規登録を行ってください。
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

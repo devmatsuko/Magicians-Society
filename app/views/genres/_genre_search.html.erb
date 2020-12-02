@@ -1,20 +1,20 @@
 <table class="table table-sm table-bordered table-hover">
-  <thead class="thead-light"><tr><th>ジャンル検索</th></tr></thead>
-  <tr>
-  	<td>
-  		<%= link_to products_path do %>
-  			<span>全商品(<%= products.count %>)</span>
-  		<% end %>
+	<thead class="thead-light"><tr><th>ジャンル検索</th></tr></thead>
+	<tr>
+		<td>
+			<%= link_to products_path do %>
+				<span>全商品(<%= products.count %>)</span>
+			<% end %>
 		</td>
 	</tr>
-  <% genres.each do |genre| %>
-    <tr>
-    	<td>
-	      <!--商品一覧画面へ遷移する際にジャンルIDをパラメータとしてコントローラに送付-->
-	      <%= link_to products_path(genre_id: genre.id) do %>
-	         <span><%= genre.name %>(<%= genre.products.count %>)</span>
-	      <% end %>
-    	</td>
-    </tr>
-  <% end %>
+	<% genres.each do |genre| %>
+		<tr>
+			<td>
+				<!--商品一覧画面へ遷移する際にジャンルIDをパラメータとしてコントローラに送付-->
+				<%= link_to products_path(genre_id: genre.id) do %>
+					 <span><%= genre.name %>(<%= genre.products.count %>)</span>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
 </table>

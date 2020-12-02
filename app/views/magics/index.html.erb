@@ -1,21 +1,21 @@
 <div class="box my-5 pb-5">
 
-  <!-- マジック一覧画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Magics</h1>
-      <div class="title-line mt-4"></div>
-    </div>
-  </div>
+	<!-- マジック一覧画面タイトル -->
+	<div class="row p-5">
+		<div class="col-12 justify-content-center">
+			<h1 class="title">Magics</h1>
+			<div class="title-line mt-4"></div>
+		</div>
+	</div>
 
-  <!-- マジック投稿画面へのリンク -->
-  <div class="row mb-4">
-    <div class="col-2 offset-9">
-      <%= link_to 'マジックを投稿する', new_magic_path, class: "btn btn-secondary" %>
-    </div>
-  </div>
+	<!-- マジック投稿画面へのリンク -->
+	<div class="row mb-4">
+		<div class="col-2 offset-9">
+			<%= link_to 'マジックを投稿する', new_magic_path, class: "btn btn-secondary" %>
+		</div>
+	</div>
 
-  <!-- マジック一覧 -->
-  <%= render 'magics/index', magics: @magics %>
+	<!-- マジック一覧 -->
+	<%= render 'magics/index', magics: @magics %>
 
 </div>

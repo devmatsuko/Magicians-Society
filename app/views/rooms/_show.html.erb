@@ -1,14 +1,14 @@
 <div class="col-8 offset-1 mb-4">
-  <% entries.each do |e| %>
-    <% if e.user.id != current_user.id %>
-      <h5><%= e.user.display_name %>さんとのチャット</h5>
-    <% end %>
-  <% end %>
+	<% entries.each do |e| %>
+		<% if e.user.id != current_user.id %>
+			<h5><%= e.user.display_name %>さんとのチャット</h5>
+		<% end %>
+	<% end %>
 </div>
 
 <!-- メッセージ一覧 -->
 <div id="chat-area">
-  <%= render partial: 'messages/message', locals: { messages: messages} %>
+	<%= render partial: 'messages/message', locals: { messages: messages} %>
 </div>
 
 <!-- メッセージ入力フォーム -->

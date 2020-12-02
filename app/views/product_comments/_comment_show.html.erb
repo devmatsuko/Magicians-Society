@@ -9,15 +9,15 @@
 					</td>
 					<td class="col-10">
 						<%= product_comment.user.display_name %> <br>
-					  <div class="says">
-					    <p><%= safe_join(product_comment.comment.split("\n"),tag(:br)) %></p>
-					    <span><%= l product_comment.created_at %></span>
-					    <% if user_signed_in? && product_comment.user_id == current_user.id %>
+						<div class="says">
+							<p><%= safe_join(product_comment.comment.split("\n"),tag(:br)) %></p>
+							<span><%= l product_comment.created_at %></span>
+							<% if user_signed_in? && product_comment.user_id == current_user.id %>
 								<%= link_to product_product_comment_path(product,product_comment.id), method: :delete, class: "btn-sm btn-secondary float-right", remote: true do %>
 									<i class="far fa-trash-alt" aria-hidden="true"></i>
 								<% end %>
 							<% end %>
-					  </div>
+						</div>
 					</td>
 				</tr>
 			<% end %>

@@ -1,45 +1,45 @@
 <table class="table">
-  <tbody class="tbody">
-    <% users.each do |user| %>
-      <tr class="row justify-content-center px-4">
-        <!-- プロフィール画像 -->
-        <td class="col-2 d-flex align-items-center justify-content-center">
-          <%= link_to user_path(user) do %>
-            <%= attachment_image_tag(user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image") %>
-          <% end %>
-        </td>
-        <!-- ユーザー名 -->
-        <td class="col-2 d-flex align-items-center">
-          <%= link_to user_path(user) do %>
-            <%= user.display_name %>
-          <% end %>
-        </td>
-        <!-- プロフィール説明 -->
-  			<td class="col-3 d-flex align-items-center">
-  			  <span class="text-overflow"><%= safe_join(user.description.split("\n"),tag(:br)) %></span>
-			  </td>
-  			<!-- 動画投稿数 -->
-  			<td class="col-2 d-flex align-items-center">
-  			  <span>動画投稿数：<%= user.magics.count %></span>
-			  </td>
-  			<!-- フォロー、フォロー解除 -->
-        <td class="col-2 d-flex align-items-center">
-          <% if user_signed_in? && user.id != current_user.id %>
-        		<!--フォローしている場合-->
-      	    <% if current_user.following?(user) %>
-    	        <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn-sm btn-danger" %>
-        	    <!--フォローしていない場合-->
-      	    <% else %>
-    	        <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn-sm btn-success" %>
-      	    <% end %>
-      	  <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody class="tbody">
+		<% users.each do |user| %>
+			<tr class="row justify-content-center px-4">
+				<!-- プロフィール画像 -->
+				<td class="col-2 d-flex align-items-center justify-content-center">
+					<%= link_to user_path(user) do %>
+						<%= attachment_image_tag(user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image") %>
+					<% end %>
+				</td>
+				<!-- ユーザー名 -->
+				<td class="col-2 d-flex align-items-center">
+					<%= link_to user_path(user) do %>
+						<%= user.display_name %>
+					<% end %>
+				</td>
+				<!-- プロフィール説明 -->
+				<td class="col-3 d-flex align-items-center">
+					<span class="text-overflow"><%= safe_join(user.description.split("\n"),tag(:br)) %></span>
+				</td>
+				<!-- 動画投稿数 -->
+				<td class="col-2 d-flex align-items-center">
+					<span>動画投稿数：<%= user.magics.count %></span>
+				</td>
+				<!-- フォロー、フォロー解除 -->
+				<td class="col-2 d-flex align-items-center">
+					<% if user_signed_in? && user.id != current_user.id %>
+						<!--フォローしている場合-->
+						<% if current_user.following?(user) %>
+							<%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn-sm btn-danger" %>
+							<!--フォローしていない場合-->
+						<% else %>
+							<%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn-sm btn-success" %>
+						<% end %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <!-- ページャ -->
 <div class="row justify-content-center mt-4" >
-  <%= paginate users %>
+	<%= paginate users %>
 </div>

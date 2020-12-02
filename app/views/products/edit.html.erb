@@ -1,26 +1,26 @@
 <div class="box my-5">
 
-  <!-- マジック商品編集画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Edit Product</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ表示 -->
-      <%= render 'layouts/errors', obj: @product %>
-    </div>
-  </div>
+	<!-- マジック商品編集画面タイトル -->
+	<div class="row p-5">
+		<div class="col-12 justify-content-center">
+			<h1 class="title">Edit Product</h1>
+			<div class="title-line mt-4"></div>
+			<!--エラーメッセージ表示 -->
+			<%= render 'layouts/errors', obj: @product %>
+		</div>
+	</div>
 
-  <!-- 商品編集フォーム -->
-  <%= form_with model: @product, url: product_path , method: :patch, local: true do |f| %>
+	<!-- 商品編集フォーム -->
+	<%= form_with model: @product, url: product_path , method: :patch, local: true do |f| %>
 
-    <%= render 'products/form', product: @product, genres: @genres, f: f %>
+		<%= render 'products/form', product: @product, genres: @genres, f: f %>
 
-    <div class="row justify-content-center my-5">
-      <%= link_to "キャンセル", product_path(@product), class: "btn btn-secondary col-3 mb-5" %>
-      <%= f.submit "更新", class: "btn btn-secondary offset-1 col-3 mb-5" %>
-    </div>
+		<div class="row justify-content-center my-5">
+			<%= link_to "キャンセル", product_path(@product), class: "btn btn-secondary col-3 mb-5" %>
+			<%= f.submit "更新", class: "btn btn-secondary offset-1 col-3 mb-5" %>
+		</div>
 
-  <% end %>
+	<% end %>
 
 </div>
 

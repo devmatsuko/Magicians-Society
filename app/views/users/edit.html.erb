@@ -1,120 +1,120 @@
 <div class="box my-5">
 
-  <!-- ユーザー詳細画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Edit Profile</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ表示 -->
-      <%= render 'layouts/errors', obj: @user %>
-    </div>
-  </div>
+	<!-- ユーザー詳細画面タイトル -->
+	<div class="row p-5">
+		<div class="col-12 justify-content-center">
+			<h1 class="title">Edit Profile</h1>
+			<div class="title-line mt-4"></div>
+			<!--エラーメッセージ表示 -->
+			<%= render 'layouts/errors', obj: @user %>
+		</div>
+	</div>
 
-  <!-- プロフィール編集フォーム -->
-  <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
+	<!-- プロフィール編集フォーム -->
+	<%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
 
-    <!-- プロフィール情報 -->
-    <div class="row py-2">
-      <!-- レフトコンテンツ -->
-      <div class="col-6">
-        <!-- プロフィール画像 -->
-        <div class="row justify-content-center">
-          <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"img_prev profile-image") %>
-        </div>
-        <!-- プロフィール画像編集ボタン -->
-        <div class="row justify-content-center my-4">
-          <%= f.attachment_field :image, class:"offset-2 img_field" %>
-      	</div>
-      </div>
+		<!-- プロフィール情報 -->
+		<div class="row py-2">
+			<!-- レフトコンテンツ -->
+			<div class="col-6">
+				<!-- プロフィール画像 -->
+				<div class="row justify-content-center">
+					<%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"img_prev profile-image") %>
+				</div>
+				<!-- プロフィール画像編集ボタン -->
+				<div class="row justify-content-center my-4">
+					<%= f.attachment_field :image, class:"offset-2 img_field" %>
+				</div>
+			</div>
 
-      <!-- ライトコンテンツ -->
-      <div class="col-6 justify-content-center">
+			<!-- ライトコンテンツ -->
+			<div class="col-6 justify-content-center">
 
-        <!-- ユーザー名入力フォーム -->
-        <div class="row form-group d-flex align-items-center">
-          <%= f.label "ユーザー名", class: "col-3 control-label" %>
-          <div class="col-6">
-        	  <%= f.text_field :display_name, class: "form-control" %>
-          </div>
-        </div>
+				<!-- ユーザー名入力フォーム -->
+				<div class="row form-group d-flex align-items-center">
+					<%= f.label "ユーザー名", class: "col-3 control-label" %>
+					<div class="col-6">
+						<%= f.text_field :display_name, class: "form-control" %>
+					</div>
+				</div>
 
-        <!-- プロフィール説明入力フォーム -->
-        <div class="row form-group">
-          <%= f.label "自己紹介", class: "col-3 control-label" %>
-          <div class="col-6">
-        	  <%= f.text_area :description, rows: 5, class: "form-control" %>
-          </div>
-        </div>
-      </div>
-    </div>
+				<!-- プロフィール説明入力フォーム -->
+				<div class="row form-group">
+					<%= f.label "自己紹介", class: "col-3 control-label" %>
+					<div class="col-6">
+						<%= f.text_area :description, rows: 5, class: "form-control" %>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!-- ユーザー基本情報フォーム -->
-    <div class="row px-5 py-5">
-      <div class="col-4 offset-1 justify-content-center">
-        <h4 class="title">ユーザー基本情報</h4>
-        <div class="title-line mt-2"></div>
-      </div>
-    </div>
-    <div class="row px-5 justify-content-center">
-      <div class="col-10">
+		<!-- ユーザー基本情報フォーム -->
+		<div class="row px-5 py-5">
+			<div class="col-4 offset-1 justify-content-center">
+				<h4 class="title">ユーザー基本情報</h4>
+				<div class="title-line mt-2"></div>
+			</div>
+		</div>
+		<div class="row px-5 justify-content-center">
+			<div class="col-10">
 
-        <div class="row form-group d-flex align-items-center">
-          <label class="col-4 control-label">名前</label>
-          <div class="col-4">
-            （姓）<%= f.text_field :last_name, class: "form-control",autofocus: true, autocomplete: "last_name", placeholder: "姓" %>
-          </div>
-          <div class="col-4">
-            （名）<%= f.text_field :first_name, class: "form-control",autofocus: true, autocomplete: "first_name", placeholder: "名" %>
-          </div>
-        </div>
+				<div class="row form-group d-flex align-items-center">
+					<label class="col-4 control-label">名前</label>
+					<div class="col-4">
+						（姓）<%= f.text_field :last_name, class: "form-control",autofocus: true, autocomplete: "last_name", placeholder: "姓" %>
+					</div>
+					<div class="col-4">
+						（名）<%= f.text_field :first_name, class: "form-control",autofocus: true, autocomplete: "first_name", placeholder: "名" %>
+					</div>
+				</div>
 
-        <div class="row form-group d-flex align-items-center">
-          <label class="col-4 control-label">フリガナ</label>
-          <div class="col-4">
-            （セイ）<%= f.text_field :last_name_kana, class: "form-control",autofocus: true, autocomplete: "last_name_kana", placeholder: "セイ" %>
-          </div>
-          <div class="col-4">
-            （メイ）<%= f.text_field :first_name_kana, class: "form-control",autofocus: true, autocomplete: "first_name_kana", placeholder: "メイ" %>
-          </div>
-        </div>
+				<div class="row form-group d-flex align-items-center">
+					<label class="col-4 control-label">フリガナ</label>
+					<div class="col-4">
+						（セイ）<%= f.text_field :last_name_kana, class: "form-control",autofocus: true, autocomplete: "last_name_kana", placeholder: "セイ" %>
+					</div>
+					<div class="col-4">
+						（メイ）<%= f.text_field :first_name_kana, class: "form-control",autofocus: true, autocomplete: "first_name_kana", placeholder: "メイ" %>
+					</div>
+				</div>
 
-        <div class="row form-group d-flex align-items-center">
-          <label class="col-4 control-label"> メールアドレス</label>
-          <div class="col-4" >
-            <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
-          </div>
-        </div>
+				<div class="row form-group d-flex align-items-center">
+					<label class="col-4 control-label"> メールアドレス</label>
+					<div class="col-4" >
+						<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+					</div>
+				</div>
 
-        <div class="row form-group d-flex align-items-center">
-          <label class="col-4 control-label"> 郵便番号（ハイフンなし）</label>
-          <div class="col-4" >
-            <%= f.text_field :postcode, class: "form-control", autofocus: true, autocomplete: "postcode", placeholder: "郵便番号" %>
-          </div>
-        </div>
+				<div class="row form-group d-flex align-items-center">
+					<label class="col-4 control-label"> 郵便番号（ハイフンなし）</label>
+					<div class="col-4" >
+						<%= f.text_field :postcode, class: "form-control", autofocus: true, autocomplete: "postcode", placeholder: "郵便番号" %>
+					</div>
+				</div>
 
-        <div class="row form-group d-flex align-items-center">
-          <label class="col-4 control-label"> 住所</label>
-          <div class="col-8" >
-            <%= f.text_field :address, class: "form-control", autofocus: true, autocomplete: "address", placeholder: "住所" %>
-          </div>
-        </div>
+				<div class="row form-group d-flex align-items-center">
+					<label class="col-4 control-label"> 住所</label>
+					<div class="col-8" >
+						<%= f.text_field :address, class: "form-control", autofocus: true, autocomplete: "address", placeholder: "住所" %>
+					</div>
+				</div>
 
-        <div class="row form-group d-flex align-items-center">
-          <label class="col-4 control-label"> 電話番号（ハイフンなし）</label>
-          <div class="col-4" >
-            <%= f.text_field :phone_number, class: "form-control", autofocus: true, autocomplete: "phone_number", placeholder: "電話番号" %>
-          </div>
-        </div>
+				<div class="row form-group d-flex align-items-center">
+					<label class="col-4 control-label"> 電話番号（ハイフンなし）</label>
+					<div class="col-4" >
+						<%= f.text_field :phone_number, class: "form-control", autofocus: true, autocomplete: "phone_number", placeholder: "電話番号" %>
+					</div>
+				</div>
 
-        <div class="row justify-content-center my-5">
-          <%= link_to "キャンセル", user_path(current_user), class: "btn btn-secondary offset-1 col-3" %>
-          <%= f.submit "更新", class: "btn btn-secondary offset-1 col-3" %>
-        </div>
+				<div class="row justify-content-center my-5">
+					<%= link_to "キャンセル", user_path(current_user), class: "btn btn-secondary offset-1 col-3" %>
+					<%= f.submit "更新", class: "btn btn-secondary offset-1 col-3" %>
+				</div>
 
-        <div class="row justify-content-center my-5">
-          <%= link_to "退会する", withdrawal_users_path, class: "btn btn-danger offset-1 col-3" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+				<div class="row justify-content-center my-5">
+					<%= link_to "退会する", withdrawal_users_path, class: "btn btn-danger offset-1 col-3" %>
+				</div>
+			</div>
+		</div>
+	<% end %>
 </div>

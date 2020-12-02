@@ -1,37 +1,37 @@
 <div class="box my-5">
 
-  <!-- マジック投稿画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Magic Upload</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ-->
-      <%= render 'layouts/errors', obj: @magic %>
-    </div>
-  </div>
-
-  <!-- マジック投稿フォーム -->
-  <%= form_with model: @magic, url: magics_path, local: true do |f| %>
-  <div class="row py-2">
-
-    <!-- レフトコンテンツ -->
-    <div class="col-6">
-      <!-- 動画アップロードボタン -->
-      <div class="row offset-2">
-        <%= f.label "動画のアップロード" %>
-      </div>
-      <div class="row justify-content-center">
-        <%= f.file_field :video, :accept => 'video/*' %>
-      </div>
-  	</div>
-
-    <%= render 'magics/form', product: @magic, tag_list: @tag_list, f: f %>
+	<!-- マジック投稿画面タイトル -->
+	<div class="row p-5">
+		<div class="col-12 justify-content-center">
+			<h1 class="title">Magic Upload</h1>
+			<div class="title-line mt-4"></div>
+			<!--エラーメッセージ-->
+			<%= render 'layouts/errors', obj: @magic %>
+		</div>
 	</div>
 
-    <div class="row justify-content-center my-5">
-      <%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3 mb-5" %>
-    </div>
-  <% end %>
+	<!-- マジック投稿フォーム -->
+	<%= form_with model: @magic, url: magics_path, local: true do |f| %>
+	<div class="row py-2">
+
+		<!-- レフトコンテンツ -->
+		<div class="col-6">
+			<!-- 動画アップロードボタン -->
+			<div class="row offset-2">
+				<%= f.label "動画のアップロード" %>
+			</div>
+			<div class="row justify-content-center">
+				<%= f.file_field :video, :accept => 'video/*' %>
+			</div>
+		</div>
+
+		<%= render 'magics/form', product: @magic, tag_list: @tag_list, f: f %>
+	</div>
+
+		<div class="row justify-content-center my-5">
+			<%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3 mb-5" %>
+		</div>
+	<% end %>
 
 </div>
 

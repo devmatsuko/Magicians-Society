@@ -1,22 +1,22 @@
 
 <div class="box my-5">
 
-  <!-- 注文画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Order Product</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ-->
+	<!-- 注文画面タイトル -->
+	<div class="row p-5">
+		<div class="col-12 justify-content-center">
+			<h1 class="title">Order Product</h1>
+			<div class="title-line mt-4"></div>
+			<!--エラーメッセージ-->
 			<%= render 'layouts/errors', obj: @order %>
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <!-- 注文情報入力フォーム -->
-  <div class="row pb-5">
-  	<div class="col-10 offset-1">
-		  <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+	<!-- 注文情報入力フォーム -->
+	<div class="row pb-5">
+		<div class="col-10 offset-1">
+			<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
 
-		  	<!-- 注文情報のパラメータ -->
+				<!-- 注文情報のパラメータ -->
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.hidden_field :product_id, :value => @product.id %>
 				<%= f.hidden_field :postage, :value => Settings.postage %>
@@ -27,83 +27,83 @@
 					<%= f.hidden_field :total_price, :value => Settings.postage + @product.price %>
 				<% end %>
 
-		  	<!-- 商品情報 -->
-			  <div class="row py-2">
-			    <!-- レフトコンテンツ -->
-			    <div class="col-6 mb-5">
-			      <!-- 商品画像 -->
-			      <div class="row justify-content-center">
-			        <%= attachment_image_tag(@product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
-			      </div>
-			    </div>
+				<!-- 商品情報 -->
+				<div class="row py-2">
+					<!-- レフトコンテンツ -->
+					<div class="col-6 mb-5">
+						<!-- 商品画像 -->
+						<div class="row justify-content-center">
+							<%= attachment_image_tag(@product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
+						</div>
+					</div>
 
-			    <!-- ライトコンテンツ -->
-			    <div class="col-6 mb-5">
+					<!-- ライトコンテンツ -->
+					<div class="col-6 mb-5">
 						<!-- 商品情報 -->
 						<%= render 'products/show', product: @product %>
-			    </div>
-			  </div>
+					</div>
+				</div>
 
-		  	<!-- 注文情報情報フォーム -->
-		    <div class="row px-5 pb-5">
-		      <div class="col-4 offset-1 justify-content-center">
-		        <h4 class="title">注文詳細情報</h4>
-		        <div class="title-line mt-2"></div>
-		      </div>
-		    </div>
+				<!-- 注文情報情報フォーム -->
+				<div class="row px-5 pb-5">
+					<div class="col-4 offset-1 justify-content-center">
+						<h4 class="title">注文詳細情報</h4>
+						<div class="title-line mt-2"></div>
+					</div>
+				</div>
 
-			  <!--支払方法-->
-			  <div class="row form-group">
-			    <strong class="col-3 offset-3 control-label">支払方法</strong>
-			    <div class="col-3">
-			      <%= f.radio_button :pay_method, "クレジットカード", checked: true %>&nbsp;クレジットカード</br>
-			      <%= f.radio_button :pay_method, "銀行振込" %>&nbsp;銀行振込
-			    </div>
-			  </div>
+				<!--支払方法-->
+				<div class="row form-group">
+					<strong class="col-3 offset-3 control-label">支払方法</strong>
+					<div class="col-3">
+						<%= f.radio_button :pay_method, "クレジットカード", checked: true %>&nbsp;クレジットカード</br>
+						<%= f.radio_button :pay_method, "銀行振込" %>&nbsp;銀行振込
+					</div>
+				</div>
 
-			  <!--お届け先-->
-	      <div class="row form-group">
-	        <strong class="col-3 offset-3 control-label">お届け先</strong>
-        </div>
-        <div class="row form-group">
-	        <!-- プロフィール情報の住所を表示-->
-	        <div class="col-3 offset-3 pb-2">
-	        	<%= f.radio_button :shipping_address, "0", checked: true, id:"now-address", class:"mb-3 address-type" %>&nbsp;現在のご住所</br>
-	        </div>
-	        <div class="col-6 pb-2">
-            <%= current_user.postcode %></br>
-            <%= current_user.address %></br>
-            <%= current_user.full_name %>
-          </div>
-	        <div class="col-3 offset-3 pb-2">
-	        	<%= f.radio_button :shipping_address, "1", id:"new-address", class:"my-3 address-type" %>&nbsp;新しいご住所</br>
-        	</div>
-	        <div id="new-address-box", class="col-6 py-2">
-            <div class="row form-group d-flex align-items-center">
-		          <label class="col-4 control-label">郵便番号</label>
-		          <div class="col-8" >
-		            <%= f.text_field :postcode, class: "form-control", autofocus: true, autocomplete: "postcode", placeholder: "半角数字7ケタ" %>
-		          </div>
-		        </div>
-			      <div class="row form-group d-flex align-items-center">
-			        <p class="col-4 control-label">住所</p>
-			        <div class="col-8">
-			          <%= f.text_field :address, class: "form-control" %>
-			        </div>
-			      </div>
-			      <div class="row form-group d-flex align-items-center">
-			        <p class="col-4 control-label">宛名</p>
-			        <div class="col-8">
-			          <%= f.text_field :name, class: "form-control" %>
-			        </div>
-			      </div>
-	        </div>
-	      </div>
+				<!--お届け先-->
+				<div class="row form-group">
+					<strong class="col-3 offset-3 control-label">お届け先</strong>
+				</div>
+				<div class="row form-group">
+					<!-- プロフィール情報の住所を表示-->
+					<div class="col-3 offset-3 pb-2">
+						<%= f.radio_button :shipping_address, "0", checked: true, id:"now-address", class:"mb-3 address-type" %>&nbsp;現在のご住所</br>
+					</div>
+					<div class="col-6 pb-2">
+						<%= current_user.postcode %></br>
+						<%= current_user.address %></br>
+						<%= current_user.full_name %>
+					</div>
+					<div class="col-3 offset-3 pb-2">
+						<%= f.radio_button :shipping_address, "1", id:"new-address", class:"my-3 address-type" %>&nbsp;新しいご住所</br>
+					</div>
+					<div id="new-address-box", class="col-6 py-2">
+						<div class="row form-group d-flex align-items-center">
+							<label class="col-4 control-label">郵便番号</label>
+							<div class="col-8" >
+								<%= f.text_field :postcode, class: "form-control", autofocus: true, autocomplete: "postcode", placeholder: "半角数字7ケタ" %>
+							</div>
+						</div>
+						<div class="row form-group d-flex align-items-center">
+							<p class="col-4 control-label">住所</p>
+							<div class="col-8">
+								<%= f.text_field :address, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row form-group d-flex align-items-center">
+							<p class="col-4 control-label">宛名</p>
+							<div class="col-8">
+								<%= f.text_field :name, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<!-- 注文確定ボタン -->
 				<div class="row justify-content-center">
 					<%= f.submit '注文を確定する', class:"btn btn-lg btn-danger my-4 col-4 " %>
-			  </div>
+				</div>
 
 			<% end %>
 		</div>
