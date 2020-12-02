@@ -1,11 +1,11 @@
 <!--コメント入力フォーム-->
 <%= form_with(model:[product, product_comment], remote: true) do |f| %>
-	<div class="row justify-content-center">
-		<div class="col-8">
-			<%= f.text_area :comment, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
-		</div>
-		<div class="col-8 mt-2">
-			<%= f.submit "送信する", class: "btn btn-secondary float-right" %>
-		</div>
-	</div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <%= f.text_area :comment, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
+    </div>
+    <div class="col-8 mt-2">
+      <%= f.submit "送信する", class: "btn btn-secondary float-right" %>
+    </div>
+  </div>
 <% end %>

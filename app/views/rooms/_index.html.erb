@@ -1,32 +1,32 @@
 <table class="table">
-	<tbody class="tbody">
-		<% anotherEntries.each do |e| %>
-			<tr class="row justify-content-center px-4">
-				<!-- プロフィール画像 -->
-				<td class="col-2 d-flex align-items-center justify-content-center">
-					<%= link_to user_path(e.user) do %>
-						<%= attachment_image_tag(e.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image") %>
-					<% end %>
-				</td>
-				<!-- ユーザー名 -->
-				<td class="col-2 d-flex align-items-center">
-					<%= link_to user_path(e.user) do %>
-						<%= e.user.display_name %>
-					<% end %>
-				</td>
-				<!-- 最新のチャットメッセージ -->
-				<td class="col-3 d-flex align-items-center">
-					<% if (e.room.messages.last) %>
-						<span class="text-overflow"><%= (e.room.messages.last).content %></span>
-					<% else %>
-						<span>メッセージはありません。</span>
-					<% end %>
-				</td>
-				<!-- チャットを始める -->
-				<td class="col-2 d-flex align-items-center">
-					<%= link_to "チャットを始める", room_path(e.room), user_id: e.user.id, class: "btn btn-secondary my-3" %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
+  <tbody class="tbody">
+    <% anotherEntries.each do |e| %>
+      <tr class="row justify-content-center px-4">
+        <!-- プロフィール画像 -->
+        <td class="col-2 d-flex align-items-center justify-content-center">
+          <%= link_to user_path(e.user) do %>
+            <%= attachment_image_tag(e.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image") %>
+          <% end %>
+        </td>
+        <!-- ユーザー名 -->
+        <td class="col-2 d-flex align-items-center">
+          <%= link_to user_path(e.user) do %>
+            <%= e.user.display_name %>
+          <% end %>
+        </td>
+        <!-- 最新のチャットメッセージ -->
+        <td class="col-3 d-flex align-items-center">
+          <% if (e.room.messages.last) %>
+            <span class="text-overflow"><%= (e.room.messages.last).content %></span>
+          <% else %>
+            <span>メッセージはありません。</span>
+          <% end %>
+        </td>
+        <!-- チャットを始める -->
+        <td class="col-2 d-flex align-items-center">
+          <%= link_to "チャットを始める", room_path(e.room), user_id: e.user.id, class: "btn btn-secondary my-3" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

@@ -1,62 +1,62 @@
 <div class="box mt-5">
 
-	<!-- マジック商品タイトル -->
-	<div class="row p-5">
-		<div class="col-12 justify-content-center">
-			<h2 class="title"><%= @product.name %></h2>
-			<div class="title-line mt-4"></div>
-		</div>
-	</div>
+  <!-- マジック商品タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <h2 class="title"><%= @product.name %></h2>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
 
-	<!-- 商品情報 -->
-	<div class="row py-2">
-		<!-- レフトコンテンツ -->
-		<div class="col-6 mb-5">
-			<!-- 商品画像 -->
-			<div class="row justify-content-center">
-				<%= attachment_image_tag(@product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
-			</div>
-			<!-- いいねボタン -->
-			<div id="favorites_buttons_<%= @product.id %>", class="row justify-content-center pt-1">
-				<%= render partial: 'product_favorites/favorite_button', locals: { product: @product} %>
-			</div>
-		</div>
+  <!-- 商品情報 -->
+  <div class="row py-2">
+    <!-- レフトコンテンツ -->
+    <div class="col-6 mb-5">
+      <!-- 商品画像 -->
+      <div class="row justify-content-center">
+        <%= attachment_image_tag(@product, :image, fallback: "noimage.png", size:'300x200', class:"img-thumbnail product-image") %>
+      </div>
+      <!-- いいねボタン -->
+      <div id="favorites_buttons_<%= @product.id %>", class="row justify-content-center pt-1">
+        <%= render partial: 'product_favorites/favorite_button', locals: { product: @product} %>
+      </div>
+    </div>
 
-		<!-- ライトコンテンツ -->
-		<div class="col-6 mb-5">
-			<!-- 商品情報 -->
-			<%= render 'products/show', product: @product %>
+    <!-- ライトコンテンツ -->
+    <div class="col-6 mb-5">
+      <!-- 商品情報 -->
+      <%= render 'products/show', product: @product %>
 
-			<!-- 商品情報編集ボタン -->
-			<div class="row">
-				<% if user_signed_in? && @product.user.id == current_user.id %>
-					<%= link_to '商品情報を編集する', edit_product_path(@product), class: "btn btn-secondary my-3 offset-4" %>
-				<% end %>
-			</div>
-		</div>
-	</div>
+      <!-- 商品情報編集ボタン -->
+      <div class="row">
+        <% if user_signed_in? && @product.user.id == current_user.id %>
+          <%= link_to '商品情報を編集する', edit_product_path(@product), class: "btn btn-secondary my-3 offset-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-	<!-- 購入ボタン -->
-	<div class="row justify-content-center">
-		<!-- 他ユーザーによる出品商品の場合 -->
-		<% if user_signed_in? && @product.user.id != current_user.id %>
-			<!-- 販売ステータスが販売中の場合 -->
-			<% if @product.is_sale == true %>
-				<%= link_to "購入画面に進む" , new_order_path(product_id: @product.id), class:"btn btn-lg btn-danger col-4 mb-5" %>
-			<!-- 販売ステータスが売り切れの場合 -->
-			<% else %>
-				<%= link_to "売り切れました" , "#", class:"btn btn-lg btn-secondary col-4 mb-5 disabled" %>
-			<% end %>
-		<% end %>
-	</div>
+  <!-- 購入ボタン -->
+  <div class="row justify-content-center">
+    <!-- 他ユーザーによる出品商品の場合 -->
+    <% if user_signed_in? && @product.user.id != current_user.id %>
+      <!-- 販売ステータスが販売中の場合 -->
+      <% if @product.is_sale == true %>
+        <%= link_to "購入画面に進む" , new_order_path(product_id: @product.id), class:"btn btn-lg btn-danger col-4 mb-5" %>
+      <!-- 販売ステータスが売り切れの場合 -->
+      <% else %>
+        <%= link_to "売り切れました" , "#", class:"btn btn-lg btn-secondary col-4 mb-5 disabled" %>
+      <% end %>
+    <% end %>
+  </div>
 
 </div>
 
 <!-- コメント機能 -->
 <div class="box mb-5 py-3">
-	<div id="product-comment-<%= @product.id %>", class="mb-3">
-		<%= render partial: 'product_comments/comment_show', locals: { product: @product} %>
-	</div>
-		<%= render partial: 'product_comments/comment_form', locals: { product: @product, product_comment: @product_comment} %>
+  <div id="product-comment-<%= @product.id %>", class="mb-3">
+    <%= render partial: 'product_comments/comment_show', locals: { product: @product} %>
+  </div>
+    <%= render partial: 'product_comments/comment_form', locals: { product: @product, product_comment: @product_comment} %>
 </div>
 

@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Magicians Society</title>
-		<%= csrf_meta_tags %>
-		<%= csp_meta_tag %>
+  <head>
+    <title>Magicians Society</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<!--<meta name="viewport" content="width=device-width,initial-scale=1.0">-->
-		<!-- フォント -->
-		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
-		<!-- FontAwesome -->
-		<script src="https://kit.fontawesome.com/d3a6e5959c.js" crossorigin="anonymous"></script>
-	</head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1.0">-->
+    <!-- フォント -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/d3a6e5959c.js" crossorigin="anonymous"></script>
+  </head>
 
-	<body>
-		<div id="wrapper">
-			<%= render 'layouts/header' %>
+  <body>
+    <div id="wrapper">
+      <%= render 'layouts/header' %>
 
-			<div class="container">
-				<!--サクセスメッセージ-->
-				<% if flash[:notice] %>
-					<p class="alert alert-secondary mt-2"><%= flash[:notice] %></p>
-				<% end %>
-				<div class="my-4">
-					<%= yield %>
-				</div>
-			</div>
+      <div class="container">
+        <!--サクセスメッセージ-->
+        <% if flash[:notice] %>
+          <p class="alert alert-secondary mt-2"><%= flash[:notice] %></p>
+        <% end %>
+        <div class="my-4">
+          <%= yield %>
+        </div>
+      </div>
 
-			<%= render 'layouts/footer' %>
-		</div>
-	</body>
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
 </html>

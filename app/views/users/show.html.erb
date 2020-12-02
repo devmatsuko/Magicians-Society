@@ -1,144 +1,144 @@
 <div class="box my-5">
 
-	<!-- ユーザー詳細画面タイトル -->
-	<div class="row p-5">
-		<div class="col-12 justify-content-center">
-			<% if user_signed_in? && @user.id == current_user.id %>
-				<h1 class="title">MyPage</h1>
-			<% else %>
-				<h1 class="title">Profile</h1>
-			<% end %>
-			<div class="title-line mt-4"></div>
-		</div>
-	</div>
+  <!-- ユーザー詳細画面タイトル -->
+  <div class="row p-5">
+    <div class="col-12 justify-content-center">
+      <% if user_signed_in? && @user.id == current_user.id %>
+        <h1 class="title">MyPage</h1>
+      <% else %>
+        <h1 class="title">Profile</h1>
+      <% end %>
+      <div class="title-line mt-4"></div>
+    </div>
+  </div>
 
-	<!-- プロフィール情報 -->
-	<div class="row py-2">
-		<!-- レフトコンテンツ -->
-		<div class="col-6 mb-5">
-			<!-- プロフィール画像 -->
-			<div class="row justify-content-center">
-				<%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"profile-image") %>
-			</div>
-			<div class="row justify-content-center">
-			<% if user_signed_in? && @user.id != current_user.id %>
-				<!--フォローしている場合-->
-				<% if current_user.following?(@user) %>
-					<%= link_to "　フォロー解除　", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger my-3" %>
-					<!--フォローしていない場合-->
-				<% else %>
-					<%= link_to "　フォローする　", user_relationships_path(@user.id), method: :post, class: "btn btn-success my-3" %>
-				<% end %>
-			<% end %>
-			</div>
-			<!-- プロフィール編集ボタン -->
-			<div class="row justify-content-center">
-				<% if user_signed_in? && @user.id == current_user.id %>
-					<%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-secondary my-3" %>
-				<% end %>
-			</div>
-			<!-- DMボタン -->
-			<div class="row justify-content-center">
-				<% if user_signed_in? %>
-					<% if @user.id != current_user.id %>
-						<% if @isRoom %>
-							<%= link_to "チャットを始める", room_path(@roomId), user_id: @user.id, class: "btn btn-secondary mb-3" %>
-						<% else %>
-							<%= form_with model: @room, local: true do |f| %>
-								<%= fields_for @entry do |e| %>
-									<%= e.hidden_field :user_id, :value=> @user.id %>
-								<% end %>
-								<%= f.submit "チャットを始める", class: "btn btn-secondary mb-3" %>
-							<% end %>
-						<% end %>
-					<% else %>
-						<%= link_to "チャットルームへ", rooms_path, class: "btn btn-secondary mb-3" %>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
+  <!-- プロフィール情報 -->
+  <div class="row py-2">
+    <!-- レフトコンテンツ -->
+    <div class="col-6 mb-5">
+      <!-- プロフィール画像 -->
+      <div class="row justify-content-center">
+        <%= attachment_image_tag(@user, :image, :fill, 150, 150, fallback: "noimage.png", size:'150x150', class:"profile-image") %>
+      </div>
+      <div class="row justify-content-center">
+      <% if user_signed_in? && @user.id != current_user.id %>
+        <!--フォローしている場合-->
+        <% if current_user.following?(@user) %>
+          <%= link_to "　フォロー解除　", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger my-3" %>
+          <!--フォローしていない場合-->
+        <% else %>
+          <%= link_to "　フォローする　", user_relationships_path(@user.id), method: :post, class: "btn btn-success my-3" %>
+        <% end %>
+      <% end %>
+      </div>
+      <!-- プロフィール編集ボタン -->
+      <div class="row justify-content-center">
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-secondary my-3" %>
+        <% end %>
+      </div>
+      <!-- DMボタン -->
+      <div class="row justify-content-center">
+        <% if user_signed_in? %>
+          <% if @user.id != current_user.id %>
+            <% if @isRoom %>
+              <%= link_to "チャットを始める", room_path(@roomId), user_id: @user.id, class: "btn btn-secondary mb-3" %>
+            <% else %>
+              <%= form_with model: @room, local: true do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value=> @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める", class: "btn btn-secondary mb-3" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to "チャットルームへ", rooms_path, class: "btn btn-secondary mb-3" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-		<!-- ライトコンテンツ -->
-		<div class="col-4 justify-content-center">
-			<h3 class="mt-3"><%= @user.display_name %></h3>
-			<p class="mt-4"><%= safe_join(@user.description.split("\n"),tag(:br)) %></p>
-			<!-- 注文履歴へのリンクボタン -->
-			<div class="row">
-				<% if user_signed_in? && @user.id == current_user.id %>
-					<%= link_to '注文履歴', orders_path, class: "btn btn-secondary my-3 col-5" %>
-				<% end %>
-				<% if user_signed_in? && @user.id == current_user.id %>
-					<%= link_to '販売履歴', sales_path, class: "btn btn-secondary my-3 col-5 offset-1" %>
-				<% end %>
-			</div>
-		</div>
-	</div>
+    <!-- ライトコンテンツ -->
+    <div class="col-4 justify-content-center">
+      <h3 class="mt-3"><%= @user.display_name %></h3>
+      <p class="mt-4"><%= safe_join(@user.description.split("\n"),tag(:br)) %></p>
+      <!-- 注文履歴へのリンクボタン -->
+      <div class="row">
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to '注文履歴', orders_path, class: "btn btn-secondary my-3 col-5" %>
+        <% end %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to '販売履歴', sales_path, class: "btn btn-secondary my-3 col-5 offset-1" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-	<!-- タブメニュー -->
-	<div class="row justify-content-center">
-		<div class="col-10">
-			<ul id="tab-menu">
-				<li class="col-3">
-					<%= link_to "#tab1", class:"active" do %>
-						<span class="font-weight-bold">Magics </span><span class="badge badge-pill badge-secondary"><%= @user.magics.count %></span>
-					<% end %>
-				</li>
-				<li class="col-3">
-					<%= link_to "#tab2",class:"" do %>
-						<span class="font-weight-bold">Products </span><span class="badge badge-pill badge-secondary"><%= @user.products.count %></span>
-					<% end %>
-				</li>
-				<li class="col-3">
-					<%= link_to "#tab3",class:"" do %>
-						<span class="font-weight-bold">Follow </span><span class="badge badge-pill badge-secondary"><%= @user.following.count %></span>
-					<% end %>
-				</li>
-				<li class="col-3">
-					<%= link_to "#tab4",class:"" do %>
-						<span class="font-weight-bold">Follower </span><span class="badge badge-pill badge-secondary"><%= @user.followers.count %></span>
-					<% end %>
-				</li>
-			</ul>
-		</div>
-	</div>
+  <!-- タブメニュー -->
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <ul id="tab-menu">
+        <li class="col-3">
+          <%= link_to "#tab1", class:"active" do %>
+            <span class="font-weight-bold">Magics </span><span class="badge badge-pill badge-secondary"><%= @user.magics.count %></span>
+          <% end %>
+        </li>
+        <li class="col-3">
+          <%= link_to "#tab2",class:"" do %>
+            <span class="font-weight-bold">Products </span><span class="badge badge-pill badge-secondary"><%= @user.products.count %></span>
+          <% end %>
+        </li>
+        <li class="col-3">
+          <%= link_to "#tab3",class:"" do %>
+            <span class="font-weight-bold">Follow </span><span class="badge badge-pill badge-secondary"><%= @user.following.count %></span>
+          <% end %>
+        </li>
+        <li class="col-3">
+          <%= link_to "#tab4",class:"" do %>
+            <span class="font-weight-bold">Follower </span><span class="badge badge-pill badge-secondary"><%= @user.followers.count %></span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 
-	<!-- タブメニューコンテンツ -->
-	<div class="row justify-content-center pb-5">
-		<div id="tab-contents", class="col-12">
-			<div id="tab1", class="tab">
-				<% if @user.magics.count == 0 %>
-					<h3 class="text-center"><%= @user.display_name %>さんの投稿はありません。</h3>
-				<% else %>
-					<%= render 'magics/index', magics: @user.magics.page(params[:page]).per(8) %>
-				<% end %>
-			</div>
+  <!-- タブメニューコンテンツ -->
+  <div class="row justify-content-center pb-5">
+    <div id="tab-contents", class="col-12">
+      <div id="tab1", class="tab">
+        <% if @user.magics.count == 0 %>
+          <h3 class="text-center"><%= @user.display_name %>さんの投稿はありません。</h3>
+        <% else %>
+          <%= render 'magics/index', magics: @user.magics.page(params[:page]).per(8) %>
+        <% end %>
+      </div>
 
-			<div id="tab2", class="tab">
-				<% if @user.products.count == 0 %>
-					<h3 class="text-center"><%= @user.display_name %>さんの出品商品はありません。</h3>
-				<% else %>
-					<div class="col-8 offset-2">
-						<%= render 'products/index', products: @user.products.page(params[:page]).per(12) %>
-					</div>
-				<% end %>
-			</div>
+      <div id="tab2", class="tab">
+        <% if @user.products.count == 0 %>
+          <h3 class="text-center"><%= @user.display_name %>さんの出品商品はありません。</h3>
+        <% else %>
+          <div class="col-8 offset-2">
+            <%= render 'products/index', products: @user.products.page(params[:page]).per(12) %>
+          </div>
+        <% end %>
+      </div>
 
-			<div id="tab3", class="tab">
-				<% if @user.following.count == 0 %>
-					<h3 class="text-center"><%= @user.display_name %>さんのフォローユーザーはいません。</h3>
-				<% else %>
-					<%= render 'users/index', users: @user.following.where(is_deleted: false).page(params[:page]).per(8) %>
-				<% end %>
-			</div>
+      <div id="tab3", class="tab">
+        <% if @user.following.count == 0 %>
+          <h3 class="text-center"><%= @user.display_name %>さんのフォローユーザーはいません。</h3>
+        <% else %>
+          <%= render 'users/index', users: @user.following.where(is_deleted: false).page(params[:page]).per(8) %>
+        <% end %>
+      </div>
 
-			<div id="tab4", class="tab">
-				<% if @user.followers.count == 0 %>
-					<h3 class="text-center"><%= @user.display_name %>さんのフォロワーはいません。</h3>
-				<% else %>
-					<%= render 'users/index', users: @user.followers.where(is_deleted: false).page(params[:page]).per(8) %>
-				<% end %>
-			</div>
-		</div>
-	</div>
+      <div id="tab4", class="tab">
+        <% if @user.followers.count == 0 %>
+          <h3 class="text-center"><%= @user.display_name %>さんのフォロワーはいません。</h3>
+        <% else %>
+          <%= render 'users/index', users: @user.followers.where(is_deleted: false).page(params[:page]).per(8) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

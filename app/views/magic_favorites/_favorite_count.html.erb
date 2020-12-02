@@ -1,8 +1,8 @@
 <!-- カレントユーザがいいねをしているか判定する -->
 <% if user_signed_in? && magic.favorited_by?(current_user) %>
-	<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-	<span><%= magic.magic_favorites.count %></span>
+  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+  <span><%= magic.magic_favorites.count %></span>
 <% else %>
-	<i class="far fa-heart" aria-hidden="true"></i>
-	<span><%= magic.magic_favorites.count %></span>
+  <i class="far fa-heart" aria-hidden="true"></i>
+  <span><%= magic.magic_favorites.count %></span>
 <% end %>
