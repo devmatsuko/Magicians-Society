@@ -13,14 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-    @user[:description] = "よろしくお願いします！"
-    unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
-      render "new"
-    else
+    @user[:description] = 'よろしくお願いします！'
+    if @user.valid?
       @user.save
       sign_in(:user, @user)
       redirect_to root_path
+    else
+      flash.now[:alert] = @user.errors.full_messages
+      render 'new'
     end
   end
 
@@ -75,8 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:display_name, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number])
   end
 
-  def after_sign_up_path_for(resource)
-    "/"
+  def after_sign_up_path_for(_resource)
+    '/'
   end
-
 end

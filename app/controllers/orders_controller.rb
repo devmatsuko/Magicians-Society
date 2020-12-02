@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-
-	# ログイン中のユーザのみアクセス許可
+  # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!
 
   def new
@@ -27,7 +26,7 @@ class OrdersController < ApplicationController
     # 注文しているユーザーを取得
     @user = current_user
     # shipping_addressが0の場合はユーザー情報から配送先情報を取得(1の場合はフォームの情報を取得)
-    if params[:order][:shipping_address] == "0"
+    if params[:order][:shipping_address] == '0'
       @order.postcode = @user.postcode
       @order.address = @user.address
       @order.name = @user.full_name
@@ -42,10 +41,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def thanks
-  end
+  def thanks; end
 
   private
+
   # ストロングパラメータ
   def order_params
     params.require(:order).permit(
@@ -60,5 +59,4 @@ class OrdersController < ApplicationController
       :name
     )
   end
-
 end

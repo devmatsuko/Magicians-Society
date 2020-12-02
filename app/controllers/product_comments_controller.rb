@@ -1,18 +1,17 @@
 class ProductCommentsController < ApplicationController
-  
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!
 
-	def create
+  def create
     @product = Product.find(params[:product_id])
-		@product_comment = ProductComment.new(product_comment_params)
-		@product_comment.product_id = @product.id
-		@product_comment.user_id = current_user.id
+    @product_comment = ProductComment.new(product_comment_params)
+    @product_comment.product_id = @product.id
+    @product_comment.user_id = current_user.id
     if @product_comment.save
     else
       render 'products/show'
     end
-	end
+  end
 
   def destroy
     @product = Product.find(params[:product_id])
@@ -20,8 +19,8 @@ class ProductCommentsController < ApplicationController
   end
 
   private
+
   def product_comment_params
     params.require(:product_comment).permit(:comment)
   end
-
 end

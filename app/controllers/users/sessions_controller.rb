@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   # ゲストログイン機能
   def new_guest
     user = User.guest
