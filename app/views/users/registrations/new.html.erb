@@ -3,14 +3,7 @@
     <div class="align-middle col-10 box my-5">
 
       <!-- ユーザー登録見出し -->
-      <div class="row p-5">
-        <div class="col-12 justify-content-center">
-          <h1 class="title">Sign Up</h1>
-          <div class="title-line mt-4"></div>
-          <!--エラーメッセージ表示 -->
-          <%= render 'layouts/errors', obj: @user %>
-        </div>
-      </div>
+      <%= render 'layouts/title', title: "Sign Up", obj: @user %>
 
       <!-- ユーザー登録フォーム -->
       <div class="row px-5 justify-content-center">

@@ -1,14 +1,7 @@
 <div class="box my-5">
 
   <!-- マジック商品編集画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Edit Product</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ表示 -->
-      <%= render 'layouts/errors', obj: @product %>
-    </div>
-  </div>
+  <%= render 'layouts/title', title: "Edit Product", obj: @product %>
 
   <!-- 商品編集フォーム -->
   <%= form_with model: @product, url: product_path , method: :patch, local: true do |f| %>

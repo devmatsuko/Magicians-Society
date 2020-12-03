@@ -1,13 +1,8 @@
 <%= form_with model: @order, url: sale_path, method: :patch, local: true do |f| %>
   <div class="box my-5">
 
-    <!-- 注文画面タイトル -->
-    <div class="row p-5">
-      <div class="col-12 justify-content-center">
-        <h1 class="title">Sale Detail</h1>
-        <div class="title-line mt-4"></div>
-      </div>
-    </div>
+    <!-- 販売詳細画面タイトル -->
+    <%= render 'layouts/title', title: "Sale Detail", obj: nil %>
 
     <!-- 注文情報 -->
     <div class="row">
