@@ -1,16 +1,11 @@
 <div class="box my-5">
 
   <!-- ユーザー詳細画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <% if user_signed_in? && @user.id == current_user.id %>
-        <h1 class="title">MyPage</h1>
-      <% else %>
-        <h1 class="title">Profile</h1>
-      <% end %>
-      <div class="title-line mt-4"></div>
-    </div>
-  </div>
+  <% if user_signed_in? && @user.id == current_user.id %>
+    <%= render 'layouts/title', title: "MyPage", obj: nil %>
+  <% else %>
+    <%= render 'layouts/title', title: "Profile", obj: nil %>
+  <% end %>
 
   <!-- プロフィール情報 -->
   <div class="row py-2">

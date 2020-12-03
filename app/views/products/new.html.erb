@@ -1,14 +1,7 @@
 <div class="box my-5">
 
   <!-- マジック商品出品画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Sell Product</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ表示 -->
-      <%= render 'layouts/errors', obj: @product %>
-    </div>
-  </div>
+  <%= render 'layouts/title', title: "Sell Product", obj: @product %>
 
   <!-- 商品出品フォーム -->
   <%= form_with model: @product, url: products_path , method: :post, local: true do |f| %>
@@ -18,7 +11,7 @@
     <div class="row justify-content-center my-5">
       <%= f.submit "出品する", class: "btn btn-lg btn-secondary col-3 mb-5" %>
     </div>
-    
+
   <% end %>
 
 </div>

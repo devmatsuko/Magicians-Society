@@ -1,14 +1,7 @@
 <div class="box my-5">
 
   <!-- ユーザー詳細画面タイトル -->
-  <div class="row p-5">
-    <div class="col-12 justify-content-center">
-      <h1 class="title">Edit Profile</h1>
-      <div class="title-line mt-4"></div>
-      <!--エラーメッセージ表示 -->
-      <%= render 'layouts/errors', obj: @user %>
-    </div>
-  </div>
+  <%= render 'layouts/title', title: "Edit Profile", obj: @user %>
 
   <!-- プロフィール編集フォーム -->
   <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
