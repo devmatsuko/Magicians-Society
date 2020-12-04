@@ -37,13 +37,21 @@ class ProductsController < ApplicationController
     # 新規商品情報の取得
     @product = Product.new(product_params)
     @product.user_id = current_user.id
-    # 新規商品情報の保存
-    if @product.save
-      flash[:notice] = '商品を登録しました。'
-      redirect_to product_path(@product)
-    else
-      # エラーが発生した場合
+    # セーフサーチの結果
+    safe_results = Vision.get_image_data(@product.image)
+    # 不適切画像の場合はアラートを返す。
+    if safe_results.value?("LIKELY") || safe_results.value?("VERY_LIKELY")
+      flash[:alert] = '不適切画像をアップロードすることはできません'
       render :new
+    else
+      # 新規商品情報の保存
+      if @product.save
+        flash[:notice] = '商品を登録しました。'
+        redirect_to product_path(@product)
+      else
+        # エラーが発生した場合
+        render :new
+      end
     end
   end
 
