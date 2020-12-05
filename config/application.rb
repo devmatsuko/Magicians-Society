@@ -20,6 +20,9 @@ module Portfolio
     config.i18n.default_locale = :ja
     # ロケールファイルを全て読み込む
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+    
+    # libフォルダの読み込み
+    config.paths.add 'lib', eager_load: true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
