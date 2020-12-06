@@ -13,7 +13,7 @@
               <p><%= safe_join(magic_comment.comment.split("\n"),tag(:br)) %></p>
               <span><%= l magic_comment.created_at %></span>
               <% if user_signed_in? && magic_comment.user_id == current_user.id %>
-                <%= link_to magic_magic_comment_path(magic,magic_comment.id), method: :delete, class: "btn-sm btn-secondary float-right", remote: true do %>
+                <%= link_to magic_magic_comment_path(magic,magic_comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn-sm btn-secondary float-right", remote: true do %>
                   <i class="far fa-trash-alt" aria-hidden="true"></i>
                 <% end %>
               <% end %>
