@@ -6,7 +6,7 @@
   <!-- 退会ボタン、キャンセルボタンの設置 -->
   <div class="row justify-content-center my-5">
     <%= link_to "キャンセル", user_path(current_user.id), class: "btn btn-secondary col-2" %>
-    <%= link_to "退会する", withdrawal_user_path(current_user.id), method: :patch, class: "btn btn-danger offset-1 col-2" %>
+    <%= link_to "退会する", withdrawal_user_path(current_user.id), data: {confirm: "本当に退会してもよろしいですか？"}, method: :patch, class: "btn btn-danger offset-1 col-2" %>
   </div>
 
 </div>
