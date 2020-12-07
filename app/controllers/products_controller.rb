@@ -108,9 +108,8 @@ class ProductsController < ApplicationController
     # セーフチェックフラグの初期値(不適切でない場合にtrueに変更する。)
     @safe_flag = false
     # 画像の更新があった場合
-    if params[:product][:image] != "{}"
-      # 更新画像のtempfileをimageに格納
-      image = File.open(params[:product][:image].tempfile)
+    if product_params[:image] != "{}" && product_params[:image].class == ActionDispatch::Http::UploadedFile
+      image = File.open(product_params[:image].tempfile)
       # セーフサーチの実施・結果
       safe_results = Vision.get_image_data(image)
       # 画像が不適切だった場合
