@@ -1,9 +1,9 @@
-<div class="magic-area">
+<div class="magic-area justify-content-center">
   <%= link_to magic_path(magic.id) do %>
     <!-- 動画サムネイル -->
-    <%= image_tag(magic.video_url(:screenshot).to_s,:size => '150x90', id: "video", class: "magic-image  mb-2", :alt => "screenshot") %><br>
+    <%= image_tag(magic.video_url(:screenshot).to_s,:size => '150x90', id: "video", class: "magic-image mb-2", :alt => "screenshot") %><br>
     <!-- 投稿タイトル -->
-    <%= magic.title %><br>
+    <span class="magic-title"><%= magic.title %></span><br>
   <% end %>
 
   <!-- ユーザー名 -->
