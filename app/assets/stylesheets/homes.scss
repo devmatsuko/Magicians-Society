@@ -132,12 +132,6 @@
   text-align: center;
 }
 
-
-.about-area {
-  width: 400px; //画像サイズと同じにする
-  height: 100%;
-}
-
 .about-text-area {
   height: 80%;
 }
@@ -146,16 +140,32 @@
   font-family: 'Noto Serif JP', serif !important;
 }
 
-.about-image-area {
-  width: 410px;
-  height: 290px;
-}
-
-.about-image {
-  object-fit: cover;
-  object-position: center;
+.about-image1 {
   width: 400px !important;
   height: 280px !important;
+  background-image: image-url("About1.jpg");
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.about-image2 {
+  width: 400px !important;
+  height: 280px !important;
+  background-image: image-url("Card1.jpg");
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.about-image3 {
+  width: 400px !important;
+  height: 280px !important;
+  background-image: image-url("Ball1.jpg");
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.about-text {
+  display: inline-block;
 }
 
 /* ここまでAbout画面 */
@@ -195,35 +205,15 @@
 
   /* ここまでTOP画面 */
   /* ここからAbout画面 */
-  .about-title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    text-align: center;
+  .about-text br {
+    display: none;
+  }
+
+  .about-image1,.about-image2,.about-image3 {
+    display: none;
   }
 
   .about-area {
-    width: 400px; //画像サイズと同じにする
-    height: 100%;
+    margin: 0 5%;
   }
-
-  .about-text-area {
-    height: 80%;
-  }
-
-  .about-sub-title {
-    font-family: 'Noto Serif JP', serif !important;
-  }
-
-  .about-image-area {
-    width: 410px;
-    height: 290px;
-  }
-
-  .about-image {
-    object-fit: cover;
-    object-position: center;
-    width: 400px !important;
-    height: 280px !important;
-  }
-
 }

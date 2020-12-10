@@ -324,6 +324,11 @@ footer {
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
 
+  [class*="col-"] {
+    width: 100%;
+    max-width: 100%;
+  }
+
   html {
     font-size: 62.5%;
   }
