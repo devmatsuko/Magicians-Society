@@ -28,9 +28,6 @@
         <% if flash[:notice] %>
           <p class="alert alert-secondary mt-2"><%= flash[:notice] %></p>
         <% end %>
-        <% if flash[:alert] %>
-          <p class="alert alert-danger mt-2"><%= flash[:alert] %></p>
-        <% end %>
         <div class="my-4">
           <%= yield %>
         </div>
