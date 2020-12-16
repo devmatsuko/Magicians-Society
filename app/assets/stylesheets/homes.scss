@@ -104,9 +104,16 @@
 }
 
 .top-index-area .product-area {
+  position: relative;
   width: 20%;
   margin-right: 6%;
   margin-bottom: 10px;
+}
+
+.top-index-area .product-area:before {
+  content:"";
+  display: block;
+  padding-top: 60%; /* 高さを幅の60%に固定 */
 }
 
 .top-index-area .product-area:nth-child(4n) {
@@ -114,9 +121,16 @@
 }
 
 .top-index-area .magic-area {
+  position: relative;
   width: 20%;
   margin-right: 6%;
   margin-bottom: 10px;
+}
+
+.top-index-area .magic-area:before {
+  content:"";
+  display: block;
+  padding-top: 60%; /* 高さを幅の60%に固定 */
 }
 
 .top-index-area .magic-area:nth-child(4n) {
