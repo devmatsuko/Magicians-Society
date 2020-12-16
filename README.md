@@ -1,6 +1,9 @@
 # Magicians Society
 ![DEMO](https://user-images.githubusercontent.com/66913121/100497597-d0593380-319f-11eb-922e-26ca9cabcf14.png)
 
+## サイトURL
+https://magicians-society.com/
+
 ## サイト概要
 マジシャンが自身のマジックの実演、練習風景、レクチャーの動画を投稿し合うSNSです。
 また、マジシャンが作成したトリック、ギミック、書籍を販売・購入することができます。
