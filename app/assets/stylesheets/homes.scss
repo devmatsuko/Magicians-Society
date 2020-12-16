@@ -98,13 +98,14 @@
 // 本日のピックアップ
 .top-index-area {
   width: 100%;
+  margin-left: 1%;
   display: flex; /* Flexboxの利用 */
   flex-wrap: wrap; /* Flexboxの利用時に横幅を超えた要素を折り返す */
 }
 
 .top-index-area .product-area {
   width: 20%;
-  margin-right: 5%;
+  margin-right: 6%;
   margin-bottom: 10px;
 }
 
@@ -114,7 +115,7 @@
 
 .top-index-area .magic-area {
   width: 20%;
-  margin-right: 5%;
+  margin-right: 6%;
   margin-bottom: 10px;
 }
 
@@ -131,12 +132,6 @@
   text-align: center;
 }
 
-
-.about-area {
-  width: 400px; //画像サイズと同じにする
-  height: 100%;
-}
-
 .about-text-area {
   height: 80%;
 }
@@ -145,16 +140,80 @@
   font-family: 'Noto Serif JP', serif !important;
 }
 
-.about-image-area {
-  width: 410px;
-  height: 290px;
-}
-
-.about-image {
-  object-fit: cover;
-  object-position: center;
+.about-image1 {
   width: 400px !important;
   height: 280px !important;
+  background-image: image-url("About1.jpg");
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.about-image2 {
+  width: 400px !important;
+  height: 280px !important;
+  background-image: image-url("Card1.jpg");
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.about-image3 {
+  width: 400px !important;
+  height: 280px !important;
+  background-image: image-url("Ball1.jpg");
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.about-text {
+  display: inline-block;
 }
 
 /* ここまでAbout画面 */
+
+
+/* レスポンシブ対応 */
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 425px) {
+  /* ここからTOP画面 */
+  .main-visual {
+    height: 150px;
+  }
+
+  .main-title {
+    font-size: 1.2rem !important;
+  }
+
+  .main-link {
+    font-family: didot, serif !important;
+    display: none !important;
+  }
+
+  // 本日のピックアップ
+  .top-index-area {
+    width: 100%;
+    display: block; /* Flexの解除 */
+  }
+
+  .top-index-area .product-area {
+    width: 100%;
+  }
+
+  .top-index-area .magic-area {
+    width: 100%;
+  }
+
+
+  /* ここまでTOP画面 */
+  /* ここからAbout画面 */
+  .about-text br {
+    display: none;
+  }
+
+  .about-image1,.about-image2,.about-image3 {
+    display: none;
+  }
+
+  .about-area {
+    margin: 0 5%;
+  }
+}

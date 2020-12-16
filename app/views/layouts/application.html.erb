@@ -15,6 +15,8 @@
     <script src="https://kit.fontawesome.com/d3a6e5959c.js" crossorigin="anonymous"></script>
     <!-- Favicon -->
     <%= favicon_link_tag('favicon.ico') %>
+    <!-- レスポンシブ対応 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
   </head>
 
   <body>
@@ -25,9 +27,6 @@
         <!--サクセスメッセージ-->
         <% if flash[:notice] %>
           <p class="alert alert-secondary mt-2"><%= flash[:notice] %></p>
-        <% end %>
-        <% if flash[:alert] %>
-          <p class="alert alert-danger mt-2"><%= flash[:alert] %></p>
         <% end %>
         <div class="my-4">
           <%= yield %>
