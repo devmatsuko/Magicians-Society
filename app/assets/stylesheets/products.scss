@@ -20,6 +20,11 @@
 
 // 商品画像の縦横比を維持しつつ、中央表示する
 .product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   object-fit: cover;
   object-position: center;
 }
@@ -29,9 +34,7 @@
 @media screen and (max-width: 425px) {
   .product-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: 75%;
   }
 
   .product-title {
