@@ -1,7 +1,17 @@
 // Place all the styles related to the Magics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-// 商品画像の縦横比を維持しつつ、中央表示する
+
+.magic-image-area {
+  position: relative;
+}
+
+.magic-image-area:before {
+  content:"";
+  display: block;
+  padding-top: 56%; /* 高さを幅の56%に固定 */
+}
+
 .magic-image {
   position: absolute;
   top: 0;
@@ -12,15 +22,45 @@
   object-position: center;
 }
 
+.magic-title {
+  font-weight: bold;
+}
+
+.magic-body {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.magic-responsive-btn{
+  display: none;
+}
+
+
 /* レスポンシブ対応 */
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
+
+  .magic-image-area {
+    width: 100%;
+  }
+
   .magic-image {
     width: 100%;
-    height: 75%;
+    height: 100%;
   }
 
   .magic-title {
     font-size: 1.5rem;
+  }
+
+  .magic-btn {
+    display: none !important;
+  }
+
+  .magic-responsive-btn{
+    display: block;
+    position: fixed;
+    right: 25px;
+    bottom: 20px;
   }
 }
