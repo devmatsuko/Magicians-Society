@@ -127,12 +127,6 @@
   margin-bottom: 10px;
 }
 
-.top-index-area .magic-area:before {
-  content:"";
-  display: block;
-  padding-top: 60%; /* 高さを幅の60%に固定 */
-}
-
 .top-index-area .magic-area:nth-child(4n) {
   margin-right: 0px; /* 3つ目の商品のみ右側余白を0pxに */
 }
@@ -180,6 +174,7 @@
 
 .about-text {
   display: inline-block;
+  font-size: 1.1vw !important;
 }
 
 /* ここまでAbout画面 */
@@ -202,7 +197,7 @@
     display: none !important;
   }
 
-  // 本日のピックアップ
+  // 本日のピッ���アップ
   .top-index-area {
     width: 100%;
     display: block; /* Flexの解除 */

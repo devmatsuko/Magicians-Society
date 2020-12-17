@@ -37,3 +37,14 @@
   background: #fff;
 }
 /* ここまでタブメニュー関係 */
+
+/* レスポンシブ対応 */
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 425px) {
+  // プロフィール画像
+  .profile-image {
+    width: 50%;
+    height: 50%;
+  }
+
+}
