@@ -6,28 +6,34 @@
   <!-- 投稿情報 -->
   <div class="row py-2">
     <!-- レフトコンテンツ -->
-    <div class="col-6 mb-5">
+    <div class="offset-sm-1 col-sm-5 mb-5">
       <!-- 動画 -->
-      <div class="row justify-content-center">
-        <%= link_to @magic.video_url.to_s do %>
-          <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image", :alt => "screenshot") %>
-        <% end %>
+      <div class="row">
+        <div class="col-10 offset-1">
+          <div class="magic-image-area">
+            <%= link_to @magic.video_url.to_s do %>
+              <%= image_tag(@magic.video_url(:screenshot) ,:size => '256x144', id: "video", class: "magic-image mx-auto", :alt => "screenshot") %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <!-- いいねボタン -->
-      <div id="favorites_buttons_<%= @magic.id %>", class="row justify-content-center pt-1">
+      <div id="favorites_buttons_<%= @magic.id %>", class="row pt-1 justify-content-center">
         <%= render partial: 'magic_favorites/favorite_button', locals: { magic: @magic} %>
       </div>
     </div>
 
     <!-- ライトコンテンツ -->
-    <div class="col-4 justify-content-center">
-      <!-- 投稿情報 -->
-      <%= render 'magics/show', magic: @magic, tag_list: @tag_list %>
-      <!-- 投稿情報編集ボタン -->
+    <div class="col-sm-5 justify-content-center">
       <div class="row">
-        <% if user_signed_in? && @magic.user.id == current_user.id %>
-          <%= link_to '投稿情報を編集する', edit_magic_path(@magic), class: "btn btn-secondary my-3 ml-2" %>
-        <% end %>
+        <div class="col-10 offset-1 justify-content-center">
+          <!-- 投稿情報 -->
+          <%= render 'magics/show', magic: @magic, tag_list: @tag_list %>
+          <!-- 投稿情報編集ボタン -->
+          <% if user_signed_in? && @magic.user.id == current_user.id %>
+            <%= link_to '投稿情報を編集する', edit_magic_path(@magic), class: "btn btn-secondary my-3" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -36,8 +42,12 @@
 
 <!-- コメント機能 -->
 <div class="box mb-5 py-3">
-  <div id="magic-comment-<%= @magic.id %>", class="mb-3">
-    <%= render partial: 'magic_comments/comment_show', locals: { magic: @magic} %>
+  <div class="row">
+    <div class="col-10 offset-1 justify-content-center">
+      <div id="magic-comment-<%= @magic.id %>", class="mb-3">
+        <%= render partial: 'magic_comments/comment_show', locals: { magic: @magic} %>
+      </div>
+      <%= render partial: 'magic_comments/comment_form', locals: { magic: @magic, magic_comment: @magic_comment} %>
+    </div>
   </div>
-    <%= render partial: 'magic_comments/comment_form', locals: { magic: @magic, magic_comment: @magic_comment} %>
 </div>

@@ -5,14 +5,18 @@
 
   <!-- マジック投稿編集フォーム -->
   <%= form_with model: @magic, url: magic_path , method: :patch, local: true do |f| %>
-  <div class="row py-2">
+  <div class="row py-2 px-5">
     <!-- レフトコンテンツ -->
-    <div class="col-6 mb-5">
+    <div class="col-sm-6 mb-5">
       <!-- 動画 -->
-      <div class="row justify-content-center">
-        <%= link_to @magic.video_url.to_s do %>
-          <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image", :alt => "screenshot") %>
-        <% end %>
+      <div class="row">
+        <div class="col-10 offset-1">
+          <div class="magic-image-area">
+            <%= link_to @magic.video_url.to_s do %>
+              <%= image_tag(@magic.video_url(:screenshot) ,:size => '256x144', id: "video", class: "magic-image mx-auto", :alt => "screenshot") %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
