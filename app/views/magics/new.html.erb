@@ -5,21 +5,22 @@
 
   <!-- マジック投稿フォーム -->
   <%= form_with model: @magic, url: magics_path, local: true do |f| %>
-  <div class="row py-2">
+    <div class="row py-2 px-5">
 
-    <!-- レフトコンテンツ -->
-    <div class="col-6">
-      <!-- 動画アップロードボタン -->
-      <div class="row offset-2">
-        <%= f.label "動画のアップロード" %>
+      <!-- レフトコンテンツ -->
+      <div class="col-sm-6 pb-4">
+        <!-- 動画アップロードボタン -->
+        <div class="row offset-sm-2">
+          <%= f.label "動画のアップロード" %>
+        </div>
+        <div class="row offset-sm-2">
+          <%= f.file_field :video, :accept => 'video/*' %>
+        </div>
       </div>
-      <div class="row justify-content-center">
-        <%= f.file_field :video, :accept => 'video/*' %>
-      </div>
+
+      <!-- ライトコンテンツ -->
+      <%= render 'magics/form', product: @magic, tag_list: @tag_list, f: f %>
     </div>
-
-    <%= render 'magics/form', product: @magic, tag_list: @tag_list, f: f %>
-  </div>
 
     <div class="row justify-content-center my-5">
       <%= f.submit "アップロード", class: "btn btn-lg btn-secondary col-3 mb-5" %>
