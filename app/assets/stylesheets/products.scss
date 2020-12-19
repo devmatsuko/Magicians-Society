@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.product-image-area {
+  position: relative;
+}
+
 .index-products-area {
   width: 100%;
   display: flex; /* Flexboxの利用 */
@@ -9,9 +13,15 @@
 }
 
 .index-products-area .product-area {
+  position: relative;
   width: 30%;
   margin-right: 5%;
   margin-bottom: 10px;
+}
+
+.index-products-area .product-area:before {
+  content:"";
+  display: block;
 }
 
 .index-products-area .product-area:nth-child(3n) {
@@ -20,11 +30,6 @@
 
 // 商品画像の縦横比を維持しつつ、中央表示する
 .product-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   object-fit: cover;
   object-position: center;
 }
@@ -32,6 +37,16 @@
 /* レスポンシブ対応 */
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
+
+  .index-products-area {
+    width: 100%;
+    display: block; /* Flexの解除 */
+  }
+
+  .index-products-area .product-area {
+    width: 100%;
+  }
+
   .product-image {
     width: 100%;
     height: 75%;

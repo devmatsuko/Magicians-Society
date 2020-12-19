@@ -8,21 +8,25 @@
             <%= attachment_image_tag(e.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image") %>
           <% end %>
         </td>
-        <!-- ユーザー名 -->
-        <td class="col-2 d-flex align-items-center">
-          <%= link_to user_path(e.user) do %>
-            <%= e.user.display_name %>
-          <% end %>
+
+        <td class="col-5">
+          <!-- ユーザー名 -->
+          <p>
+            <%= link_to user_path(e.user) do %>
+              <%= e.user.display_name %>
+            <% end %>
+          </p>
+          <div class="index-body">
+            <!-- 最新のチャットメッセージ -->
+            <% if (e.room.messages.last) %>
+              <p class="text-overflow"><%= (e.room.messages.last).content %></p>
+            <% else %>
+              <p>メッセージはありません。</p>
+            <% end %>
+          </div>
         </td>
-        <!-- 最新のチャットメッセージ -->
-        <td class="col-3 d-flex align-items-center">
-          <% if (e.room.messages.last) %>
-            <span class="text-overflow"><%= (e.room.messages.last).content %></span>
-          <% else %>
-            <span>メッセージはありません。</span>
-          <% end %>
-        </td>
-        <!-- チャットを始める -->
+
+        <!-- チャットを始めるボタン -->
         <td class="col-2 d-flex align-items-center">
           <%= link_to "チャットを始める", room_path(e.room), user_id: e.user.id, class: "btn btn-secondary my-3" %>
         </td>
