@@ -317,8 +317,20 @@ footer {
   overflow: hidden;
 }
 
-
 /* ここまでメインコンテンツ関係 */
+
+/* ここからindex画面関係 */
+
+  .index-title {
+    font-weight: bold;
+  }
+
+  .index-body {
+    color: #666;
+    font-size: 0.8rem;
+  }
+
+  /* ここまでindex画面関係 */
 
 /* レスポンシブ対応 */
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
@@ -397,5 +409,14 @@ footer {
   }
 
   /* ここまでヘッダー関係 */
+
+
+  /* ここからindex画面関係 */
+
+  .index-title {
+    font-size: 1.5rem;
+  }
+
+  /* ここまでindex画面関係 */
 
 }

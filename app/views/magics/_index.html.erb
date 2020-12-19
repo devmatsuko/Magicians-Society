@@ -16,12 +16,12 @@
 
         <td class="col-sm-7">
           <!-- マジック投稿タイトル -->
-          <p class="magic-title">
+          <p class="index-title">
             <%= link_to magic_path(magic) do %>
               <%= magic.title %>
             <% end %>
           </p>
-          <div class="magic-body">
+          <div class="index-body">
             <!-- マジック投稿説明 -->
             <p class="text-overflow"><%= safe_join(magic.body.split("\n"),tag(:br)) %></p>
              <!-- ユーザー名 -->
