@@ -1,17 +1,19 @@
 <!--メッセージ一覧-->
-<div class="row">
-	<div id="scroll", class="col-8 offset-2">
-		<table id="js-table-comment", class="table col-12">
+<div class="row justify-content-center">
+	<div id="scroll", class="col-8">
+		<table id="js-table-comment", class="table col-sm-12">
 			<% if messages.present? %>
 				<% messages.each do |m| %>
 					<% if m.user.id == current_user.id %>
 						<tr class="row justify-content-center">
 							<td class="col-2">
-								<%= link_to attachment_image_tag(m.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image align-top"), user_path(m.user) %>
+								<div>
+									<%= link_to attachment_image_tag(m.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image align-top"), user_path(m.user) %>
+								</div>
 							</td>
 							<td class="col-10">
 								<%= m.user.display_name %> <br>
-								<div class="says">
+								<div class="says col-sm-12">
 									<p><%= safe_join(m.content.split("\n"),tag(:br)) %></p>
 									<span><%= l m.created_at %></span>
 								</div>
@@ -23,13 +25,15 @@
 								<div class="col-11 float-right">
 									<%= m.user.display_name %> <br>
 								</div>
-								<div class="other-user-says">
+								<div class="other-user-says col-sm-12">
 									<p><%= safe_join(m.content.split("\n"),tag(:br)) %></p>
 									<span><%= l m.created_at %></span>
 								</div>
 							</td>
 							<td class="col-2">
-								<%= link_to attachment_image_tag(m.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image align-top"), user_path(m.user) %>
+								<div>
+									<%= link_to attachment_image_tag(m.user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image align-top"), user_path(m.user) %>
+								</div>
 							</td>
 						</tr>
 					<% end %>

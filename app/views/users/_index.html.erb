@@ -8,29 +8,29 @@
             <%= attachment_image_tag(user, :image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class:"profile-image") %>
           <% end %>
         </td>
-        <!-- ユーザー名 -->
-        <td class="col-2 d-flex align-items-center">
-          <%= link_to user_path(user) do %>
-            <%= user.display_name %>
-          <% end %>
+
+        <td class="col-5">
+          <!-- ユーザー名 -->
+          <p>
+            <%= link_to user_path(user) do %>
+              <%= user.display_name %>
+            <% end %>
+          </p>
+          <div class="index-body">
+            <!-- プロフィール説明 -->
+            <p class="text-overflow"><%= safe_join(user.description.split("\n"),tag(:br)) %></p>
+          </div>
         </td>
-        <!-- プロフィール説明 -->
-        <td class="col-3 d-flex align-items-center">
-          <span class="text-overflow"><%= safe_join(user.description.split("\n"),tag(:br)) %></span>
-        </td>
-        <!-- 動画投稿数 -->
-        <td class="col-2 d-flex align-items-center">
-          <span>動画投稿数：<%= user.magics.count %></span>
-        </td>
+
         <!-- フォロー、フォロー解除 -->
-        <td class="col-2 d-flex align-items-center">
+        <td class="col-3 d-flex align-items-center justify-content-center">
           <% if user_signed_in? && user.id != current_user.id %>
             <!--フォローしている場合-->
             <% if current_user.following?(user) %>
-              <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn-sm btn-danger" %>
+              <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class: "btn-sm btn-danger" %>
               <!--フォローしていない場合-->
             <% else %>
-              <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn-sm btn-success" %>
+              <%= link_to "フォロー", user_relationships_path(user.id), method: :post, class: "btn-sm btn-success" %>
             <% end %>
           <% end %>
         </td>

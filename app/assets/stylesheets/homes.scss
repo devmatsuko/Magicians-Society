@@ -110,12 +110,6 @@
   margin-bottom: 10px;
 }
 
-.top-index-area .product-area:before {
-  content:"";
-  display: block;
-  padding-top: 60%; /* 高さを幅の60%に固定 */
-}
-
 .top-index-area .product-area:nth-child(4n) {
   margin-right: 0px; /* 3つ目の商品のみ右側余白を0pxに */
 }
@@ -223,7 +217,7 @@
   .about-area {
     margin: 0 5%;
   }
-  
+
   /* ここまでAbout画面 */
-  
+
 }

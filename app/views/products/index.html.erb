@@ -4,25 +4,26 @@
   <%= render 'layouts/title', title: "Products", obj: nil %>
 
   <!-- 商品出品画面へのリンク -->
-  <div class="row">
-    <div class="col-2 offset-9">
+  <div class="row new-btn">
+    <div class="col-sm-2 offset-9">
       <%= link_to '商品を出品する', new_product_path, class: "btn btn-secondary" %>
     </div>
   </div>
 
   <!-- メインコンテンツ -->
-  <div class="row py-5">
+  <div class="row py-5 px-5">
     <!-- ジャンル検索 -->
-    <div class="col-3 offset-1">
+    <div class="col-sm-3 offset-sm-1">
       <!--ジャンル検索機能の部分テンプレート-->
       <%= render '/genres/genre_search', genres: @genres, products: @all_products %>
     </div>
 
     <!-- マジック商品一覧 -->
-    <div class="col-7 pl-5">
+    <div class="col-sm-8">
+
       <!-- ジャンル見出し -->
-      <div class="row pr-5">
-        <div class="col-8 justify-content-center">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 justify-content-center">
           <% if @genre %>
             <!--ジャンル検索の場合は[ジャンル名]一覧と表示する-->
             <h4 class="title"><%= @genre.name %>一覧 (全<%= @genre.products.count %>件)</h4>
@@ -34,10 +35,19 @@
         </div>
       </div>
 
-      <div class="row pt-4">
-        <%= render 'products/index', products: @products %>
+      <div class="col-10 offset-sm-1 justify-content-center">
+        <div class="row pt-4">
+          <%= render 'products/index', products: @products %>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- スマホ画面における投稿ボタン -->
+  <div class="new-responsive-btn">
+    <%= link_to new_product_path do %>
+      <i class="fas fa-plus-circle fa-7x text-secondary"></i>
+    <% end %>
   </div>
 
 </div>

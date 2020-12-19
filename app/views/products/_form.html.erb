@@ -1,10 +1,14 @@
-<div class="row py-2">
+<div class="row py-2 px-5">
 
   <!-- レフトコンテンツ -->
-  <div class="col-6">
+  <div class="col-sm-6">
     <!-- 商品画像 -->
     <div class="row justify-content-center">
-      <%= attachment_image_tag(product, :image, fallback: "noimage.png", size:'300x200', class:"img_prev img-thumbnail product-image") %>
+      <div class="col-10">
+        <div class="row justify-content-center">
+          <%= attachment_image_tag(product, :image, fallback: "noimage.png", size:'300x200', class:"img_prev img-thumbnail product-image") %>
+        </div>
+      </div>
     </div>
     <!-- 商品画像編集ボタン -->
     <div class="row justify-content-center my-4">
@@ -13,76 +17,76 @@
   </div>
 
   <!-- ライトコンテンツ -->
-  <div class="col-6 justify-content-center">
+  <div class="col-sm-6 justify-content-center">
 
     <!-- 商品名入力フォーム -->
     <div class="row form-group d-flex align-items-center">
-      <%= f.label "商品名", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "商品名", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.text_field :name, placeholder: "20文字まで",class: "form-control" %>
       </div>
     </div>
 
     <!-- 商品説明入力フォーム -->
     <div class="row form-group">
-      <%= f.label "商品説明", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "商品説明", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.text_area :explanation, rows: 5, placeholder: "200文字まで", class: "form-control" %>
       </div>
     </div>
 
     <!-- ジャンル選択フォーム -->
     <div class="row form-group d-flex align-items-center">
-      <%= f.label "ジャンル", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "ジャンル", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.collection_select :genre_id, genres, :id, :name, { prompt: "-- 選択してください --" }, { class: "form-control" } %>
       </div>
     </div>
 
     <!-- 商品の状態選択フォーム -->
     <div class="row form-group">
-      <%= f.label "商品の状態", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "商品の状態", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.select :product_status, Product.product_statuses.keys, {include_blank: '--選択してください--'}, {class: "form-control"} %>
       </div>
     </div>
 
     <!-- 価格入力フォーム -->
     <div class="row form-group">
-      <%= f.label "価格", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "価格", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.text_field :price, placeholder: "半角数字で入力", class: "form-control" %>
       </div>
     </div>
 
     <!-- 販売ステータス選択フォーム -->
     <div class="row form-group">
-      <%= f.label "販売ステータス", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "販売ステータス", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.select :is_sale, [["販売中",true],["売切れ",false]], {include_blank: '--選択してください--'}, {class: "form-control"} %>
       </div>
     </div>
 
     <!-- 配送方法選択フォーム -->
     <div class="row form-group">
-      <%= f.label "配送方法", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "配送方法", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.select :shipping_method, Product.shipping_methods.keys, {include_blank: '--選択してください--'}, {class: "form-control"} %>
       </div>
     </div>
 
     <!-- 発送までの日数選択フォーム -->
     <div class="row form-group">
-      <%= f.label "発送までの日数", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "発送までの日数", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.select :shipping_date, Product.shipping_dates.keys, {include_blank: '--選択してください--'}, {class: "form-control"} %>
       </div>
     </div>
 
     <!-- 配送料の負担選択フォーム -->
     <div class="row form-group">
-      <%= f.label "配送料の負担", class: "col-4 control-label" %>
-      <div class="col-6">
+      <%= f.label "配送料の負担", class: "col-sm-4 control-label" %>
+      <div class="col-sm-6">
         <%= f.select :postage_status, Product.postage_statuses.keys, {include_blank: '--選択してください--'}, {class: "form-control"} %>
       </div>
     </div>
