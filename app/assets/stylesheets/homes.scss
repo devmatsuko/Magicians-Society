@@ -131,7 +131,6 @@
   margin-right: 0px; /* 3つ目の商品のみ右側余白を0pxに */
 }
 
-
 /* ここまでTOP画面 */
 /* ここからAbout画面 */
 .about-title {
@@ -179,7 +178,6 @@
 
 /* ここまでAbout画面 */
 
-
 /* レスポンシブ対応 */
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
@@ -197,7 +195,7 @@
     display: none !important;
   }
 
-  // 本日のピッ���アップ
+  // 本日のピックアップ
   .top-index-area {
     width: 100%;
     display: block; /* Flexの解除 */
@@ -225,4 +223,7 @@
   .about-area {
     margin: 0 5%;
   }
+  
+  /* ここまでAbout画面 */
+  
 }
