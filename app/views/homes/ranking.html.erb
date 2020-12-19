@@ -25,7 +25,11 @@
   <div class="row justify-content-center pb-5">
     <div id="tab-contents", class="col-12">
       <div id="tab1", class="tab">
-        <%= render 'homes/magic_ranking', magics: @magics %>
+        <div class="row">
+          <div class="col-10 offset-1 justify-content-center">
+            <%= render 'homes/magic_ranking', magics: @magics %>
+          </div>
+        </div>
       </div>
 
       <div id="tab2", class="tab">
