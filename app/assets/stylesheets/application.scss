@@ -330,6 +330,10 @@ footer {
     font-size: 0.8rem;
   }
 
+  // PC画面では新規投稿アイコンは非表示にする
+  .new-responsive-btn{
+    display: none;
+  }
   /* ここまでindex画面関係 */
 
 /* レスポンシブ対応 */
@@ -415,6 +419,19 @@ footer {
 
   .index-title {
     font-size: 1.5rem;
+  }
+
+  // スマホ画面では新規投稿ボタンを非表示にする
+  .new-btn {
+    display: none !important;
+  }
+
+  // スマホ画面では新規投稿アイコンを表示する
+  .new-responsive-btn{
+    display: block;
+    position: fixed;
+    right: 25px;
+    bottom: 20px;
   }
 
   /* ここまでindex画面関係 */
