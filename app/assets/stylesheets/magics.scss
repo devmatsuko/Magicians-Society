@@ -24,19 +24,6 @@
   object-position: center;
 }
 
-.magic-title {
-  font-weight: bold;
-}
-
-.magic-body {
-  color: #666;
-  font-size: 0.8rem;
-}
-
-.magic-responsive-btn{
-  display: none;
-}
-
 
 /* レスポンシブ対応 */
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
@@ -49,15 +36,5 @@
   .magic-title {
     font-size: 1.5rem;
   }
-
-  .magic-btn {
-    display: none !important;
-  }
-
-  .magic-responsive-btn{
-    display: block;
-    position: fixed;
-    right: 25px;
-    bottom: 20px;
-  }
+  
 }

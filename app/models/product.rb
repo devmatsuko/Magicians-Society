@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   attachment :image, destroy: false
 
   # バリデーションチェック
-  validates :name, :explanation, :genre, :product_status, :price, :is_sale, :shipping_method, :shipping_date, :postage_status, :image, presence: true
+  validates :name, :explanation, :genre, :product_status, :price, :shipping_method, :shipping_date, :postage_status, :image, presence: true
   validates :price, numericality: { only_integer: true }
   validates :is_sale, inclusion: [true, false]
   validates :name, length: { maximum: 20 }

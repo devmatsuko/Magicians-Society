@@ -33,7 +33,11 @@
       </div>
 
       <div id="tab2", class="tab">
-        <%= render 'homes/product_ranking', products: @products %>
+        <div class="row">
+          <div class="col-10 offset-1 justify-content-center">
+            <%= render 'homes/product_ranking', products: @products %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

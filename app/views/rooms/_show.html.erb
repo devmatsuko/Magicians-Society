@@ -10,7 +10,10 @@
 <div id="chat-area">
   <%= render partial: 'messages/message', locals: { messages: messages} %>
 </div>
-
-<!-- メッセージ入力フォーム -->
-<%= render 'messages/form', message: message %>
+<div class="row">
+  <div class="col-10 offset-1 justify-content-center">
+    <!-- メッセージ入力フォーム -->
+    <%= render 'messages/form', message: message %>
+  </div>
+</div>
 
