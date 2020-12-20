@@ -19,6 +19,12 @@ class UsersController < ApplicationController
       render 'index'
     end
 
+    # ユーザーのマジック投稿、出品商品、フォロー、フォロワー情報の取得
+    @magics = @user.magics.page(params[:page]).per(8)
+    @products = @user.products.page(params[:page]).per(12)
+    @following = @user.following.where(is_deleted: false).page(params[:page]).per(8)
+    @followers = @user.followers.where(is_deleted: false).page(params[:page]).per(8)
+
     if user_signed_in?
       # チャットルームのエントリー用のパラメータ
       # 自分のuser_idを含んでいるエントリーを取得
