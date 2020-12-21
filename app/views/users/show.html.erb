@@ -109,7 +109,7 @@
             <% if @user.magics.count == 0 %>
               <h3 class="text-center"><%= @user.display_name %>さんの投稿はありません。</h3>
             <% else %>
-              <%= render 'magics/index', magics: @user.magics.page(params[:page]).per(8) %>
+              <%= render 'magics/index', magics: @magics %>
             <% end %>
           </div>
         </div>
@@ -121,7 +121,7 @@
             <% if @user.products.count == 0 %>
               <h3 class="text-center"><%= @user.display_name %>さんの出品商品はありません。</h3>
             <% else %>
-              <%= render 'homes/product_index', products: @user.products.page(params[:page]).per(12) %>
+              <%= render 'homes/product_index', products: @products %>
             <% end %>
           </div>
         </div>
@@ -131,7 +131,7 @@
         <% if @user.following.count == 0 %>
           <h3 class="text-center"><%= @user.display_name %>さんのフォローユーザーはいません。</h3>
         <% else %>
-          <%= render 'users/index', users: @user.following.where(is_deleted: false).page(params[:page]).per(8) %>
+          <%= render 'users/index', users: @following %>
         <% end %>
       </div>
 
@@ -139,7 +139,7 @@
         <% if @user.followers.count == 0 %>
           <h3 class="text-center"><%= @user.display_name %>さんのフォロワーはいません。</h3>
         <% else %>
-          <%= render 'users/index', users: @user.followers.where(is_deleted: false).page(params[:page]).per(8) %>
+          <%= render 'users/index', users: @followers %>
         <% end %>
       </div>
     </div>
