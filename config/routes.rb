@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # 管理者
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # ルートパスをTOPページに設定
   root 'homes#top'
@@ -25,12 +26,10 @@ Rails.application.routes.draw do
     delete 'users/sign_out' =>'users/sessions#destroy', as: :destroy_user_session
     # ゲストログイン
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
-
   end
 
   # ユーザー関連
   resources :users, only: [:index,:show,:edit,:update] do
-    # RESTfulなURL以外は個別に設定する
     # member内書くことでURLにidが加わる。ex)/users/:id/following
     member do
       get :following, :followers
@@ -65,7 +64,7 @@ Rails.application.routes.draw do
 
   # 注文関連
   resources :orders, only: [:new, :create, :index, :show] do
-    # RESTfulなURL以外は個別にcollectionで設定する
+    # サンクスページ
     collection do
       get :thanks
     end
