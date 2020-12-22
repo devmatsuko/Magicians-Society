@@ -2,9 +2,11 @@ class UsersController < ApplicationController
   # ユーザー情報が必要なメソッドは、先に指定IDのユーザーを取得していく。
   before_action :set_user, only: [:show, :edit, :update, :withdrawal]
   # ログイン中のユーザのみアクセス許可
-  before_action :authenticate_user!, only: [:edit, :update, :withdrawal]
+  before_action :authenticate_user!, only: [:edit, :update, :withdrawal, :withdrawal_show]
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:update, :withdrawal]
+  # 他ユーザーのページのアクセス制限
+  before_action :ensure_current_user, {only: [:edit, :update, :withdrawal, :withdrawal_show]}
 
   def index
     # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)
@@ -66,6 +68,9 @@ class UsersController < ApplicationController
     end
   end
 
+  # 退会画面
+  def withdrawal_show; end
+
   # 退会機能
   def withdrawal
     # アクセスしたユーザー情報を取得
@@ -110,4 +115,13 @@ class UsersController < ApplicationController
       redirect_to request.referer
     end
   end
+
+  # 他ユーザーのページのアクセス制限
+  def ensure_current_user
+    if current_user.id != params[:id].to_i
+      flash[:notice]="権限がありません。"
+      redirect_to  user_path(current_user)
+    end
+  end
+
 end
