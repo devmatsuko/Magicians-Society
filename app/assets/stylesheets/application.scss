@@ -314,6 +314,14 @@ footer {
 }
 
 // 説明テキストの省略
+.title-overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+// 説明テキストの省略
 .text-overflow {
   display: -webkit-box;
   -webkit-box-orient: vertical;
