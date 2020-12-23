@@ -9,6 +9,11 @@ class OrdersController < ApplicationController
     @user = current_user
     # 注文した商品を取得
     @product = Product.find(params[:product_id])
+    # 商品が売り切れの場合
+    unless @product.is_sale
+      flash[:alert] = 'この商品は売り切れのため、注文できません。'
+      redirect_to product_path(@product)
+    end
     # 新規注文用のインスタンス変数
     @order = Order.new(user_id: @user.id)
   end
