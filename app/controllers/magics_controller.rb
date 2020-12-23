@@ -3,6 +3,8 @@ class MagicsController < ApplicationController
   before_action :set_magic, only: [:show, :edit, :update, :destroy]
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  # 他ユーザーのアクション制限
+  before_action :ensure_current_user, {only: [:edit, :update, :destroy]}
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:create, :update, :destroy]
 
@@ -81,6 +83,15 @@ class MagicsController < ApplicationController
   def set_magic
     # IDに基づく投稿を取得
     @magic = Magic.find(params[:id])
+  end
+  
+  # 他ユーザーのアクション制限
+  def ensure_current_user
+    magic = Magic.find(params[:id])
+    if magic.user_id != current_user.id
+      flash[:notice]="権限がありません"
+      redirect_to magics_path
+    end
   end
 
   # ゲストユーザーのアクションを制限する
