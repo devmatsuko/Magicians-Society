@@ -6,7 +6,6 @@
   position: relative;
 }
 
-
 .index-products-area {
   width: 100%;
   display: flex; /* Flexboxの利用 */
@@ -35,6 +34,26 @@
   height: 60%;
   object-fit: cover;
   object-position: center;
+}
+
+// 売り切れた商品画像にSOLDを表示
+.product-sold{
+  width: 0;
+  height: 0;
+  border-top: 30px solid #ea352d ;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid #ea352d ;
+  z-index:100;
+  position: absolute;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 16px;
+    margin: -15px 0px 0px -25px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
 }
 
 /* レスポンシブ対応 */
