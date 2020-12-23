@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update]
   # ジャンルの取得が必要なメソッドでは、先にジャンルを取得しておく
   before_action :set_genres, only: [:new, :edit, :index, :create, :update]
+  # 他ユーザーのアクション制限
+  before_action :ensure_current_user, {only: [:edit, :update]}
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:create, :update]
   # 投稿画像のセーフサーチ
@@ -93,6 +95,15 @@ class ProductsController < ApplicationController
   # ジャンルの取得
   def set_genres
     @genres = Genre.all
+  end
+  
+  # 他ユーザーのアクション制限
+  def ensure_current_user
+    product = Product.find(params[:id])
+    if product.user_id != current_user.id
+      flash[:notice]="権限がありません"
+      redirect_to products_path
+    end
   end
 
   # ゲストユーザーのアクションを制限する
