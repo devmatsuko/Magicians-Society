@@ -17,13 +17,13 @@ class User < ApplicationRecord
   # N：Nのリレーションシップにはthroughを使う。user.followers = user.follower.idとなるようにsourceを設定
   has_many :followers, through: :passive_relationships, source: :follower
   # 商品のいいね
-  has_many :product_favorites
+  has_many :product_favorites, dependent: :destroy
   # 商品のコメント
-  has_many :product_comments
+  has_many :product_comments, dependent: :destroy
   # 投稿のいいね
-  has_many :magic_favorites
+  has_many :magic_favorites, dependent: :destroy
   # 投稿のコメント
-  has_many :magic_comments
+  has_many :magic_comments, dependent: :destroy
   # チャットルームのアソシエーション
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
