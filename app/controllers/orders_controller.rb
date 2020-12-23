@@ -9,6 +9,12 @@ class OrdersController < ApplicationController
     @user = current_user
     # 注文した商品を取得
     @product = Product.find(params[:product_id])
+
+    # 商品が売り切れの場合
+    if @product.user == current_user
+      flash[:alert] = '自身が出品した商品は注文できません。'
+      redirect_to product_path(@product)
+    end
     # 商品が売り切れの場合
     unless @product.is_sale
       flash[:alert] = 'この商品は売り切れのため、注文できません。'

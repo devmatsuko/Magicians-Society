@@ -16,7 +16,7 @@
   position: relative;
   width: 30%;
   margin-right: 5%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .product-area:before {
@@ -44,7 +44,7 @@
   border-right: 30px solid transparent;
   border-bottom: 30px solid transparent;
   border-left: 30px solid #ea352d ;
-  z-index:100;
+  z-index:10;
   position: absolute;
   &__inner{
     transform: rotate(-45deg);
