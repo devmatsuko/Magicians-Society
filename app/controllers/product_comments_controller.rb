@@ -30,7 +30,7 @@ class ProductCommentsController < ApplicationController
   def ensure_current_user
     product_comment = ProductComment.find(params[:id])
     if product_comment.user_id != current_user.id
-      flash[:notice]="権限がありません"
+      flash[:alert]="権限がありません。"
       redirect_to products_path
     end
   end

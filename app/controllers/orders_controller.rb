@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!
+  # 他ユーザーのアクション制限
+  before_action :ensure_current_user, {only: [:show]}
 
   def new
     # 注文しているユーザーを取得
@@ -59,4 +61,14 @@ class OrdersController < ApplicationController
       :name
     )
   end
+
+  # 他ユーザーのアクション制限
+  def ensure_current_user
+    order = Order.find(params[:id])
+    if order.user_id != current_user.id
+      flash[:alert]="権限がありません。"
+      redirect_to orders_path
+    end
+  end
+
 end

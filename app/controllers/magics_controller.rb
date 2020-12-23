@@ -89,7 +89,7 @@ class MagicsController < ApplicationController
   def ensure_current_user
     magic = Magic.find(params[:id])
     if magic.user_id != current_user.id
-      flash[:notice]="権限がありません"
+      flash[:alert]="権限がありません。"
       redirect_to magics_path
     end
   end
