@@ -34,7 +34,7 @@ class SalesController < ApplicationController
   def ensure_current_user
     order = Order.find(params[:id])
     if order.user_id != current_user.id
-      flash[:notice]="権限がありません"
+      flash[:alert]="権限がありません。"
       redirect_to sales_path
     end
   end

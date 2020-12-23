@@ -101,7 +101,7 @@ class ProductsController < ApplicationController
   def ensure_current_user
     product = Product.find(params[:id])
     if product.user_id != current_user.id
-      flash[:notice]="権限がありません"
+      flash[:alert]="権限がありません。"
       redirect_to products_path
     end
   end

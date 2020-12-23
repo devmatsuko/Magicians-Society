@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :ensure_current_user, {only: [:edit, :update, :withdrawal, :withdrawal_show]}
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:update, :withdrawal]
-  
+
 
   def index
     # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)
@@ -120,7 +120,7 @@ class UsersController < ApplicationController
   # 他ユーザーのアクション制限
   def ensure_current_user
     if current_user.id != params[:id].to_i
-      flash[:notice]="権限がありません。"
+      flash[:alert]="権限がありません。"
       redirect_to  user_path(current_user)
     end
   end
