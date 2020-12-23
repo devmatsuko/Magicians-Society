@@ -1,6 +1,8 @@
 class MagicCommentsController < ApplicationController
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!
+  # 他ユーザーのアクション制限
+  before_action :ensure_current_user, {only: [:destroy]}
 
   def create
     @magic = Magic.find(params[:magic_id])
@@ -22,5 +24,14 @@ class MagicCommentsController < ApplicationController
 
   def magic_comment_params
     params.require(:magic_comment).permit(:comment)
+  end
+  
+  # 他ユーザーのアクション制限
+  def ensure_current_user
+    magic_comment = MagicComment.find(params[:id])
+    if magic_comment.user_id != current_user.id
+      flash[:notice]="権限がありません"
+      redirect_to magics_path
+    end
   end
 end

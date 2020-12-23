@@ -1,6 +1,8 @@
 class SalesController < ApplicationController
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!, only: [:index, :show, :update]
+  # 他ユーザーのアクション制限
+  before_action :ensure_current_user, {only: [:show,:update]}
 
   # ログインユーザーの販売履歴を新着順にの取得(ページャ機能で8投稿ずつ表示する)
   def index
@@ -26,5 +28,14 @@ class SalesController < ApplicationController
   # ストロングパラメータ
   def order_params
     params.require(:order).permit(:order_status)
+  end
+
+  # 他ユーザーのアクション制限
+  def ensure_current_user
+    order = Order.find(params[:id])
+    if order.user_id != current_user.id
+      flash[:notice]="権限がありません"
+      redirect_to sales_path
+    end
   end
 end

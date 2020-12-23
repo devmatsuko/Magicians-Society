@@ -3,10 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :withdrawal]
   # ログイン中のユーザのみアクセス許可
   before_action :authenticate_user!, only: [:edit, :update, :withdrawal, :withdrawal_show]
+  # 他ユーザーのアクション制限
+  before_action :ensure_current_user, {only: [:edit, :update, :withdrawal, :withdrawal_show]}
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:update, :withdrawal]
-  # 他ユーザーのページのアクセス制限
-  before_action :ensure_current_user, {only: [:edit, :update, :withdrawal, :withdrawal_show]}
+  
 
   def index
     # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)
@@ -116,7 +117,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # 他ユーザーのページのアクセス制限
+  # 他ユーザーのアクション制限
   def ensure_current_user
     if current_user.id != params[:id].to_i
       flash[:notice]="権限がありません。"
