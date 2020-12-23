@@ -12,7 +12,7 @@
         <div class="col-10 offset-1">
           <div class="magic-image-area">
             <%= link_to @magic.video_url.to_s do %>
-              <%= image_tag(@magic.video_url(:screenshot) ,:size => '256x144', id: "video", class: "magic-image mx-auto", :alt => "screenshot") %>
+              <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image mx-auto", :alt => "screenshot") %>
             <% end %>
           </div>
         </div>
