@@ -56,6 +56,9 @@ class VideoUploader < CarrierWave::Uploader::Base
     movie = FFMPEG::Movie.new(tmpfile)
     movie.screenshot(current_path + ".jpg", {resolution: '512x312' }, preserve_aspect_ratio: :width)
     File.rename(current_path + ".jpg", current_path)
+    
+    # サムネイルのcontent_typeをvideo/mp4→image/jpegに変換する
+    file.content_type = "image/jpeg"
 
     File.delete(tmpfile)
   end
@@ -63,7 +66,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(gif MOV wmv mp4)
+    %w(gif png MOV wmv mp4)
   end
 
   # Override the filename of the uploaded files:
