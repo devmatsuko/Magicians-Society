@@ -84,7 +84,8 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    # ファイルサイズが 10 M となったらログローテートして、14日以上経過した古いログファイルは削除する。
+    logger           = ActiveSupport::Logger.new('log/production.log', 14, 10 * 1024 * 1024)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
