@@ -24,6 +24,34 @@
   object-position: center;
 }
 
+// 動画再生ボタン
+.video_play {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border: 0.05em solid currentColor;
+    border-radius: 50%;
+    font-size: 5rem;
+    color: white;
+}
+.video_play:before {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateY(-50%);
+    width: 0px;
+    height: 0px;
+    border: 0.3em solid transparent;
+    border-left: 0.5em solid currentColor;
+    box-sizing: border-box;
+    content: "";
+    color: white;
+}
+.video_play:hover {
+  opacity: 0.7;
+}
+
 
 /* レスポンシブ対応 */
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
@@ -36,5 +64,5 @@
   .magic-title {
     font-size: 1.5rem;
   }
-  
+
 }

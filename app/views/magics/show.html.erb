@@ -10,9 +10,10 @@
       <!-- 動画 -->
       <div class="row">
         <div class="col-10 offset-1">
-          <div class="magic-image-area">
+          <div class="magic-image-area d-flex align-items-center justify-content-center">
             <%= link_to @magic.video_url.to_s do %>
               <%= image_tag(@magic.video_url(:screenshot).to_s ,:size => '256x144', id: "video", class: "magic-image mx-auto", :alt => "screenshot") %>
+              <span class="video_play"></span>
             <% end %>
           </div>
         </div>
