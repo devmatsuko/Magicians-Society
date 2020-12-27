@@ -96,7 +96,7 @@ class ProductsController < ApplicationController
   def set_genres
     @genres = Genre.all
   end
-  
+
   # 他ユーザーのアクション制限
   def ensure_current_user
     product = Product.find(params[:id])

@@ -16,11 +16,15 @@
   padding: 20px; /* 要素内に20pxの余白 */
 }
 
-.main-title {
+.main-title, .sub-title {
   font-family: didot, serif !important;
   font-weight: bold;
   text-align: center;
 }
+
+.main-link-area {
+    margin-top: 3rem !important;
+  }
 
 .main-link {
   font-family: didot, serif !important;
@@ -177,16 +181,15 @@
 @media screen and (max-width: 425px) {
   /* ここからTOP画面 */
   .main-visual {
-    height: 150px;
+    height: 180px;
   }
 
   .main-title {
-    font-size: 1.2rem !important;
+    font-size: 1.8rem !important;
   }
 
-  .main-link {
-    font-family: didot, serif !important;
-    display: none !important;
+  .sub-title {
+    font-size: 1.2rem !important;
   }
 
   // 本日のピックアップ
@@ -203,6 +206,9 @@
     width: 100%;
   }
 
+  .main-link-area {
+    margin-top: 0rem !important;
+  }
 
   /* ここまでTOP画面 */
   /* ここからAbout画面 */

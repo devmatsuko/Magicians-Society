@@ -26,10 +26,10 @@
         <div class="col-sm-12 justify-content-center">
           <% if @genre %>
             <!--ジャンル検索の場合は[ジャンル名]一覧と表示する-->
-            <h4 class="title"><%= @genre.name %>一覧 (全<%= @genre.products.count %>件)</h4>
+            <h4 class="title"><%= @genre.name %>一覧 (全<%= @products.total_count %>件)</h4>
           <% else %>
             <!--全検索の場合は商品一覧と表示する-->
-            <h4 class="title">商品一覧(全<%= @products.count %>件)</h4>
+            <h4 class="title">商品一覧(全<%= @products.total_count %>件)</h4>
           <% end %>
           <div class="title-line mt-2"></div>
         </div>
