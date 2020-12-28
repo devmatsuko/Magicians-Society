@@ -10,7 +10,7 @@ class MagicsController < ApplicationController
 
   def index
     # 退会していない全ユーザーのマジック投稿を取得(ページャ機能で8投稿ずつ表示する)
-    @magics = Magic.eager_load(:user).where(users: { is_deleted: false }).page(params[:page]).per(8)
+    @magics = Magic.eager_load(:user).where(users: { is_deleted: false }).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def new
@@ -84,7 +84,7 @@ class MagicsController < ApplicationController
     # IDに基づく投稿を取得
     @magic = Magic.find(params[:id])
   end
-  
+
   # 他ユーザーのアクション制限
   def ensure_current_user
     magic = Magic.find(params[:id])
