@@ -19,12 +19,12 @@ class ProductsController < ApplicationController
     @all_products = Product.eager_load(:user).where(users: { is_deleted: false }).page(params[:page]).per(12)
     if params[:genre_id]
       # ジャンル検索の場合、検索ジャンルに当てはまる商品を取得(ページャ機能で12投稿ずつ表示する)
-      @products = Product.eager_load(:genre).where(genre_id: params[:genre_id]).eager_load(:user).where(users: { is_deleted: false }).page(params[:page]).per(12)
+      @products = Product.eager_load(:genre).where(genre_id: params[:genre_id]).eager_load(:user).where(users: { is_deleted: false }).order(created_at: :desc).page(params[:page]).per(12)
       # 検索ジャンルの取得
       @genre = Genre.find(params[:genre_id])
     else
       # 退会していない全ユーザーのマジック商品を取得(ページャ機能で12投稿ずつ表示する)
-      @products = Product.eager_load(:user).where(users: { is_deleted: false }).page(params[:page]).per(12)
+      @products = Product.eager_load(:user).where(users: { is_deleted: false }).order(created_at: :desc).page(params[:page]).per(12)
     end
   end
 
