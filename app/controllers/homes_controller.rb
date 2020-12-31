@@ -23,11 +23,11 @@ class HomesController < ApplicationController
     # 検索ワード
     @content = params['content']
     # 投稿検索結果
-    @magics = partical_magic(@content).page(params[:page]).per(8)
+    @magics = partical_magic(@content).order(created_at: :desc).page(params[:page]).per(8)
     # 商品検索結果
-    @products = partical_product(@content).page(params[:page]).per(12)
+    @products = partical_product(@content).order(created_at: :desc).page(params[:page]).per(12)
     # ユーザー検索
-    @users = partical_user(@content).page(params[:page]).per(8)
+    @users = partical_user(@content).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   private
