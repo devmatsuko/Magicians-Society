@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def index
     # 退会していない全ユーザーの取得(ページャ機能で8ユーザーずつ表示する)
-    @users = User.where(is_deleted: false).page(params[:page]).per(8)
+    @users = User.where(is_deleted: false).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
@@ -25,8 +25,8 @@ class UsersController < ApplicationController
     # ユーザーのマジック投稿、出品商品、フォロー、フォロワー情報の取得
     @magics = @user.magics.order(created_at: :desc).page(params[:page]).per(8)
     @products = @user.products.order(created_at: :desc).page(params[:page]).per(12)
-    @following = @user.following.where(is_deleted: false).page(params[:page]).per(8)
-    @followers = @user.followers.where(is_deleted: false).page(params[:page]).per(8)
+    @following = @user.following.where(is_deleted: false).order(created_at: :desc).page(params[:page]).per(8)
+    @followers = @user.followers.where(is_deleted: false).order(created_at: :desc).page(params[:page]).per(8)
 
     if user_signed_in?
       # チャットルームのエントリー用のパラメータ
