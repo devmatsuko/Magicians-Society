@@ -16,13 +16,18 @@
 
 @import "bootstrap";
 
+/* ブラウザがそれぞれ持っているCSSをリセットするための記述 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
 }
 
-// body共通のスタイル
 body {
-  // body内の基本フォント
   font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   font-size: 1rem;
   color: black;
@@ -31,7 +36,7 @@ body {
   background-position: center;
 }
 
-// フッターを最下部に設置するためのCSS
+// フッターを最下部に設置する
 body,
 #wrapper {
   display: flex;
@@ -43,6 +48,7 @@ body,
 #error_explanation {
   color: red;
 }
+
 // エラー時に対象フォームを赤枠で囲む
 .field_with_errors {
   input,textarea,select {
@@ -50,6 +56,7 @@ body,
   }
 }
 
+// リンクテキストのカラー
 a {
   color: black;
 }
@@ -59,6 +66,7 @@ a:hover {
   text-decoration: none;
 }
 
+// テキストを折り返す
 p,span {
   word-break: break-all
 }
@@ -73,6 +81,7 @@ header {
   border-color: black;
 }
 
+// 検索バーの横幅
 .search {
   width: 50% !important;
 }
@@ -217,7 +226,7 @@ footer {
 /* ここまでフッター関係 */
 
 /* ここからメインコンテンツ関係 */
-// 半透明ボックス
+// 各画面のボックス
 .box {
   // background: rgba(21, 32, 43, 0.8);
   background: #f2f2f2
@@ -372,7 +381,7 @@ footer {
   header {
     height: 120px;
   }
-
+  
   .logo {
     position: absolute;
     top: 6px;
