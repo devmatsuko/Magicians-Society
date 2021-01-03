@@ -381,7 +381,7 @@ footer {
   header {
     height: 120px;
   }
-  
+
   .logo {
     position: absolute;
     top: 6px;
@@ -428,8 +428,8 @@ footer {
   // ハンバーガーメニュー内のリスト
   #sp-menu li {
     display: flex;
-    justify-content: center;
-    margin-left: 0%;
+    justify-content: left;
+    margin-left: 35%;
     list-style: none;
   }
 
