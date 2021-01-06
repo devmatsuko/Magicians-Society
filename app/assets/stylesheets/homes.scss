@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* ここからTOP画面 */
-.main-visual {
+.main-visual1 {
   background-image: image-url("show.jpg");
   width: 100%;
   height: 350px;
@@ -12,8 +12,40 @@
   background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
 }
 
+.main-visual2 {
+  background-image: image-url("About1.jpg");
+  width: 100%;
+  height: 350px;
+  display: flex; /* 子要素の上下左右中央寄せするために追記 */
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+.main-visual3 {
+  background-image: image-url("Ball1.jpg");
+  width: 100%;
+  height: 350px;
+  display: flex; /* 子要素の上下左右中央寄せするために追記 */
+  background-position: center; /* 背景画像の中央表示 */
+  background-size: cover; /* 背景画像の画像の縦横比を維持しながら最大化 */
+}
+
+// メインビジュアルの画像を黒半透明にする
+.main-visual2::before,.main-visual3::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 350px;
+  z-index: 1;
+}
+
 .main-visual-text-box {
   padding: 20px; /* 要素内に20pxの余白 */
+  z-index: 1;
 }
 
 .main-title, .sub-title {
@@ -23,20 +55,23 @@
 }
 
 .main-link-area {
-    margin-top: 3rem !important;
-  }
+  margin-top: 3rem !important;
+  z-index: 2;
+}
 
 .main-link {
   font-family: didot, serif !important;
+  z-index: 2;
 }
 
 /* タイトルを下からフェードイン */
 .title-fade-in-bottom {
-   opacity: 0;
-   animation-name: fadein-bottom;
-   animation-duration: 1.5s;
-   animation-timing-function: ease-out;
-   animation-fill-mode: forwards;
+  opacity: 0;
+  animation-name: fadein-bottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  z-index: 2;
 }
 @keyframes fadein-bottom {
    0% {
@@ -75,6 +110,7 @@
   display: block;
   position: relative;
   text-decoration: none;
+  z-index: 2;
 }
 .top-link-btn::before,
 .top-link-btn::after {
@@ -180,9 +216,13 @@
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
   /* ここからTOP画面 */
-  .main-visual {
+  .main-visual1,.main-visual2,.main-visual3 {
     height: 180px;
   }
+  .main-visual2::before,.main-visual3::before {
+    height: 180px;
+  }
+
 
   .main-title {
     font-size: 1.8rem !important;
