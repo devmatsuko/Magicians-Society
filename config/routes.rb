@@ -33,13 +33,8 @@ Rails.application.routes.draw do
     # member内書くことでURLにidが加わる。ex)/users/:id/following
     member do
       get :following, :followers
-      patch :withdrawal
-    end
-
-    # collection内書くことでURLにidを含めないようにする。ex)/users/withdrawal
-    collection do
-      # URLとコントローラアクション名が一致しない場合のみ、個別にコントローラのパスを指定する
       get 'withdrawal' => 'users#withdrawal_show'
+      patch :withdrawal
     end
 
     # フォロー・フォロワー関連
