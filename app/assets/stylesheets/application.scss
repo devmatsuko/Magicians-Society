@@ -176,7 +176,7 @@ header {
 
 // ハンバーガーメニュー内のリスト(1番目)
 #sp-menu li:nth-child(1) {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 // ハンバーガーメニュー内のリンク
@@ -430,6 +430,11 @@ footer {
     display: flex;
     justify-content: left;
     list-style: none;
+  }
+
+  // ハンバーガーメニュー内のリスト
+  #sp-menu li a {
+    font-size: 2rem !important;
   }
 
   /* ここまでヘッダー関係 */
