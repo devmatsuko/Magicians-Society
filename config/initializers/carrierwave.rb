@@ -4,8 +4,8 @@ require 'carrierwave/storage/fog'
 CarrierWave.configure do |config|
   if Rails.env.production? # 本番環境の場合
     config.fog_provider = 'fog/aws'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/magicians-society-production'
-    config.fog_directory  = 'magicians-society-production'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/prd-magicians-society'
+    config.fog_directory  = 'prd-magicians-society'
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY'],
@@ -15,8 +15,8 @@ CarrierWave.configure do |config|
     }
   else # 開発環境の場合
     config.fog_provider = 'fog/aws'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/magicians-society-content'
-    config.fog_directory  = 'magicians-society-content'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/stg-magicians-society'
+    config.fog_directory  = 'stg-magicians-society'
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY'],
