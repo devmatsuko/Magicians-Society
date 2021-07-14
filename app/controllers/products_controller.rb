@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   # ゲストユーザーのアクションの制限
   before_action :check_guest, only: [:create, :update]
   # 投稿画像のセーフサーチ
-  before_action :check_image, only: [:create, :update]
+  # before_action :check_image, only: [:create, :update]
 
   def index
     # ジャンル検索の有無に関係なく退会していない全ユーザーのマジック商品を取得(ページャ機能で12投稿ずつ表示する)
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
   def create
 
     # 新規商品情報の保存
-    if @safe_flag && @product.save
+    if @product.save
       flash[:notice] = '商品を登録しました。'
       redirect_to product_path(@product)
     else
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @safe_flag && @product.update(product_params)
+    if @product.update(product_params)
       flash[:notice] = '商品内容を変更しました。'
       redirect_to product_path(@product)
     else
@@ -115,25 +115,25 @@ class ProductsController < ApplicationController
   end
 
   # 画像のセーフサーチ
-  def check_image
-    # セーフチェックフラグの初期値(不適切でない場合にtrueに変更する。)
-    @safe_flag = false
-    # 画像の更新があった場合
-    if product_params[:image] != "{}" && product_params[:image].class == ActionDispatch::Http::UploadedFile
-      image = File.open(product_params[:image].tempfile)
-      # セーフサーチの実施・結果
-      safe_results = Vision.get_image_data(image)
-      # 画像が不適切だった場合
-      if safe_results.value?("LIKELY") || safe_results.value?("VERY_LIKELY")
-        @product.errors.add(:image, "が不適切な画像と判断されました。")
-      else
-        # 画像が適切である場合
-        @safe_flag = true
-      end
-    else
-      # 画像の更新がない場合
-      @safe_flag = true
-    end
-  end
+  # def check_image
+  #   # セーフチェックフラグの初期値(不適切でない場合にtrueに変更する。)
+  #   @safe_flag = false
+  #   # 画像の更新があった場合
+  #   if product_params[:image] != "{}" && product_params[:image].class == ActionDispatch::Http::UploadedFile
+  #     image = File.open(product_params[:image].tempfile)
+  #     # セーフサーチの実施・結果
+  #     safe_results = Vision.get_image_data(image)
+  #     # 画像が不適切だった場合
+  #     if safe_results.value?("LIKELY") || safe_results.value?("VERY_LIKELY")
+  #       @product.errors.add(:image, "が不適切な画像と判断されました。")
+  #     else
+  #       # 画像が適切である場合
+  #       @safe_flag = true
+  #     end
+  #   else
+  #     # 画像の更新がない場合
+  #     @safe_flag = true
+  #   end
+  # end
 
 end
